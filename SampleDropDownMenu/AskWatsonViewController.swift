@@ -41,7 +41,6 @@ class AskWatsonViewController: ExampleNobelViewController, DropDownViewControlle
     @IBOutlet weak var dropdownView: UIView!
     @IBOutlet weak var watsonTextView: UITextView!
     @IBOutlet weak var loader: UIImageView!
-    @IBOutlet weak var recordButton: UIButton!
     @IBOutlet weak var watsonImageView: UIImageView!
     
     // MARK: - Constants, Properties
@@ -96,7 +95,6 @@ class AskWatsonViewController: ExampleNobelViewController, DropDownViewControlle
     
     override func viewDidAppear(animated: Bool) {
         watsonTextView.delegate = self
-        recordButton.enabled=true
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -225,7 +223,7 @@ class AskWatsonViewController: ExampleNobelViewController, DropDownViewControlle
             recordingSession.requestRecordPermission() { [unowned self] (allowed: Bool) -> Void in
                 dispatch_async(dispatch_get_main_queue()) {
                     if allowed {
-                        self.loadRecordingUI()
+                        //self.loadRecordingUI()
                     } else {
                         // failed to record!
                     }
@@ -266,6 +264,25 @@ class AskWatsonViewController: ExampleNobelViewController, DropDownViewControlle
         watsonImageView.hidden = true
     }
     
+    func prepareOpenWatson()-> Void{
+        watsonImageView.animationImages = [UIImage]()
+        for i in 0 ..< 59{
+            let frameName = String(format: "tmp-\(i)")
+            watsonImageView.animationImages?.append(UIImage(named:frameName)!)
+        }
+        
+        for i in 58.stride(to: 0, by: -1){
+            let frameName = String(format: "tmp-\(i)")
+            watsonImageView.animationImages?.append(UIImage(named:frameName)!)
+        }
+
+        watsonImageView.animationDuration = 4.25
+        watsonImageView.stopAnimating()
+        watsonImageView.hidden = true
+    }
+    
+    
+    
     func setupWatsonImageViewAsButton() -> Void{
         watsonImageView.userInteractionEnabled = true
         let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(AskWatsonViewController.watsonImageTapped(_:)))
@@ -277,14 +294,14 @@ class AskWatsonViewController: ExampleNobelViewController, DropDownViewControlle
     }
     
     
-    /*
-     This function changes the UI of the record Button on viewDidLoad
-     */
-    func loadRecordingUI() {
-        self.recordButton.setTitle("Tap to Record", forState: .Normal)
-        self.recordButton.titleLabel?.font = UIFont.preferredFontForTextStyle(UIFontTextStyleTitle1)
-        self.recordButton.addTarget(self, action: #selector(recordTapped), forControlEvents: .TouchUpInside)
-    }
+//    /*
+//     This function changes the UI of the record Button on viewDidLoad
+//     */
+//    func loadRecordingUI() {
+//        self.recordButton.setTitle("Tap to Record", forState: .Normal)
+//        self.recordButton.titleLabel?.font = UIFont.preferredFontForTextStyle(UIFontTextStyleTitle1)
+//        self.recordButton.addTarget(self, action: #selector(recordTapped), forControlEvents: .TouchUpInside)
+//    }
     
     /*
      This function is called each time the record button is pressed while not recording.
@@ -303,7 +320,7 @@ class AskWatsonViewController: ExampleNobelViewController, DropDownViewControlle
             audioRecorder.delegate = self
             audioRecorder.record()
             
-            recordButton.setTitle("Tap to Stop", forState: .Normal)
+            //recordButton.setTitle("Tap to Stop", forState: .Normal)
         } catch {
             finishRecording(success: false)
         }
@@ -319,10 +336,10 @@ class AskWatsonViewController: ExampleNobelViewController, DropDownViewControlle
         audioRecorder = nil
         
         if success {
-            recordButton.setTitle("Tap to Re-record", forState: .Normal)
+            //recordButton.setTitle("Tap to Re-record", forState: .Normal)
             proccessSpeechAndFindKeywords()
         } else {
-            recordButton.setTitle("Tap to Record", forState: .Normal)
+            //recordButton.setTitle("Tap to Record", forState: .Normal)
             // recording failed :(
         }
     }
@@ -333,8 +350,11 @@ class AskWatsonViewController: ExampleNobelViewController, DropDownViewControlle
      */
     func recordTapped() {
         if audioRecorder == nil {
+            prepareOpenWatson()
+            showWatson()
             startRecording()
         } else {
+            prepareWatson()
             finishRecording(success: true)
         }
     }
@@ -354,7 +374,6 @@ class AskWatsonViewController: ExampleNobelViewController, DropDownViewControlle
         
         // 2. show indeterminate loader
         UIView.animateWithDuration(10.0, delay:0.0, options: [.Repeat, .Autoreverse], animations: { () -> Void in
-            //self.watsonImageView.alpha = 0
         }, completion: nil)
 
     }
