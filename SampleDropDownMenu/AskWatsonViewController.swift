@@ -31,7 +31,7 @@ func getDocumentsDirectory() -> String {
     return documentsDirectory
 }
 
-class DropdownExampleViewController: ExampleNobelViewController, DropDownViewControllerDelegate, UITextViewDelegate, AVAudioRecorderDelegate, AVAudioPlayerDelegate {
+class AskWatsonViewController: ExampleNobelViewController, DropDownViewControllerDelegate, UITextViewDelegate, AVAudioRecorderDelegate, AVAudioPlayerDelegate {
 
     // MARK: - Outlets
 
