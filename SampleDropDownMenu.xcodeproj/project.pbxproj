@@ -26,6 +26,7 @@
 		6032934A1CFDDCBF00F75508 /* TableViewHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 603293491CFDDCBF00F75508 /* TableViewHeaderCell.swift */; };
 		6032934C1CFDDCC700F75508 /* TableViewHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6032934B1CFDDCC700F75508 /* TableViewHeaderCell.xib */; };
 		6032934E1CFDDCCF00F75508 /* MotionStyleKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6032934D1CFDDCCF00F75508 /* MotionStyleKit.swift */; };
+		603293521CFDE42C00F75508 /* Lubalin Graph Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6032934F1CFDDD0500F75508 /* Lubalin Graph Regular.ttf */; };
 		60F6C9C01CF88EBB00FFBEA7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60F6C9BF1CF88EBB00FFBEA7 /* AppDelegate.swift */; };
 		60F6C9C21CF88EBB00FFBEA7 /* GlobalVars.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60F6C9C11CF88EBB00FFBEA7 /* GlobalVars.swift */; };
 		60F6C9C71CF88EBB00FFBEA7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 60F6C9C61CF88EBB00FFBEA7 /* Assets.xcassets */; };
@@ -379,6 +380,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				603293521CFDE42C00F75508 /* Lubalin Graph Regular.ttf in Resources */,
 				6032934C1CFDDCC700F75508 /* TableViewHeaderCell.xib in Resources */,
 				603293341CFDDC4400F75508 /* Dropdown.storyboard in Resources */,
 				603293481CFDDCB600F75508 /* TableViewCell.xib in Resources */,
