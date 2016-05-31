@@ -88,6 +88,8 @@ class DropdownExampleViewController: ExampleNobelViewController, DropDownViewCon
         prepareRecordingSession()
         
         prepareLoader()
+        
+        prepareWatson()
     }
     
     override func viewDidAppear(animated: Bool) {
