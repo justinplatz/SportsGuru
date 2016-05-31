@@ -42,6 +42,7 @@ class DropdownExampleViewController: ExampleNobelViewController, DropDownViewCon
     @IBOutlet weak var watsonTextView: UITextView!
     @IBOutlet weak var loader: UIImageView!
     @IBOutlet weak var recordButton: UIButton!
+    @IBOutlet weak var watsonImageView: UIImageView!
     
     // MARK: - Constants, Properties
 
@@ -58,6 +59,7 @@ class DropdownExampleViewController: ExampleNobelViewController, DropDownViewCon
         UIImage(named: "circle_x_06")!,
         UIImage(named: "circle_x_07")!
     ];
+    
     var reversedAnimationImages: [UIImage] { get { return animationImages.reverse() } }
     
     var hiddenStatusBar:Bool = false {
@@ -75,6 +77,7 @@ class DropdownExampleViewController: ExampleNobelViewController, DropDownViewCon
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         
         backgroundView.alpha = 0
         
