@@ -1,0 +1,10 @@
+framework module LanguageTranslationV2 {
+  umbrella header "LanguageTranslationV2.h"
+
+  export *
+  module * { export * }
+}
+
+module LanguageTranslationV2.Swift {
+    header "LanguageTranslationV2-Swift.h"
+}
