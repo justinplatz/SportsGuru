@@ -7,21 +7,176 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6032932A1CFDDBE900F75508 /* DropdownViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 603293291CFDDBE900F75508 /* DropdownViewController.swift */; };
+		6032932C1CFDDC0B00F75508 /* DropdownExampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6032932B1CFDDC0B00F75508 /* DropdownExampleViewController.swift */; };
+		6032932E1CFDDC2500F75508 /* Credentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6032932D1CFDDC2500F75508 /* Credentials.swift */; };
+		603293301CFDDC3000F75508 /* UIColor+SpeachToText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6032932F1CFDDC3000F75508 /* UIColor+SpeachToText.swift */; };
+		603293321CFDDC3A00F75508 /* ViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 603293311CFDDC3A00F75508 /* ViewControllerExtension.swift */; };
+		603293341CFDDC4400F75508 /* Dropdown.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 603293331CFDDC4400F75508 /* Dropdown.storyboard */; };
+		603293361CFDDC5400F75508 /* ExampleNobelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 603293351CFDDC5400F75508 /* ExampleNobelViewController.swift */; };
+		603293381CFDDC6500F75508 /* CubicBezier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 603293371CFDDC6500F75508 /* CubicBezier.swift */; };
+		6032933A1CFDDC6E00F75508 /* DropdownAppearTransitioning.swift in Sources */ = {isa = PBXBuildFile; fileRef = 603293391CFDDC6E00F75508 /* DropdownAppearTransitioning.swift */; };
+		6032933C1CFDDC7800F75508 /* DropdownDismissTransitioning.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6032933B1CFDDC7800F75508 /* DropdownDismissTransitioning.swift */; };
+		6032933E1CFDDC8100F75508 /* LayoutConstraintAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6032933D1CFDDC8100F75508 /* LayoutConstraintAnimator.swift */; };
+		603293401CFDDC8B00F75508 /* LayoutConstraintEasing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6032933F1CFDDC8B00F75508 /* LayoutConstraintEasing.swift */; };
+		603293421CFDDC9400F75508 /* DropdownTransitioningDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 603293411CFDDC9400F75508 /* DropdownTransitioningDelegate.swift */; };
+		603293441CFDDC9C00F75508 /* TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 603293431CFDDC9C00F75508 /* TableView.swift */; };
+		603293461CFDDCA600F75508 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 603293451CFDDCA600F75508 /* TableViewCell.swift */; };
+		603293481CFDDCB600F75508 /* TableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 603293471CFDDCB600F75508 /* TableViewCell.xib */; };
+		6032934A1CFDDCBF00F75508 /* TableViewHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 603293491CFDDCBF00F75508 /* TableViewHeaderCell.swift */; };
+		6032934C1CFDDCC700F75508 /* TableViewHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6032934B1CFDDCC700F75508 /* TableViewHeaderCell.xib */; };
+		6032934E1CFDDCCF00F75508 /* MotionStyleKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6032934D1CFDDCCF00F75508 /* MotionStyleKit.swift */; };
 		60F6C9C01CF88EBB00FFBEA7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60F6C9BF1CF88EBB00FFBEA7 /* AppDelegate.swift */; };
-		60F6C9C21CF88EBB00FFBEA7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60F6C9C11CF88EBB00FFBEA7 /* ViewController.swift */; };
-		60F6C9C51CF88EBB00FFBEA7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 60F6C9C31CF88EBB00FFBEA7 /* Main.storyboard */; };
+		60F6C9C21CF88EBB00FFBEA7 /* GlobalVars.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60F6C9C11CF88EBB00FFBEA7 /* GlobalVars.swift */; };
 		60F6C9C71CF88EBB00FFBEA7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 60F6C9C61CF88EBB00FFBEA7 /* Assets.xcassets */; };
 		60F6C9CA1CF88EBB00FFBEA7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 60F6C9C81CF88EBB00FFBEA7 /* LaunchScreen.storyboard */; };
+		60F6CA091CF8B94E00FFBEA7 /* DropdownExampleViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60F6CA081CF8B94E00FFBEA7 /* DropdownExampleViewController2.swift */; };
+		60F6CA131CF8EC7000FFBEA7 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60F6CA121CF8EC7000FFBEA7 /* String.swift */; };
+		60F6CA251CFDBF6100FFBEA7 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60F6CA141CFDBF6100FFBEA7 /* AVFoundation.framework */; };
+		60F6CA271CFDBF6100FFBEA7 /* AlchemyLanguageV1.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60F6CA161CFDBF6100FFBEA7 /* AlchemyLanguageV1.framework */; };
+		60F6CA2B1CFDBF6100FFBEA7 /* LanguageTranslationV2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60F6CA1A1CFDBF6100FFBEA7 /* LanguageTranslationV2.framework */; };
+		60F6CA2C1CFDBF6100FFBEA7 /* NaturalLanguageClassifierV1.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60F6CA1B1CFDBF6100FFBEA7 /* NaturalLanguageClassifierV1.framework */; };
+		60F6CA2D1CFDBF6100FFBEA7 /* ObjectMapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60F6CA1C1CFDBF6100FFBEA7 /* ObjectMapper.framework */; };
+		60F6CA2E1CFDBF6100FFBEA7 /* PersonalityInsightsV2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60F6CA1D1CFDBF6100FFBEA7 /* PersonalityInsightsV2.framework */; };
+		60F6CA341CFDBF6100FFBEA7 /* VisualRecognitionV3.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60F6CA231CFDBF6100FFBEA7 /* VisualRecognitionV3.framework */; };
+		60F6CA371CFDBFB600FFBEA7 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60F6CA151CFDBF6100FFBEA7 /* Alamofire.framework */; };
+		60F6CA3B1CFDBFB600FFBEA7 /* AlchemyVisionV1.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60F6CA171CFDBF6100FFBEA7 /* AlchemyVisionV1.framework */; };
+		60F6CA3D1CFDBFB600FFBEA7 /* DialogV1.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60F6CA181CFDBF6100FFBEA7 /* DialogV1.framework */; };
+		60F6CA3F1CFDBFB600FFBEA7 /* Freddy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60F6CA191CFDBF6100FFBEA7 /* Freddy.framework */; };
+		60F6CA491CFDBFB600FFBEA7 /* RestKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60F6CA1E1CFDBF6100FFBEA7 /* RestKit.framework */; };
+		60F6CA4B1CFDBFB600FFBEA7 /* SpeechToTextV1.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60F6CA1F1CFDBF6100FFBEA7 /* SpeechToTextV1.framework */; };
+		60F6CA4D1CFDBFB600FFBEA7 /* Starscream.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60F6CA201CFDBF6100FFBEA7 /* Starscream.framework */; };
+		60F6CA4F1CFDBFB600FFBEA7 /* TextToSpeechV1.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60F6CA211CFDBF6100FFBEA7 /* TextToSpeechV1.framework */; };
+		60F6CA511CFDBFB700FFBEA7 /* ToneAnalyzerV3.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60F6CA221CFDBF6100FFBEA7 /* ToneAnalyzerV3.framework */; };
+		60F6CA771CFDC0E800FFBEA7 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60F6CA681CFDC0E800FFBEA7 /* Alamofire.framework */; };
+		60F6CA781CFDC0E800FFBEA7 /* AlchemyLanguageV1.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60F6CA691CFDC0E800FFBEA7 /* AlchemyLanguageV1.framework */; };
+		60F6CA791CFDC0E800FFBEA7 /* AlchemyVisionV1.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60F6CA6A1CFDC0E800FFBEA7 /* AlchemyVisionV1.framework */; };
+		60F6CA7A1CFDC0E800FFBEA7 /* DialogV1.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60F6CA6B1CFDC0E800FFBEA7 /* DialogV1.framework */; };
+		60F6CA7B1CFDC0E800FFBEA7 /* Freddy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60F6CA6C1CFDC0E800FFBEA7 /* Freddy.framework */; };
+		60F6CA7C1CFDC0E800FFBEA7 /* LanguageTranslationV2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60F6CA6D1CFDC0E800FFBEA7 /* LanguageTranslationV2.framework */; };
+		60F6CA7D1CFDC0E800FFBEA7 /* NaturalLanguageClassifierV1.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60F6CA6E1CFDC0E800FFBEA7 /* NaturalLanguageClassifierV1.framework */; };
+		60F6CA7E1CFDC0E800FFBEA7 /* ObjectMapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60F6CA6F1CFDC0E800FFBEA7 /* ObjectMapper.framework */; };
+		60F6CA7F1CFDC0E800FFBEA7 /* PersonalityInsightsV2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60F6CA701CFDC0E800FFBEA7 /* PersonalityInsightsV2.framework */; };
+		60F6CA801CFDC0E800FFBEA7 /* RestKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60F6CA711CFDC0E800FFBEA7 /* RestKit.framework */; };
+		60F6CA811CFDC0E800FFBEA7 /* SpeechToTextV1.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60F6CA721CFDC0E800FFBEA7 /* SpeechToTextV1.framework */; };
+		60F6CA821CFDC0E800FFBEA7 /* Starscream.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60F6CA731CFDC0E800FFBEA7 /* Starscream.framework */; };
+		60F6CA831CFDC0E800FFBEA7 /* TextToSpeechV1.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60F6CA741CFDC0E800FFBEA7 /* TextToSpeechV1.framework */; };
+		60F6CA841CFDC0E800FFBEA7 /* ToneAnalyzerV3.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60F6CA751CFDC0E800FFBEA7 /* ToneAnalyzerV3.framework */; };
+		60F6CA851CFDC0E800FFBEA7 /* VisualRecognitionV3.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60F6CA761CFDC0E800FFBEA7 /* VisualRecognitionV3.framework */; };
+		60F6CA861CFDC17100FFBEA7 /* Alamofire.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 60F6CA681CFDC0E800FFBEA7 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		60F6CA871CFDC17100FFBEA7 /* AlchemyLanguageV1.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 60F6CA691CFDC0E800FFBEA7 /* AlchemyLanguageV1.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		60F6CA881CFDC17100FFBEA7 /* AlchemyVisionV1.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 60F6CA6A1CFDC0E800FFBEA7 /* AlchemyVisionV1.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		60F6CA891CFDC17100FFBEA7 /* DialogV1.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 60F6CA6B1CFDC0E800FFBEA7 /* DialogV1.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		60F6CA8A1CFDC17100FFBEA7 /* Freddy.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 60F6CA6C1CFDC0E800FFBEA7 /* Freddy.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		60F6CA8B1CFDC17100FFBEA7 /* LanguageTranslationV2.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 60F6CA6D1CFDC0E800FFBEA7 /* LanguageTranslationV2.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		60F6CA8C1CFDC17100FFBEA7 /* NaturalLanguageClassifierV1.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 60F6CA6E1CFDC0E800FFBEA7 /* NaturalLanguageClassifierV1.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		60F6CA8D1CFDC17100FFBEA7 /* ObjectMapper.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 60F6CA6F1CFDC0E800FFBEA7 /* ObjectMapper.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		60F6CA8E1CFDC17100FFBEA7 /* PersonalityInsightsV2.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 60F6CA701CFDC0E800FFBEA7 /* PersonalityInsightsV2.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		60F6CA8F1CFDC17100FFBEA7 /* RestKit.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 60F6CA711CFDC0E800FFBEA7 /* RestKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		60F6CA901CFDC17100FFBEA7 /* SpeechToTextV1.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 60F6CA721CFDC0E800FFBEA7 /* SpeechToTextV1.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		60F6CA911CFDC17100FFBEA7 /* Starscream.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 60F6CA731CFDC0E800FFBEA7 /* Starscream.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		60F6CA921CFDC17100FFBEA7 /* TextToSpeechV1.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 60F6CA741CFDC0E800FFBEA7 /* TextToSpeechV1.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		60F6CA931CFDC17100FFBEA7 /* ToneAnalyzerV3.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 60F6CA751CFDC0E800FFBEA7 /* ToneAnalyzerV3.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		60F6CA941CFDC17100FFBEA7 /* VisualRecognitionV3.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 60F6CA761CFDC0E800FFBEA7 /* VisualRecognitionV3.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		60F6CA551CFDBFB700FFBEA7 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		60F6CA561CFDC00000FFBEA7 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				60F6CA861CFDC17100FFBEA7 /* Alamofire.framework in CopyFiles */,
+				60F6CA871CFDC17100FFBEA7 /* AlchemyLanguageV1.framework in CopyFiles */,
+				60F6CA881CFDC17100FFBEA7 /* AlchemyVisionV1.framework in CopyFiles */,
+				60F6CA891CFDC17100FFBEA7 /* DialogV1.framework in CopyFiles */,
+				60F6CA8A1CFDC17100FFBEA7 /* Freddy.framework in CopyFiles */,
+				60F6CA8B1CFDC17100FFBEA7 /* LanguageTranslationV2.framework in CopyFiles */,
+				60F6CA8C1CFDC17100FFBEA7 /* NaturalLanguageClassifierV1.framework in CopyFiles */,
+				60F6CA8D1CFDC17100FFBEA7 /* ObjectMapper.framework in CopyFiles */,
+				60F6CA8E1CFDC17100FFBEA7 /* PersonalityInsightsV2.framework in CopyFiles */,
+				60F6CA8F1CFDC17100FFBEA7 /* RestKit.framework in CopyFiles */,
+				60F6CA901CFDC17100FFBEA7 /* SpeechToTextV1.framework in CopyFiles */,
+				60F6CA911CFDC17100FFBEA7 /* Starscream.framework in CopyFiles */,
+				60F6CA921CFDC17100FFBEA7 /* TextToSpeechV1.framework in CopyFiles */,
+				60F6CA931CFDC17100FFBEA7 /* ToneAnalyzerV3.framework in CopyFiles */,
+				60F6CA941CFDC17100FFBEA7 /* VisualRecognitionV3.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		603293291CFDDBE900F75508 /* DropdownViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DropdownViewController.swift; sourceTree = "<group>"; };
+		6032932B1CFDDC0B00F75508 /* DropdownExampleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DropdownExampleViewController.swift; sourceTree = "<group>"; };
+		6032932D1CFDDC2500F75508 /* Credentials.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Credentials.swift; sourceTree = "<group>"; };
+		6032932F1CFDDC3000F75508 /* UIColor+SpeachToText.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+SpeachToText.swift"; sourceTree = "<group>"; };
+		603293311CFDDC3A00F75508 /* ViewControllerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerExtension.swift; sourceTree = "<group>"; };
+		603293331CFDDC4400F75508 /* Dropdown.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Dropdown.storyboard; sourceTree = "<group>"; };
+		603293351CFDDC5400F75508 /* ExampleNobelViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExampleNobelViewController.swift; sourceTree = "<group>"; };
+		603293371CFDDC6500F75508 /* CubicBezier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CubicBezier.swift; sourceTree = "<group>"; };
+		603293391CFDDC6E00F75508 /* DropdownAppearTransitioning.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DropdownAppearTransitioning.swift; sourceTree = "<group>"; };
+		6032933B1CFDDC7800F75508 /* DropdownDismissTransitioning.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DropdownDismissTransitioning.swift; sourceTree = "<group>"; };
+		6032933D1CFDDC8100F75508 /* LayoutConstraintAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LayoutConstraintAnimator.swift; sourceTree = "<group>"; };
+		6032933F1CFDDC8B00F75508 /* LayoutConstraintEasing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LayoutConstraintEasing.swift; sourceTree = "<group>"; };
+		603293411CFDDC9400F75508 /* DropdownTransitioningDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DropdownTransitioningDelegate.swift; sourceTree = "<group>"; };
+		603293431CFDDC9C00F75508 /* TableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableView.swift; sourceTree = "<group>"; };
+		603293451CFDDCA600F75508 /* TableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
+		603293471CFDDCB600F75508 /* TableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TableViewCell.xib; sourceTree = "<group>"; };
+		603293491CFDDCBF00F75508 /* TableViewHeaderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewHeaderCell.swift; sourceTree = "<group>"; };
+		6032934B1CFDDCC700F75508 /* TableViewHeaderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TableViewHeaderCell.xib; sourceTree = "<group>"; };
+		6032934D1CFDDCCF00F75508 /* MotionStyleKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MotionStyleKit.swift; sourceTree = "<group>"; };
+		6032934F1CFDDD0500F75508 /* Lubalin Graph Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lubalin Graph Regular.ttf"; sourceTree = "<group>"; };
 		60F6C9BC1CF88EBB00FFBEA7 /* SampleDropDownMenu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SampleDropDownMenu.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		60F6C9BF1CF88EBB00FFBEA7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		60F6C9C11CF88EBB00FFBEA7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		60F6C9C41CF88EBB00FFBEA7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		60F6C9C11CF88EBB00FFBEA7 /* GlobalVars.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalVars.swift; sourceTree = "<group>"; };
 		60F6C9C61CF88EBB00FFBEA7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		60F6C9C91CF88EBB00FFBEA7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		60F6C9CB1CF88EBB00FFBEA7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		60F6CA081CF8B94E00FFBEA7 /* DropdownExampleViewController2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DropdownExampleViewController2.swift; sourceTree = "<group>"; };
+		60F6CA121CF8EC7000FFBEA7 /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = String.swift; path = ../../SpeachToText/String.swift; sourceTree = "<group>"; };
+		60F6CA141CFDBF6100FFBEA7 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/AVFoundation.framework; sourceTree = "<absolute>"; };
+		60F6CA151CFDBF6100FFBEA7 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = /Users/justinmplatz/Documents/GeneralDev/SpeachToText/Carthage/Build/iOS/Alamofire.framework; sourceTree = "<absolute>"; };
+		60F6CA161CFDBF6100FFBEA7 /* AlchemyLanguageV1.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AlchemyLanguageV1.framework; path = /Users/justinmplatz/Documents/GeneralDev/SpeachToText/Carthage/Build/iOS/AlchemyLanguageV1.framework; sourceTree = "<absolute>"; };
+		60F6CA171CFDBF6100FFBEA7 /* AlchemyVisionV1.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AlchemyVisionV1.framework; path = /Users/justinmplatz/Documents/GeneralDev/SpeachToText/Carthage/Build/iOS/AlchemyVisionV1.framework; sourceTree = "<absolute>"; };
+		60F6CA181CFDBF6100FFBEA7 /* DialogV1.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DialogV1.framework; path = /Users/justinmplatz/Documents/GeneralDev/SpeachToText/Carthage/Build/iOS/DialogV1.framework; sourceTree = "<absolute>"; };
+		60F6CA191CFDBF6100FFBEA7 /* Freddy.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Freddy.framework; path = /Users/justinmplatz/Documents/GeneralDev/SpeachToText/Carthage/Build/iOS/Freddy.framework; sourceTree = "<absolute>"; };
+		60F6CA1A1CFDBF6100FFBEA7 /* LanguageTranslationV2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LanguageTranslationV2.framework; path = /Users/justinmplatz/Documents/GeneralDev/SpeachToText/Carthage/Build/iOS/LanguageTranslationV2.framework; sourceTree = "<absolute>"; };
+		60F6CA1B1CFDBF6100FFBEA7 /* NaturalLanguageClassifierV1.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NaturalLanguageClassifierV1.framework; path = /Users/justinmplatz/Documents/GeneralDev/SpeachToText/Carthage/Build/iOS/NaturalLanguageClassifierV1.framework; sourceTree = "<absolute>"; };
+		60F6CA1C1CFDBF6100FFBEA7 /* ObjectMapper.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ObjectMapper.framework; path = /Users/justinmplatz/Documents/GeneralDev/SpeachToText/Carthage/Build/iOS/ObjectMapper.framework; sourceTree = "<absolute>"; };
+		60F6CA1D1CFDBF6100FFBEA7 /* PersonalityInsightsV2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PersonalityInsightsV2.framework; path = /Users/justinmplatz/Documents/GeneralDev/SpeachToText/Carthage/Build/iOS/PersonalityInsightsV2.framework; sourceTree = "<absolute>"; };
+		60F6CA1E1CFDBF6100FFBEA7 /* RestKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RestKit.framework; path = /Users/justinmplatz/Documents/GeneralDev/SpeachToText/Carthage/Build/iOS/RestKit.framework; sourceTree = "<absolute>"; };
+		60F6CA1F1CFDBF6100FFBEA7 /* SpeechToTextV1.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SpeechToTextV1.framework; path = /Users/justinmplatz/Documents/GeneralDev/SpeachToText/Carthage/Build/iOS/SpeechToTextV1.framework; sourceTree = "<absolute>"; };
+		60F6CA201CFDBF6100FFBEA7 /* Starscream.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Starscream.framework; path = /Users/justinmplatz/Documents/GeneralDev/SpeachToText/Carthage/Build/iOS/Starscream.framework; sourceTree = "<absolute>"; };
+		60F6CA211CFDBF6100FFBEA7 /* TextToSpeechV1.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TextToSpeechV1.framework; path = /Users/justinmplatz/Documents/GeneralDev/SpeachToText/Carthage/Build/iOS/TextToSpeechV1.framework; sourceTree = "<absolute>"; };
+		60F6CA221CFDBF6100FFBEA7 /* ToneAnalyzerV3.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ToneAnalyzerV3.framework; path = /Users/justinmplatz/Documents/GeneralDev/SpeachToText/Carthage/Build/iOS/ToneAnalyzerV3.framework; sourceTree = "<absolute>"; };
+		60F6CA231CFDBF6100FFBEA7 /* VisualRecognitionV3.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VisualRecognitionV3.framework; path = /Users/justinmplatz/Documents/GeneralDev/SpeachToText/Carthage/Build/iOS/VisualRecognitionV3.framework; sourceTree = "<absolute>"; };
+		60F6CA681CFDC0E800FFBEA7 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = SOURCE_ROOT; };
+		60F6CA691CFDC0E800FFBEA7 /* AlchemyLanguageV1.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AlchemyLanguageV1.framework; path = Carthage/Build/iOS/AlchemyLanguageV1.framework; sourceTree = SOURCE_ROOT; };
+		60F6CA6A1CFDC0E800FFBEA7 /* AlchemyVisionV1.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AlchemyVisionV1.framework; path = Carthage/Build/iOS/AlchemyVisionV1.framework; sourceTree = SOURCE_ROOT; };
+		60F6CA6B1CFDC0E800FFBEA7 /* DialogV1.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DialogV1.framework; path = Carthage/Build/iOS/DialogV1.framework; sourceTree = SOURCE_ROOT; };
+		60F6CA6C1CFDC0E800FFBEA7 /* Freddy.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Freddy.framework; path = Carthage/Build/iOS/Freddy.framework; sourceTree = SOURCE_ROOT; };
+		60F6CA6D1CFDC0E800FFBEA7 /* LanguageTranslationV2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LanguageTranslationV2.framework; path = Carthage/Build/iOS/LanguageTranslationV2.framework; sourceTree = SOURCE_ROOT; };
+		60F6CA6E1CFDC0E800FFBEA7 /* NaturalLanguageClassifierV1.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NaturalLanguageClassifierV1.framework; path = Carthage/Build/iOS/NaturalLanguageClassifierV1.framework; sourceTree = SOURCE_ROOT; };
+		60F6CA6F1CFDC0E800FFBEA7 /* ObjectMapper.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ObjectMapper.framework; path = Carthage/Build/iOS/ObjectMapper.framework; sourceTree = SOURCE_ROOT; };
+		60F6CA701CFDC0E800FFBEA7 /* PersonalityInsightsV2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PersonalityInsightsV2.framework; path = Carthage/Build/iOS/PersonalityInsightsV2.framework; sourceTree = SOURCE_ROOT; };
+		60F6CA711CFDC0E800FFBEA7 /* RestKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RestKit.framework; path = Carthage/Build/iOS/RestKit.framework; sourceTree = SOURCE_ROOT; };
+		60F6CA721CFDC0E800FFBEA7 /* SpeechToTextV1.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SpeechToTextV1.framework; path = Carthage/Build/iOS/SpeechToTextV1.framework; sourceTree = SOURCE_ROOT; };
+		60F6CA731CFDC0E800FFBEA7 /* Starscream.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Starscream.framework; path = Carthage/Build/iOS/Starscream.framework; sourceTree = SOURCE_ROOT; };
+		60F6CA741CFDC0E800FFBEA7 /* TextToSpeechV1.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TextToSpeechV1.framework; path = Carthage/Build/iOS/TextToSpeechV1.framework; sourceTree = SOURCE_ROOT; };
+		60F6CA751CFDC0E800FFBEA7 /* ToneAnalyzerV3.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ToneAnalyzerV3.framework; path = Carthage/Build/iOS/ToneAnalyzerV3.framework; sourceTree = SOURCE_ROOT; };
+		60F6CA761CFDC0E800FFBEA7 /* VisualRecognitionV3.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VisualRecognitionV3.framework; path = Carthage/Build/iOS/VisualRecognitionV3.framework; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,12 +184,70 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				60F6CA2D1CFDBF6100FFBEA7 /* ObjectMapper.framework in Frameworks */,
+				60F6CA821CFDC0E800FFBEA7 /* Starscream.framework in Frameworks */,
+				60F6CA3D1CFDBFB600FFBEA7 /* DialogV1.framework in Frameworks */,
+				60F6CA371CFDBFB600FFBEA7 /* Alamofire.framework in Frameworks */,
+				60F6CA851CFDC0E800FFBEA7 /* VisualRecognitionV3.framework in Frameworks */,
+				60F6CA801CFDC0E800FFBEA7 /* RestKit.framework in Frameworks */,
+				60F6CA831CFDC0E800FFBEA7 /* TextToSpeechV1.framework in Frameworks */,
+				60F6CA2C1CFDBF6100FFBEA7 /* NaturalLanguageClassifierV1.framework in Frameworks */,
+				60F6CA771CFDC0E800FFBEA7 /* Alamofire.framework in Frameworks */,
+				60F6CA2E1CFDBF6100FFBEA7 /* PersonalityInsightsV2.framework in Frameworks */,
+				60F6CA7E1CFDC0E800FFBEA7 /* ObjectMapper.framework in Frameworks */,
+				60F6CA811CFDC0E800FFBEA7 /* SpeechToTextV1.framework in Frameworks */,
+				60F6CA4D1CFDBFB600FFBEA7 /* Starscream.framework in Frameworks */,
+				60F6CA2B1CFDBF6100FFBEA7 /* LanguageTranslationV2.framework in Frameworks */,
+				60F6CA251CFDBF6100FFBEA7 /* AVFoundation.framework in Frameworks */,
+				60F6CA4B1CFDBFB600FFBEA7 /* SpeechToTextV1.framework in Frameworks */,
+				60F6CA7D1CFDC0E800FFBEA7 /* NaturalLanguageClassifierV1.framework in Frameworks */,
+				60F6CA3B1CFDBFB600FFBEA7 /* AlchemyVisionV1.framework in Frameworks */,
+				60F6CA791CFDC0E800FFBEA7 /* AlchemyVisionV1.framework in Frameworks */,
+				60F6CA781CFDC0E800FFBEA7 /* AlchemyLanguageV1.framework in Frameworks */,
+				60F6CA3F1CFDBFB600FFBEA7 /* Freddy.framework in Frameworks */,
+				60F6CA4F1CFDBFB600FFBEA7 /* TextToSpeechV1.framework in Frameworks */,
+				60F6CA7F1CFDC0E800FFBEA7 /* PersonalityInsightsV2.framework in Frameworks */,
+				60F6CA341CFDBF6100FFBEA7 /* VisualRecognitionV3.framework in Frameworks */,
+				60F6CA7B1CFDC0E800FFBEA7 /* Freddy.framework in Frameworks */,
+				60F6CA271CFDBF6100FFBEA7 /* AlchemyLanguageV1.framework in Frameworks */,
+				60F6CA7A1CFDC0E800FFBEA7 /* DialogV1.framework in Frameworks */,
+				60F6CA511CFDBFB700FFBEA7 /* ToneAnalyzerV3.framework in Frameworks */,
+				60F6CA841CFDC0E800FFBEA7 /* ToneAnalyzerV3.framework in Frameworks */,
+				60F6CA7C1CFDC0E800FFBEA7 /* LanguageTranslationV2.framework in Frameworks */,
+				60F6CA491CFDBFB600FFBEA7 /* RestKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		603293501CFDDD0E00F75508 /* TableView */ = {
+			isa = PBXGroup;
+			children = (
+				603293431CFDDC9C00F75508 /* TableView.swift */,
+				603293451CFDDCA600F75508 /* TableViewCell.swift */,
+				603293471CFDDCB600F75508 /* TableViewCell.xib */,
+				603293491CFDDCBF00F75508 /* TableViewHeaderCell.swift */,
+				6032934B1CFDDCC700F75508 /* TableViewHeaderCell.xib */,
+			);
+			name = TableView;
+			sourceTree = "<group>";
+		};
+		603293511CFDDD2100F75508 /* Layout */ = {
+			isa = PBXGroup;
+			children = (
+				603293371CFDDC6500F75508 /* CubicBezier.swift */,
+				603293391CFDDC6E00F75508 /* DropdownAppearTransitioning.swift */,
+				6032933B1CFDDC7800F75508 /* DropdownDismissTransitioning.swift */,
+				6032933D1CFDDC8100F75508 /* LayoutConstraintAnimator.swift */,
+				6032933F1CFDDC8B00F75508 /* LayoutConstraintEasing.swift */,
+				603293411CFDDC9400F75508 /* DropdownTransitioningDelegate.swift */,
+				6032934D1CFDDCCF00F75508 /* MotionStyleKit.swift */,
+				603293351CFDDC5400F75508 /* ExampleNobelViewController.swift */,
+			);
+			name = Layout;
+			sourceTree = "<group>";
+		};
 		60F6C9B31CF88EBB00FFBEA7 = {
 			isa = PBXGroup;
 			children = (
@@ -54,14 +267,55 @@
 		60F6C9BE1CF88EBB00FFBEA7 /* SampleDropDownMenu */ = {
 			isa = PBXGroup;
 			children = (
+				60F6CA671CFDC0D100FFBEA7 /* Frameworks */,
+				60F6CA121CF8EC7000FFBEA7 /* String.swift */,
+				60F6C9D11CF88ED500FFBEA7 /* Dropdown */,
 				60F6C9BF1CF88EBB00FFBEA7 /* AppDelegate.swift */,
-				60F6C9C11CF88EBB00FFBEA7 /* ViewController.swift */,
-				60F6C9C31CF88EBB00FFBEA7 /* Main.storyboard */,
+				6032934F1CFDDD0500F75508 /* Lubalin Graph Regular.ttf */,
 				60F6C9C61CF88EBB00FFBEA7 /* Assets.xcassets */,
 				60F6C9C81CF88EBB00FFBEA7 /* LaunchScreen.storyboard */,
 				60F6C9CB1CF88EBB00FFBEA7 /* Info.plist */,
 			);
 			path = SampleDropDownMenu;
+			sourceTree = "<group>";
+		};
+		60F6C9D11CF88ED500FFBEA7 /* Dropdown */ = {
+			isa = PBXGroup;
+			children = (
+				603293511CFDDD2100F75508 /* Layout */,
+				603293501CFDDD0E00F75508 /* TableView */,
+				603293291CFDDBE900F75508 /* DropdownViewController.swift */,
+				6032932B1CFDDC0B00F75508 /* DropdownExampleViewController.swift */,
+				60F6CA081CF8B94E00FFBEA7 /* DropdownExampleViewController2.swift */,
+				603293331CFDDC4400F75508 /* Dropdown.storyboard */,
+				6032932D1CFDDC2500F75508 /* Credentials.swift */,
+				6032932F1CFDDC3000F75508 /* UIColor+SpeachToText.swift */,
+				603293311CFDDC3A00F75508 /* ViewControllerExtension.swift */,
+				60F6C9C11CF88EBB00FFBEA7 /* GlobalVars.swift */,
+			);
+			name = Dropdown;
+			sourceTree = "<group>";
+		};
+		60F6CA671CFDC0D100FFBEA7 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				60F6CA681CFDC0E800FFBEA7 /* Alamofire.framework */,
+				60F6CA691CFDC0E800FFBEA7 /* AlchemyLanguageV1.framework */,
+				60F6CA6A1CFDC0E800FFBEA7 /* AlchemyVisionV1.framework */,
+				60F6CA6B1CFDC0E800FFBEA7 /* DialogV1.framework */,
+				60F6CA6C1CFDC0E800FFBEA7 /* Freddy.framework */,
+				60F6CA6D1CFDC0E800FFBEA7 /* LanguageTranslationV2.framework */,
+				60F6CA6E1CFDC0E800FFBEA7 /* NaturalLanguageClassifierV1.framework */,
+				60F6CA6F1CFDC0E800FFBEA7 /* ObjectMapper.framework */,
+				60F6CA701CFDC0E800FFBEA7 /* PersonalityInsightsV2.framework */,
+				60F6CA711CFDC0E800FFBEA7 /* RestKit.framework */,
+				60F6CA721CFDC0E800FFBEA7 /* SpeechToTextV1.framework */,
+				60F6CA731CFDC0E800FFBEA7 /* Starscream.framework */,
+				60F6CA741CFDC0E800FFBEA7 /* TextToSpeechV1.framework */,
+				60F6CA751CFDC0E800FFBEA7 /* ToneAnalyzerV3.framework */,
+				60F6CA761CFDC0E800FFBEA7 /* VisualRecognitionV3.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -74,6 +328,8 @@
 				60F6C9B81CF88EBB00FFBEA7 /* Sources */,
 				60F6C9B91CF88EBB00FFBEA7 /* Frameworks */,
 				60F6C9BA1CF88EBB00FFBEA7 /* Resources */,
+				60F6CA551CFDBFB700FFBEA7 /* Embed Frameworks */,
+				60F6CA561CFDC00000FFBEA7 /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -96,6 +352,7 @@
 				TargetAttributes = {
 					60F6C9BB1CF88EBB00FFBEA7 = {
 						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = RAMSQEB83M;
 					};
 				};
 			};
@@ -122,9 +379,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6032934C1CFDDCC700F75508 /* TableViewHeaderCell.xib in Resources */,
+				603293341CFDDC4400F75508 /* Dropdown.storyboard in Resources */,
+				603293481CFDDCB600F75508 /* TableViewCell.xib in Resources */,
 				60F6C9CA1CF88EBB00FFBEA7 /* LaunchScreen.storyboard in Resources */,
 				60F6C9C71CF88EBB00FFBEA7 /* Assets.xcassets in Resources */,
-				60F6C9C51CF88EBB00FFBEA7 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -135,22 +394,32 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				60F6C9C21CF88EBB00FFBEA7 /* ViewController.swift in Sources */,
+				6032932C1CFDDC0B00F75508 /* DropdownExampleViewController.swift in Sources */,
+				6032933E1CFDDC8100F75508 /* LayoutConstraintAnimator.swift in Sources */,
+				603293401CFDDC8B00F75508 /* LayoutConstraintEasing.swift in Sources */,
+				603293301CFDDC3000F75508 /* UIColor+SpeachToText.swift in Sources */,
+				603293321CFDDC3A00F75508 /* ViewControllerExtension.swift in Sources */,
+				60F6CA131CF8EC7000FFBEA7 /* String.swift in Sources */,
+				6032932E1CFDDC2500F75508 /* Credentials.swift in Sources */,
+				603293381CFDDC6500F75508 /* CubicBezier.swift in Sources */,
+				603293441CFDDC9C00F75508 /* TableView.swift in Sources */,
+				603293361CFDDC5400F75508 /* ExampleNobelViewController.swift in Sources */,
+				603293461CFDDCA600F75508 /* TableViewCell.swift in Sources */,
+				6032933C1CFDDC7800F75508 /* DropdownDismissTransitioning.swift in Sources */,
+				60F6C9C21CF88EBB00FFBEA7 /* GlobalVars.swift in Sources */,
 				60F6C9C01CF88EBB00FFBEA7 /* AppDelegate.swift in Sources */,
+				6032934E1CFDDCCF00F75508 /* MotionStyleKit.swift in Sources */,
+				60F6CA091CF8B94E00FFBEA7 /* DropdownExampleViewController2.swift in Sources */,
+				6032933A1CFDDC6E00F75508 /* DropdownAppearTransitioning.swift in Sources */,
+				6032934A1CFDDCBF00F75508 /* TableViewHeaderCell.swift in Sources */,
+				6032932A1CFDDBE900F75508 /* DropdownViewController.swift in Sources */,
+				603293421CFDDC9400F75508 /* DropdownTransitioningDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		60F6C9C31CF88EBB00FFBEA7 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				60F6C9C41CF88EBB00FFBEA7 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		60F6C9C81CF88EBB00FFBEA7 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -251,10 +520,17 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = SampleDropDownMenu/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = WatsonApps.SampleDropDownMenu;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -262,10 +538,17 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = SampleDropDownMenu/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = WatsonApps.SampleDropDownMenu;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
@@ -288,6 +571,7 @@
 				60F6C9D01CF88EBB00FFBEA7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
