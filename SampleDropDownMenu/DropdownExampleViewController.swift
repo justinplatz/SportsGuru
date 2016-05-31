@@ -138,7 +138,7 @@ class DropdownExampleViewController: ExampleNobelViewController, DropDownViewCon
             newFrame.size.width = screenWidth
             newFrame.size.height = screenHeight
             self.backgroundView.frame = newFrame
-            self.backgroundView.alpha = 1
+            self.backgroundView.alpha = 0
         })
         
     }
