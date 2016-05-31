@@ -90,6 +90,7 @@ class AskWatsonViewController: ExampleNobelViewController, DropDownViewControlle
         
         prepareWatson()
         showWatson()
+        setupWatsonImageViewAsButton()
 
     }
     
@@ -263,6 +264,16 @@ class AskWatsonViewController: ExampleNobelViewController, DropDownViewControlle
         watsonImageView.animationDuration = 1.25
         watsonImageView.stopAnimating()
         watsonImageView.hidden = true
+    }
+    
+    func setupWatsonImageViewAsButton() -> Void{
+        watsonImageView.userInteractionEnabled = true
+        let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(AskWatsonViewController.watsonImageTapped(_:)))
+        watsonImageView.addGestureRecognizer(tapRecognizer)
+    }
+    
+    func watsonImageTapped(gestureRecognizer: UITapGestureRecognizer) {
+        recordTapped()
     }
     
     
