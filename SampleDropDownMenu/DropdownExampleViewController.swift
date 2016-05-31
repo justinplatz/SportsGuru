@@ -90,6 +90,8 @@ class DropdownExampleViewController: ExampleNobelViewController, DropDownViewCon
         prepareLoader()
         
         prepareWatson()
+        showWatson()
+
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -235,6 +237,8 @@ class DropdownExampleViewController: ExampleNobelViewController, DropDownViewCon
         return true
     }
     
+   
+    
     /*
      This function will be called in the viewDidLoad
      This function looks for permission to use the microphone
@@ -379,6 +383,8 @@ class DropdownExampleViewController: ExampleNobelViewController, DropDownViewCon
         self.watsonImageView.hidden = true
     }
     
+    func processTextAndFindKeywords(){
+        hideWatson()
         self.loader.alpha = 0
         self.loader.startAnimating()
         self.loader.hidden = false
@@ -419,6 +425,8 @@ class DropdownExampleViewController: ExampleNobelViewController, DropDownViewCon
                     }
                     self.watsonTextView.attributedText = attributedTextViewString
                     self.watsonTextView.font = UIFont(name: "Lubalin Graph", size: 24)
+                    self.watsonTextView.textAlignment = .Center
+                    self.showWatson()
                     
             })
         })
@@ -426,6 +434,7 @@ class DropdownExampleViewController: ExampleNobelViewController, DropDownViewCon
     }
     
     func proccessSpeechAndFindKeywords() -> Void{
+        hideWatson()
         let paths = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] as String
         let fileURL = paths.stringByAppendingPathComponent("recording.wav")
         
@@ -479,7 +488,8 @@ class DropdownExampleViewController: ExampleNobelViewController, DropDownViewCon
                             }
                             self.watsonTextView.attributedText = attributedTextViewString
                             self.watsonTextView.font = UIFont(name: "Lubalin Graph", size: 24)
-                            
+                            self.watsonTextView.textAlignment = .Center
+                            self.showWatson()
                     })
                 })
             }
