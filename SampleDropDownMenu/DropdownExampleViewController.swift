@@ -361,8 +361,24 @@ class DropdownExampleViewController: ExampleNobelViewController, DropDownViewCon
         view.endEditing(true)
     }
     
-    func processTextAndFindKeywords(){
+    func showWatson()-> Void{
+        self.watsonImageView.alpha = 1
+        self.watsonImageView.startAnimating()
+        self.watsonImageView.hidden = false
         
+        // 2. show indeterminate loader
+        UIView.animateWithDuration(10.0, delay:0.0, options: [.Repeat, .Autoreverse], animations: { () -> Void in
+            //self.watsonImageView.alpha = 0
+        }, completion: nil)
+
+    }
+    
+    func hideWatson() -> Void{
+        // 4a. cleanup loader
+        self.watsonImageView.stopAnimating()
+        self.watsonImageView.hidden = true
+    }
+    
         self.loader.alpha = 0
         self.loader.startAnimating()
         self.loader.hidden = false
