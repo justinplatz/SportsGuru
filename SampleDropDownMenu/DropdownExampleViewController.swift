@@ -276,6 +276,19 @@ class DropdownExampleViewController: ExampleNobelViewController, DropDownViewCon
         loader.hidden = true
     }
     
+    
+    func prepareWatson()-> Void{
+        watsonImageView.animationImages = [UIImage]()
+        for i in 0 ..< 27{
+            let frameName = String(format: "frame_\(i)")
+            watsonImageView.animationImages?.append(UIImage(named:frameName)!)
+        }
+        watsonImageView.animationDuration = 1.25
+        watsonImageView.stopAnimating()
+        watsonImageView.hidden = true
+    }
+    
+    
     /*
      This function changes the UI of the record Button on viewDidLoad
      */
