@@ -29,33 +29,6 @@ import UIKit
         default:
             return UIColor.IBMBlueColor()
     }
-        
     
-        
-        
-    
-//    func textViewDidChange(textView: UITextView) {
-//        let fixedWidth = textView.frame.size.width
-//        textView.sizeThatFits(CGSize(width: fixedWidth, height: CGFloat.max))
-//        let newSize = textView.sizeThatFits(CGSize(width: fixedWidth, height: CGFloat.max))
-//        var newFrame = textView.frame
-//        newFrame.size = CGSize(width: max(newSize.width, fixedWidth), height: newSize.height)
-//        textView.frame = newFrame;
-//    }
-        
-        //        let paths = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] as String
-        //        let musicPath = paths.stringByAppendingPathComponent("recording.m4a")
-        //
-        //        let alertSound = NSURL(fileURLWithPath: musicPath)
-        //
-        //        // Removed deprecated use of AVAudioSessionDelegate protocol
-        //        try! AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
-        //        try! AVAudioSession.sharedInstance().setActive(true)
-        //
-        //        try! self.player = AVAudioPlayer(contentsOfURL: alertSound)
-        //        self.player!.prepareToPlay()
-        //        self.player!.play()
-        
-
 }
 

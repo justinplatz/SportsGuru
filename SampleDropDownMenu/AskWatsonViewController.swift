@@ -78,7 +78,6 @@ class AskWatsonViewController: ExampleNobelViewController, DropDownViewControlle
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
         backgroundView.alpha = 0
         
         dropdownButtonImage.animationImages = self.animationImages;
@@ -132,19 +131,6 @@ class AskWatsonViewController: ExampleNobelViewController, DropDownViewControlle
             self.dropdownButtonImage.stopAnimating()
         })
         
-        let animationDuration = Double(self.animationMultiplier) * 1 / 2.5;
-        
-        UIView.animateWithDuration(animationDuration, animations: { () -> Void in
-            let screenSize: CGRect = UIScreen.mainScreen().bounds
-            let screenWidth = screenSize.width
-            let screenHeight = screenSize.height
-            var newFrame = self.backgroundView.frame
-            newFrame.size.width = screenWidth
-            newFrame.size.height = screenHeight
-            self.backgroundView.frame = newFrame
-            self.backgroundView.alpha = 0
-        })
-        
     }
     
     func hide(completion: () -> Void ) {
@@ -156,20 +142,6 @@ class AskWatsonViewController: ExampleNobelViewController, DropDownViewControlle
         let time = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
         dispatch_after(time, dispatch_get_main_queue(), { () -> Void in
             self.dropdownButtonImage.stopAnimating()
-        })
-        
-        let animationDuration = Double(self.animationMultiplier) * 1 / 2.5;
-        
-        UIView.animateWithDuration(animationDuration, animations: { () -> Void in
-            let screenSize: CGRect = UIScreen.mainScreen().bounds
-            let screenWidth = screenSize.width
-            let screenHeight = screenSize.height
-            var newFrame = self.backgroundView.frame
-            newFrame.size.width = screenWidth
-            newFrame.size.height = screenHeight
-            self.backgroundView.frame = newFrame
-
-            self.backgroundView.alpha = 0
         })
         
     }
@@ -237,7 +209,6 @@ class AskWatsonViewController: ExampleNobelViewController, DropDownViewControlle
         return true
     }
     
-   
     
     /*
      This function will be called in the viewDidLoad
@@ -495,12 +466,6 @@ class AskWatsonViewController: ExampleNobelViewController, DropDownViewControlle
             }
         }
     }
-    
-    
-    @IBAction func buttonPressed(sender: AnyObject) {
-        proccessSpeechAndFindKeywords()
-    }
-
     
     
 }
