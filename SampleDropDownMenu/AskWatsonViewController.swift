@@ -274,23 +274,38 @@ class AskWatsonViewController: ExampleNobelViewController, DropDownViewControlle
         watsonImageView.hidden = true
     }
     
-    func prepareOpenWatson()-> Void{
+    func prepareCloseWatson()-> Void{
         watsonImageView.animationImages = [UIImage]()
-        for i in 0 ..< 59{
-            let frameName = String(format: "tmp-\(i)")
-            watsonImageView.animationImages?.append(UIImage(named:frameName)!)
-        }
         
-        for i in 58.stride(to: 0, by: -1){
+        for i in 58.stride(to: 34, by: -1){
             let frameName = String(format: "tmp-\(i)")
             watsonImageView.animationImages?.append(UIImage(named:frameName)!)
         }
-
-        watsonImageView.animationDuration = 4.25
+        watsonImageView.animationDuration = watsonCloseDuration
+        watsonImageView.animationRepeatCount = 1
         watsonImageView.stopAnimating()
         watsonImageView.hidden = true
     }
     
+    func prepareRecordingWatson()-> Void{
+        watsonImageView.animationImages = [UIImage]()
+        
+        for i in 33.stride(to: 0, by: -1){
+            let frameName = String(format: "tmp-\(i)")
+            watsonImageView.animationImages?.append(UIImage(named:frameName)!)
+        }
+        
+        for i in 0.stride(to: 33, by: 1){
+            let frameName = String(format: "tmp-\(i)")
+            watsonImageView.animationImages?.append(UIImage(named:frameName)!)
+        }
+
+        
+        watsonImageView.animationDuration = 3.0
+        watsonImageView.stopAnimating()
+        watsonImageView.hidden = true
+    }
+
     
     
     func setupWatsonImageViewAsButton() -> Void{
@@ -360,8 +375,21 @@ class AskWatsonViewController: ExampleNobelViewController, DropDownViewControlle
      */
     func recordTapped() {
         if audioRecorder == nil {
-            prepareOpenWatson()
-            showWatson()
+            
+            prepareCloseWatson()
+            
+            showCloseWatson()
+            
+            let seconds = watsonCloseDuration
+            let delay = seconds * Double(NSEC_PER_SEC)  // nanoseconds per seconds
+            let dispatchTime = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
+            
+            dispatch_after(dispatchTime, dispatch_get_main_queue(), {
+                
+                self.prepareAndShowRecordingWatson()
+                
+            })
+            
             startRecording()
         } else {
             prepareWatson()
@@ -379,13 +407,25 @@ class AskWatsonViewController: ExampleNobelViewController, DropDownViewControlle
     
     func showWatson()-> Void{
         self.watsonImageView.alpha = 1
+        self.watsonImageView.animationRepeatCount = 0
         self.watsonImageView.startAnimating()
         self.watsonImageView.hidden = false
         
         // 2. show indeterminate loader
-        UIView.animateWithDuration(10.0, delay:0.0, options: [.Repeat, .Autoreverse], animations: { () -> Void in
+        UIView.animateWithDuration(4.0, delay:0.0, options: [.Repeat, .Autoreverse], animations: { () -> Void in
         }, completion: nil)
 
+    }
+    
+    func showCloseWatson()-> Void{
+        self.watsonImageView.alpha = 1
+        self.watsonImageView.startAnimating()
+        self.watsonImageView.hidden = false
+    }
+    
+    func prepareAndShowRecordingWatson() -> Void{
+        prepareRecordingWatson()
+        showWatson()
     }
     
     func hideWatson() -> Void{
