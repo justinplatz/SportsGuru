@@ -255,10 +255,20 @@ class AskWatsonViewController: ExampleNobelViewController, DropDownViewControlle
     
     func prepareWatson()-> Void{
         watsonImageView.animationImages = [UIImage]()
-        for i in 0 ..< 27{
+        for i in 0 ..< 11{
             let frameName = String(format: "frame_\(i)")
             watsonImageView.animationImages?.append(UIImage(named:frameName)!)
+            watsonImageView.animationImages?.append(UIImage(named:frameName)!)
+
         }
+        
+        for i in 10.stride(to: 0, by: -1){
+            let frameName = String(format: "frame_\(i)")
+            watsonImageView.animationImages?.append(UIImage(named:frameName)!)
+            watsonImageView.animationImages?.append(UIImage(named:frameName)!)
+
+        }
+        
         watsonImageView.animationDuration = 1.25
         watsonImageView.stopAnimating()
         watsonImageView.hidden = true
