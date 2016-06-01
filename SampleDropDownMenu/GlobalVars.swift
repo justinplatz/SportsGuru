@@ -24,3 +24,4 @@ let alchemyAPIKey = "34d4598a1ea843ade648564432e8d865b8f198d2"
 let alchemyLanguage = AlchemyLanguage(apiKey: alchemyAPIKey)
 
 var currentController = "Ask"
+let watsonCloseDuration  = 1.25
