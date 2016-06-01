@@ -7,8 +7,7 @@ This licensed material is licensed under the Apache 2.0 license. http://www.apac
 */
 
 /**
-    The following class presents the modal example. Most of the work is actually
-    done in the DropdownExampleViewController class, so check that out for all
+    The following class presents the modal example. Most of the work is actuallvar   done in the DropdownExampleViewController class, so check that out for all
     of the animation implementation.
 
     This class just hands off some dependencies to the
@@ -99,21 +98,28 @@ class AskWatsonViewController: ExampleNobelViewController, DropDownViewControlle
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
-        dropdownVC = segue.destinationViewController as! DropdownViewController
+        if(segue.identifier == "toKeywords"){
+            let viewController:IdentifyKeywordsViewController = segue.destinationViewController as! IdentifyKeywordsViewController
+            viewController.keywordsText = watsonTextView.attributedText
+        } else{
+            
+            dropdownVC = segue.destinationViewController as! DropdownViewController
         
-        dropdownVC.modalPresentationStyle = .Custom
-        dropdownVC.transitioningDelegate = dropdownTransitioningDelegate
+            dropdownVC.modalPresentationStyle = .Custom
+            dropdownVC.transitioningDelegate = dropdownTransitioningDelegate
         
-        dropdownVC.dropdownPressed = {(index: Int) -> Void in
-            self.hiddenStatusBar = false
+            dropdownVC.dropdownPressed = {(index: Int) -> Void in
+                self.hiddenStatusBar = false
+            }
+        
+            hiddenStatusBar = false
+        
+            if segue.identifier == "embedSegue" {
+                let childViewController = segue.destinationViewController as! DropdownViewController
+                childViewController.delegate = self
+            }
         }
         
-        hiddenStatusBar = false
-        
-        if segue.identifier == "embedSegue" {
-            let childViewController = segue.destinationViewController as! DropdownViewController
-            childViewController.delegate = self
-        }
     }
     
     // MARK: - Transition Animations
@@ -242,8 +248,8 @@ class AskWatsonViewController: ExampleNobelViewController, DropDownViewControlle
         loader.animationImages = [UIImage]()
         
         // grabs the animation frames from the bundle
-        for index in 100 ..< 147 {
-            let frameName = String(format: "Loader_00%03d", index)
+        for index in 1 ..< 73 {
+            let frameName = String(format: "file-page\(index)")
             loader.animationImages?.append(UIImage(named:frameName)!)
         }
         
@@ -251,6 +257,7 @@ class AskWatsonViewController: ExampleNobelViewController, DropDownViewControlle
         loader.stopAnimating()
         loader.hidden = true
     }
+    
     
     
     func prepareWatson()-> Void{
@@ -478,7 +485,6 @@ class AskWatsonViewController: ExampleNobelViewController, DropDownViewControlle
                     self.watsonTextView.font = UIFont(name: "Lubalin Graph", size: 24)
                     self.watsonTextView.textAlignment = .Center
                     self.showWatson()
-                    
             })
         })
     
@@ -540,7 +546,9 @@ class AskWatsonViewController: ExampleNobelViewController, DropDownViewControlle
                             self.watsonTextView.attributedText = attributedTextViewString
                             self.watsonTextView.font = UIFont(name: "Lubalin Graph", size: 24)
                             self.watsonTextView.textAlignment = .Center
-                            self.showWatson()
+                            self.watsonTextView.hidden = true
+                            self.performSegueWithIdentifier("toKeywords", sender: self)
+
                     })
                 })
             }
