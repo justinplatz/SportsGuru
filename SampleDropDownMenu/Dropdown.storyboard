@@ -109,7 +109,7 @@
                                     <constraint firstAttribute="width" secondItem="ZUG-LV-KqG" secondAttribute="height" multiplier="1:1" id="9eI-TG-6KL"/>
                                 </constraints>
                             </imageView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Hello, I am Watson." textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="LeD-wP-bc3">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="LeD-wP-bc3">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="128" id="KFL-zo-aO5"/>
