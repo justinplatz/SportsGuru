@@ -33,24 +33,24 @@
                                     <rect key="frame" x="20" y="250" width="560" height="300"/>
                                 </variation>
                             </textView>
-                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hZO-Dz-GOd">
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lrz-XR-0iY">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                 <items>
-                                    <navigationItem id="MoJ-6L-yRi">
-                                        <barButtonItem key="rightBarButtonItem" systemItem="cancel" id="e6d-mo-f3c">
+                                    <navigationItem title="Title" id="HLc-JF-PpW">
+                                        <barButtonItem key="rightBarButtonItem" title="Item" id="thj-q6-PlE">
                                             <connections>
-                                                <segue destination="nVB-av-Xmz" kind="show" id="2RH-ZE-C8X"/>
+                                                <segue destination="nVB-av-Xmz" kind="show" id="NNt-MV-3Rl"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
                                 </items>
-                                <variation key="heightClass=regular" fixedFrame="YES">
-                                    <rect key="frame" x="0.0" y="28" width="600" height="44"/>
-                                </variation>
                             </navigationBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="lrz-XR-0iY" firstAttribute="width" secondItem="d01-NX-Kse" secondAttribute="width" id="AAC-94-15f"/>
+                            <constraint firstItem="lrz-XR-0iY" firstAttribute="top" secondItem="OL9-7S-siM" secondAttribute="bottom" constant="8" id="ABO-Zh-S7o"/>
+                            <constraint firstItem="lrz-XR-0iY" firstAttribute="centerX" secondItem="d01-NX-Kse" secondAttribute="centerX" id="Dfs-jR-iQF"/>
                             <constraint firstItem="Gk6-1I-hJ2" firstAttribute="top" secondItem="OL9-7S-siM" secondAttribute="bottom" constant="250" id="YmB-54-bOK"/>
                             <constraint firstItem="Gk6-1I-hJ2" firstAttribute="centerX" secondItem="d01-NX-Kse" secondAttribute="centerX" id="dG1-6e-AFZ"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Gk6-1I-hJ2" secondAttribute="trailing" id="e0j-ib-Le8"/>
@@ -59,9 +59,12 @@
                         <variation key="default">
                             <mask key="subviews">
                                 <exclude reference="Gk6-1I-hJ2"/>
-                                <exclude reference="hZO-Dz-GOd"/>
+                                <exclude reference="lrz-XR-0iY"/>
                             </mask>
                             <mask key="constraints">
+                                <exclude reference="AAC-94-15f"/>
+                                <exclude reference="ABO-Zh-S7o"/>
+                                <exclude reference="Dfs-jR-iQF"/>
                                 <exclude reference="YmB-54-bOK"/>
                                 <exclude reference="dG1-6e-AFZ"/>
                                 <exclude reference="e0j-ib-Le8"/>
@@ -71,9 +74,12 @@
                         <variation key="heightClass=regular">
                             <mask key="subviews">
                                 <include reference="Gk6-1I-hJ2"/>
-                                <include reference="hZO-Dz-GOd"/>
+                                <include reference="lrz-XR-0iY"/>
                             </mask>
                             <mask key="constraints">
+                                <include reference="AAC-94-15f"/>
+                                <include reference="ABO-Zh-S7o"/>
+                                <include reference="Dfs-jR-iQF"/>
                                 <include reference="YmB-54-bOK"/>
                                 <include reference="dG1-6e-AFZ"/>
                                 <include reference="e0j-ib-Le8"/>
@@ -161,7 +167,7 @@
                                         </variation>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.17254901960784313" green="0.17254901960784313" blue="0.17254901960784313" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="dyP-qx-TIx" secondAttribute="bottom" constant="18" id="7lG-Jr-M7T"/>
                                     <constraint firstItem="eN3-RS-yZj" firstAttribute="centerY" secondItem="MHP-Uc-XWL" secondAttribute="centerY" id="CnM-l7-HjL"/>
@@ -440,7 +446,7 @@
                                         </variation>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.17254901960784313" green="0.17254901960784313" blue="0.17254901960784313" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="8Hc-fG-Vlg" secondAttribute="bottom" constant="14" id="4fe-ew-QTO"/>
                                     <constraint firstItem="8Hc-fG-Vlg" firstAttribute="centerY" secondItem="KkL-ry-vUK" secondAttribute="centerY" id="5Nw-RA-Rsl"/>
@@ -790,7 +796,7 @@
                                         </variation>
                                     </view>
                                 </subviews>
-                                <color key="backgroundColor" red="0.80000001190000003" green="1" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="5u7-PP-aq3" firstAttribute="leading" secondItem="SoH-va-ow9" secondAttribute="leading" priority="998" id="0CS-4x-tTF"/>
                                     <constraint firstAttribute="bottom" secondItem="Ya9-N3-N3j" secondAttribute="bottom" id="6yf-RH-CBB"/>
@@ -852,6 +858,6 @@
         <image name="circle_x_00" width="70" height="70"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="2RH-ZE-C8X"/>
+        <segue reference="NNt-MV-3Rl"/>
     </inferredMetricsTieBreakers>
 </document>

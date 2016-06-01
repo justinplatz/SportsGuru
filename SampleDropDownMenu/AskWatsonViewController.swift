@@ -248,8 +248,12 @@ class AskWatsonViewController: ExampleNobelViewController, DropDownViewControlle
         loader.animationImages = [UIImage]()
         
         // grabs the animation frames from the bundle
-        for index in 1 ..< 73 {
-            let frameName = String(format: "file-page\(index)")
+        for index in 0 ..< 60 {
+            let frameName = String(format: "\(index)")
+            loader.animationImages?.append(UIImage(named:frameName)!)
+        }
+        for index in 59.stride(to: 0, by: -1){
+            let frameName = String(format: "\(index)")
             loader.animationImages?.append(UIImage(named:frameName)!)
         }
         
@@ -497,7 +501,15 @@ class AskWatsonViewController: ExampleNobelViewController, DropDownViewControlle
         
         let settings = TranscriptionSettings(contentType: .WAV)
         
-        let failure = { (error: NSError) in print(error) }
+        let failure = { (error: NSError) in
+            print(error)
+            // 4a. cleanup loader
+            self.loader.stopAnimating()
+            self.loader.hidden = true
+            
+            self.prepareWatson()
+            self.showWatson()
+        }
         
         
         let data = NSData(contentsOfURL: NSURL(fileURLWithPath: fileURL))
@@ -522,10 +534,10 @@ class AskWatsonViewController: ExampleNobelViewController, DropDownViewControlle
                         options: options, animations: {
                             self.loader.alpha = 0
                         }, completion: { finished in
-                            
+
                             // 4a. cleanup loader
-                            self.loader.stopAnimating()
-                            self.loader.hidden = true
+                            //self.loader.stopAnimating()
+                            //self.loader.hidden = true
                             
                             // This will give me an attributedString with the base text-style
                             let attributedTextViewString = NSMutableAttributedString(string: transcription)
@@ -547,7 +559,9 @@ class AskWatsonViewController: ExampleNobelViewController, DropDownViewControlle
                             self.watsonTextView.font = UIFont(name: "Lubalin Graph", size: 24)
                             self.watsonTextView.textAlignment = .Center
                             self.watsonTextView.hidden = true
+                            
                             self.performSegueWithIdentifier("toKeywords", sender: self)
+
 
                     })
                 })

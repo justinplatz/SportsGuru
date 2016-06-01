@@ -133,10 +133,10 @@ class DropdownViewController: UIViewController, UITableViewDataSource, UITableVi
         switch indexPath.row {
             case 0:
                 cell.label.text = "Ask"
-                cell.icon.image = UIImage(named: "slider")!
+                cell.icon.image = UIImage(named: "chat")!
             case 1:
                 cell.label.text = "Explore"
-                cell.icon.image = UIImage(named: "person")!
+                cell.icon.image = UIImage(named: "book")!
             default: break
             
         }
