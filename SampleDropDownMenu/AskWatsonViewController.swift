@@ -43,6 +43,7 @@ class AskWatsonViewController: ExampleNobelViewController, DropDownViewControlle
     @IBOutlet weak var watsonImageView: UIImageView!
     @IBOutlet weak var clearWatsonTextViewButton: UIButton!
     @IBOutlet weak var headerView: UIView!
+    @IBOutlet weak var headerViewLabel: UILabel!
     
     // MARK: - Constants, Properties
 
@@ -464,14 +465,18 @@ class AskWatsonViewController: ExampleNobelViewController, DropDownViewControlle
                         print(keyword.text)
                         colorIndex += 1
                     }
-                    self.watsonTextView.attributedText = attributedTextViewString
-                    self.watsonTextView.font = UIFont(name: "Lubalin Graph", size: 24)
-                    self.watsonTextView.textAlignment = .Center
                     
+                    self.addAttributesToWatsonTextView(attributedTextViewString)
                     self.showWatsonTextViewWithAnimation()
             })
         })
     
+    }
+    
+    func addAttributesToWatsonTextView(text: NSAttributedString) -> Void{
+        self.watsonTextView.attributedText = text
+        self.watsonTextView.font = UIFont(name: "Lubalin Graph", size: 36)
+        self.watsonTextView.textAlignment = .Left
     }
     
     func proccessSpeechAndFindKeywords() -> Void{
@@ -533,10 +538,8 @@ class AskWatsonViewController: ExampleNobelViewController, DropDownViewControlle
                                 print(keyword.text)
                                 colorIndex += 1
                             }
-                            self.watsonTextView.attributedText = attributedTextViewString
-                            self.watsonTextView.font = UIFont(name: "Lubalin Graph", size: 24)
-                            self.watsonTextView.textAlignment = .Center
                             
+                            self.addAttributesToWatsonTextView(attributedTextViewString)
                             self.showWatsonTextViewWithAnimation()
 
                     })
@@ -561,6 +564,10 @@ class AskWatsonViewController: ExampleNobelViewController, DropDownViewControlle
             self.showWatsonAnimation()
             
             self.headerView.hidden = false
+            self.dropdownButton.hidden = false
+            self.dropdownButtonImage.hidden = false
+            
+            self.headerViewLabel.text = "Ask"
             self.clearWatsonTextViewButton.hidden = true
         })
     }
@@ -570,7 +577,11 @@ class AskWatsonViewController: ExampleNobelViewController, DropDownViewControlle
             self.watsonTextView.alpha = 1.0
             self.watsonTextView.hidden = false
             
-            self.headerView.hidden = true
+            self.dropdownButton.hidden = true
+            self.dropdownButtonImage.hidden = true
+            
+            self.headerViewLabel.text = "Keywords"
+            
             self.clearWatsonTextViewButton.hidden = false
         })
     }

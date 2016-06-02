@@ -230,7 +230,7 @@
                                     <constraint firstAttribute="width" secondItem="F0u-dv-dqv" secondAttribute="height" multiplier="1:1" id="Fl2-gN-dce"/>
                                     <constraint firstAttribute="width" constant="30" id="IiC-ik-k4p"/>
                                 </constraints>
-                                <state key="normal" image="close"/>
+                                <state key="normal" image="circle_x_07"/>
                                 <variation key="default">
                                     <mask key="constraints">
                                         <exclude reference="Fl2-gN-dce"/>
@@ -418,6 +418,7 @@
                         <outlet property="dropdownButtonImage" destination="eN3-RS-yZj" id="jBF-NK-qRT"/>
                         <outlet property="dropdownView" destination="QpD-Lj-mEX" id="P5e-3K-Yzd"/>
                         <outlet property="headerView" destination="LE4-KV-nlU" id="GEv-Cw-Yqv"/>
+                        <outlet property="headerViewLabel" destination="dyP-qx-TIx" id="0Hp-N4-csX"/>
                         <outlet property="loader" destination="aZL-tG-4NJ" id="KeW-ds-25p"/>
                         <outlet property="tableView" destination="JFq-tN-ntY" id="YVa-oK-sMh"/>
                         <outlet property="watsonImageView" destination="ZUG-LV-KqG" id="Qs1-QG-OwI"/>
@@ -920,6 +921,6 @@
     </scenes>
     <resources>
         <image name="circle_x_00" width="70" height="70"/>
-        <image name="close" width="128" height="128"/>
+        <image name="circle_x_07" width="70" height="70"/>
     </resources>
 </document>
