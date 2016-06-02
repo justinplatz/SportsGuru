@@ -24,6 +24,7 @@ import AVFoundation
 import TextToSpeechV1
 import SpeechToTextV1
 import AlchemyLanguageV1
+import CoreData
 
 func getDocumentsDirectory() -> String {
     let paths = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)
@@ -91,7 +92,6 @@ class AskWatsonViewController: ExampleNobelViewController, DropDownViewControlle
         showWatsonAnimation()
         
         setupWatsonImageViewAsButton()
-
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -529,6 +529,7 @@ class AskWatsonViewController: ExampleNobelViewController, DropDownViewControlle
                             self.showWatsonTextViewWithAnimation()
                             
                             self.enableDropdownMenuFunctionality()
+                            
                     })
                 })
             }
@@ -559,8 +560,7 @@ class AskWatsonViewController: ExampleNobelViewController, DropDownViewControlle
         self.watsonTextView.textAlignment = .Left
     }
     
-    
-    
+
     func disableDropdownMenuFunctionality() -> Void{
         self.dropdownButton.enabled = false
     }
