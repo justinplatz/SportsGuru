@@ -41,6 +41,8 @@ class AskWatsonViewController: ExampleNobelViewController, DropDownViewControlle
     @IBOutlet weak var watsonTextView: UITextView!
     @IBOutlet weak var loader: UIImageView!
     @IBOutlet weak var watsonImageView: UIImageView!
+    @IBOutlet weak var clearWatsonTextViewButton: UIButton!
+    @IBOutlet weak var headerView: UIView!
     
     // MARK: - Constants, Properties
 
