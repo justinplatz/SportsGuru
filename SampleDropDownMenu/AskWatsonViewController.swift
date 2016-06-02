@@ -23,6 +23,7 @@ This licensed material is licensed under the Apache 2.0 license. http://www.apac
 import AVFoundation
 import TextToSpeechV1
 import SpeechToTextV1
+import AlchemyLanguageV1
 
 func getDocumentsDirectory() -> String {
     let paths = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)
@@ -440,43 +441,31 @@ class AskWatsonViewController: ExampleNobelViewController, DropDownViewControlle
     
         showLoaderAndStartAnimation()
         
+        disableDropdownMenuFunctionality()
+        
         alchemyLanguage.getRankedKeywords(requestType: .Text, html: nil, url: nil, text: self.watsonTextView.text, completionHandler: { (error, returnValue) in
             // 3. hide loader
             let animationDuration = NSTimeInterval(2.0) * 0.15
             let options = UIViewAnimationOptions.CurveEaseInOut
+            
             UIView.animateWithDuration(animationDuration, delay: 1.5,
                 options: options, animations: {
                     self.loader.alpha = 0
                 }, completion: { finished in
                     
-                    // This will give me an attributedString with the base text-style
                     let attributedTextViewString = NSMutableAttributedString(string: self.watsonTextView.text)
                     
-                    var colorIndex = 1
-                    for keyword in returnValue.keywords!{
-                        let regex = try? NSRegularExpression(pattern: keyword.text!, options: [])
-                        let matches = regex!.matchesInString(self.watsonTextView.text, options: [], range: NSMakeRange(0, self.watsonTextView.text.characters.count))
-                        
-                        for match in matches {
-                            let matchRange = match.rangeAtIndex(0)
-                            attributedTextViewString.addAttribute(NSForegroundColorAttributeName, value: assignColor(colorIndex), range: matchRange)
-                        }
-                        
-                        print(keyword.text)
-                        colorIndex += 1
-                    }
+                    let attributedText = self.findKeywordsAndAddAttribues(returnValue.keywords,
+                                                attributedTextViewString: attributedTextViewString)
                     
-                    self.addAttributesToWatsonTextView(attributedTextViewString)
+                    self.addAttributesToWatsonTextView(attributedText)
+                    
                     self.showWatsonTextViewWithAnimation()
+                    
+                    self.enableDropdownMenuFunctionality()
             })
         })
     
-    }
-    
-    func addAttributesToWatsonTextView(text: NSAttributedString) -> Void{
-        self.watsonTextView.attributedText = text
-        self.watsonTextView.font = UIFont(name: "Lubalin Graph", size: 36)
-        self.watsonTextView.textAlignment = .Left
     }
     
     func proccessSpeechAndFindKeywords() -> Void{
@@ -484,32 +473,33 @@ class AskWatsonViewController: ExampleNobelViewController, DropDownViewControlle
         hideWatson()
         
         showLoaderAndStartAnimation()
-
+        
+        disableDropdownMenuFunctionality()
         
         let paths = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] as String
+        
         let fileURL = paths.stringByAppendingPathComponent("recording.wav")
+        
+        let data = NSData(contentsOfURL: NSURL(fileURLWithPath: fileURL))
         
         let settings = TranscriptionSettings(contentType: .WAV)
         
         let failure = { (error: NSError) in
             print(error)
-            // 4a. cleanup loader
+            // cleanup loader
             self.loader.stopAnimating()
             self.loader.hidden = true
             
             self.prepareWatsonAnimation()
             self.showWatsonAnimation()
         }
-        
-        
-        let data = NSData(contentsOfURL: NSURL(fileURLWithPath: fileURL))
-        
-        
-        
+
         speechToText.transcribe(data!, settings: settings, failure: failure){
             results in
             if let transcription = results.last?.alternatives.last?.transcript {
+                
                 print(transcription)
+                
                 alchemyLanguage.getRankedKeywords(requestType: .Text, html: nil, url: nil, text: transcription, completionHandler: { (error, returnValue) in
                     
                     //After highligting keywords, hide loader
@@ -520,33 +510,57 @@ class AskWatsonViewController: ExampleNobelViewController, DropDownViewControlle
                         options: options, animations: {
                             self.loader.alpha = 0
                         }, completion: { finished in
-
-                            // This will give me an attributedString with the base text-style
+                            
                             let attributedTextViewString = NSMutableAttributedString(string: transcription)
                             
-                            var colorIndex = 1
-                            for keyword in returnValue.keywords!{
-                                
-                                let regex = try? NSRegularExpression(pattern: keyword.text!, options: [])
-                                let matches = regex!.matchesInString(transcription, options: [], range: NSMakeRange(0, transcription.characters.count))
-                                
-                                for match in matches {
-                                    let matchRange = match.rangeAtIndex(0)
-                                    attributedTextViewString.addAttribute(NSForegroundColorAttributeName, value: assignColor(colorIndex), range: matchRange)
-                                }
-                                
-                                print(keyword.text)
-                                colorIndex += 1
-                            }
+                            let attributedText = self.findKeywordsAndAddAttribues(returnValue.keywords,
+                                attributedTextViewString: attributedTextViewString)
                             
-                            self.addAttributesToWatsonTextView(attributedTextViewString)
+                            self.addAttributesToWatsonTextView(attributedText)
+                            
                             self.showWatsonTextViewWithAnimation()
-
+                            
+                            self.enableDropdownMenuFunctionality()
                     })
                 })
             }
         }
     }
+    
+    func findKeywordsAndAddAttribues(keywords: [AlchemyLanguageV1.Keyword]?, attributedTextViewString: NSMutableAttributedString) -> NSAttributedString{
+    
+        var colorIndex = 1
+        for keyword in keywords!{
+            let regex = try? NSRegularExpression(pattern: keyword.text!, options: [])
+            let matches = regex!.matchesInString(self.watsonTextView.text, options: [], range: NSMakeRange(0, self.watsonTextView.text.characters.count))
+            
+            for match in matches {
+                let matchRange = match.rangeAtIndex(0)
+                attributedTextViewString.addAttribute(NSForegroundColorAttributeName, value: assignColor(colorIndex), range: matchRange)
+            }
+            
+            print(keyword.text)
+            colorIndex += 1
+        }
+        return attributedTextViewString
+    }
+    
+    func addAttributesToWatsonTextView(text: NSAttributedString) -> Void{
+        self.watsonTextView.attributedText = text
+        self.watsonTextView.font = UIFont(name: "Lubalin Graph", size: 36)
+        self.watsonTextView.textAlignment = .Left
+    }
+    
+    
+    
+    func disableDropdownMenuFunctionality() -> Void{
+        self.dropdownButton.enabled = false
+    }
+    
+    func enableDropdownMenuFunctionality() -> Void{
+        self.dropdownButton.enabled = true
+    }
+    
     
     func hideWatsonTextViewWithAnimation() -> Void{
         UIView.animateWithDuration(4.0, animations: {
