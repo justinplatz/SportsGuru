@@ -78,11 +78,7 @@ class AskWatsonViewController: ExampleNobelViewController, DropDownViewControlle
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        backgroundView.alpha = 0
-        
-        dropdownButtonImage.animationImages = self.animationImages;
-        dropdownButtonImage.animationDuration = Double(self.animationImages.count) / 50.0;
-        dropdownButtonImage.animationRepeatCount = 1;
+        prepareDropdownMenuButtonAnimation()
         
         prepareRecordingSession()
         
@@ -264,6 +260,11 @@ class AskWatsonViewController: ExampleNobelViewController, DropDownViewControlle
         loader.hidden = true
     }
     
+    func prepareDropdownMenuButtonAnimation() -> Void{
+        dropdownButtonImage.animationImages = self.animationImages;
+        dropdownButtonImage.animationDuration = Double(self.animationImages.count) / 50.0;
+        dropdownButtonImage.animationRepeatCount = 1;
+    }
     
     
     func prepareWatson()-> Void{
