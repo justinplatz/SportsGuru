@@ -98,6 +98,10 @@ class AskWatsonViewController: ExampleNobelViewController, DropDownViewControlle
         watsonTextView.delegate = self
     }
     
+    override func viewWillDisappear(animated: Bool) {
+        
+    }
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
         if(segue.identifier == "toKeywords"){
@@ -443,6 +447,8 @@ class AskWatsonViewController: ExampleNobelViewController, DropDownViewControlle
         
         disableDropdownMenuFunctionality()
         
+        disableClearTextButtonFunctionality()
+        
         alchemyLanguage.getRankedKeywords(requestType: .Text, html: nil, url: nil, text: self.watsonTextView.text, completionHandler: { (error, returnValue) in
             // 3. hide loader
             let animationDuration = NSTimeInterval(2.0) * 0.15
@@ -463,6 +469,8 @@ class AskWatsonViewController: ExampleNobelViewController, DropDownViewControlle
                     self.showWatsonTextViewWithAnimation()
                     
                     self.enableDropdownMenuFunctionality()
+                    
+                    self.enableClearTextButtonFunctionality()
             })
         })
     
@@ -561,6 +569,14 @@ class AskWatsonViewController: ExampleNobelViewController, DropDownViewControlle
         self.dropdownButton.enabled = true
     }
     
+    func disableClearTextButtonFunctionality() -> Void{
+        self.clearWatsonTextViewButton.enabled = false
+    }
+    
+    func enableClearTextButtonFunctionality() -> Void{
+        self.clearWatsonTextViewButton.enabled = true
+    }
+    
     
     func hideWatsonTextViewWithAnimation() -> Void{
         UIView.animateWithDuration(4.0, animations: {
@@ -612,5 +628,6 @@ class AskWatsonViewController: ExampleNobelViewController, DropDownViewControlle
     
     @IBAction func clearWatsonTextViewButtonTapped(sender: AnyObject) {
         hideWatsonTextViewWithAnimationAndPresentHeaderView()
+        self.watsonTextView.text = ""
     }
 }
