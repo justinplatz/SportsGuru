@@ -82,10 +82,12 @@ class AskWatsonViewController: ExampleNobelViewController, DropDownViewControlle
         
         prepareRecordingSession()
         
-        prepareLoader()
+        prepareLoaderAnimation()
         
-        prepareWatson()
-        showWatson()
+        prepareWatsonAnimation()
+        
+        showWatsonAnimation()
+        
         setupWatsonImageViewAsButton()
 
     }
@@ -190,15 +192,6 @@ class AskWatsonViewController: ExampleNobelViewController, DropDownViewControlle
         return UIStatusBarStyle.LightContent
     }
     
-    /*
-     This function will be called in the viewDidLoad in order to add all style,
-     colors, ... etc to any UI elements
-     */
-    func setUpViewUI() -> Void{
-        self.view.backgroundColor = UIColor.lightGrayBackground()
-        
-        //self.navigationBar.barTintColor = UIColor.darkGrayBackground()
-    }
     
     /*
      This function tells UITextView to end editing if the return key is pressed.
@@ -227,7 +220,7 @@ class AskWatsonViewController: ExampleNobelViewController, DropDownViewControlle
             recordingSession.requestRecordPermission() { [unowned self] (allowed: Bool) -> Void in
                 dispatch_async(dispatch_get_main_queue()) {
                     if allowed {
-                        //self.loadRecordingUI()
+                        //Do something if permission to record is granted
                     } else {
                         // failed to record!
                     }
@@ -242,7 +235,7 @@ class AskWatsonViewController: ExampleNobelViewController, DropDownViewControlle
      This function simply adds all the animation images to the loader,
      and prepares it to be used later
      */
-    func prepareLoader() -> Void {
+    func prepareLoaderAnimation() -> Void {
         loader.animationImages = [UIImage]()
         
         // grabs the animation frames from the bundle
@@ -267,7 +260,7 @@ class AskWatsonViewController: ExampleNobelViewController, DropDownViewControlle
     }
     
     
-    func prepareWatson()-> Void{
+    func prepareWatsonAnimation()-> Void{
         watsonImageView.animationImages = [UIImage]()
         for i in 0 ..< 11{
             let frameName = String(format: "frame_\(i)")
@@ -333,15 +326,6 @@ class AskWatsonViewController: ExampleNobelViewController, DropDownViewControlle
     }
     
     
-//    /*
-//     This function changes the UI of the record Button on viewDidLoad
-//     */
-//    func loadRecordingUI() {
-//        self.recordButton.setTitle("Tap to Record", forState: .Normal)
-//        self.recordButton.titleLabel?.font = UIFont.preferredFontForTextStyle(UIFontTextStyleTitle1)
-//        self.recordButton.addTarget(self, action: #selector(recordTapped), forControlEvents: .TouchUpInside)
-//    }
-    
     /*
      This function is called each time the record button is pressed while not recording.
      If recording and record button is pressed, finishRecording() is called
@@ -359,7 +343,6 @@ class AskWatsonViewController: ExampleNobelViewController, DropDownViewControlle
             audioRecorder.delegate = self
             audioRecorder.record()
             
-            //recordButton.setTitle("Tap to Stop", forState: .Normal)
         } catch {
             finishRecording(success: false)
         }
@@ -406,7 +389,7 @@ class AskWatsonViewController: ExampleNobelViewController, DropDownViewControlle
             
             startRecording()
         } else {
-            prepareWatson()
+            prepareWatsonAnimation()
             finishRecording(success: true)
         }
     }
@@ -419,13 +402,14 @@ class AskWatsonViewController: ExampleNobelViewController, DropDownViewControlle
         view.endEditing(true)
     }
     
-    func showWatson()-> Void{
+    func showWatsonAnimation()-> Void{
+        
         self.watsonImageView.alpha = 1
         self.watsonImageView.animationRepeatCount = 0
         self.watsonImageView.startAnimating()
         self.watsonImageView.hidden = false
         
-        // 2. show indeterminate loader
+        //show indeterminate animation
         UIView.animateWithDuration(4.0, delay:0.0, options: [.Repeat, .Autoreverse], animations: { () -> Void in
         }, completion: nil)
 
@@ -439,25 +423,21 @@ class AskWatsonViewController: ExampleNobelViewController, DropDownViewControlle
     
     func prepareAndShowRecordingWatson() -> Void{
         prepareRecordingWatson()
-        showWatson()
+        showWatsonAnimation()
     }
     
     func hideWatson() -> Void{
-        // 4a. cleanup loader
         self.watsonImageView.stopAnimating()
         self.watsonImageView.hidden = true
     }
     
     func processTextAndFindKeywords(){
-        hideWatson()
-        self.loader.alpha = 0
-        self.loader.startAnimating()
-        self.loader.hidden = false
         
-        // 2. show indeterminate loader
-        UIView.animateWithDuration(0.25, animations: { () -> Void in
-            self.loader.alpha = 1
-            }, completion: nil)
+        hideWatson()
+        
+        hideWatsonTextViewWithAnimation()
+    
+        showLoaderAndStartAnimation()
         
         alchemyLanguage.getRankedKeywords(requestType: .Text, html: nil, url: nil, text: self.watsonTextView.text, completionHandler: { (error, returnValue) in
             // 3. hide loader
@@ -467,10 +447,6 @@ class AskWatsonViewController: ExampleNobelViewController, DropDownViewControlle
                 options: options, animations: {
                     self.loader.alpha = 0
                 }, completion: { finished in
-                    
-                    // 4a. cleanup loader
-                    self.loader.stopAnimating()
-                    self.loader.hidden = true
                     
                     // This will give me an attributedString with the base text-style
                     let attributedTextViewString = NSMutableAttributedString(string: self.watsonTextView.text)
@@ -491,14 +467,20 @@ class AskWatsonViewController: ExampleNobelViewController, DropDownViewControlle
                     self.watsonTextView.attributedText = attributedTextViewString
                     self.watsonTextView.font = UIFont(name: "Lubalin Graph", size: 24)
                     self.watsonTextView.textAlignment = .Center
-                    self.showWatson()
+                    
+                    self.showWatsonTextViewWithAnimation()
             })
         })
     
     }
     
     func proccessSpeechAndFindKeywords() -> Void{
+        
         hideWatson()
+        
+        showLoaderAndStartAnimation()
+
+        
         let paths = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] as String
         let fileURL = paths.stringByAppendingPathComponent("recording.wav")
         
@@ -510,43 +492,36 @@ class AskWatsonViewController: ExampleNobelViewController, DropDownViewControlle
             self.loader.stopAnimating()
             self.loader.hidden = true
             
-            self.prepareWatson()
-            self.showWatson()
+            self.prepareWatsonAnimation()
+            self.showWatsonAnimation()
         }
         
         
         let data = NSData(contentsOfURL: NSURL(fileURLWithPath: fileURL))
-        self.loader.alpha = 0
-        self.loader.startAnimating()
-        self.loader.hidden = false
         
-        // 2. show indeterminate loader
-        UIView.animateWithDuration(0.25, animations: { () -> Void in
-            self.loader.alpha = 1
-            }, completion: nil)
+        
         
         speechToText.transcribe(data!, settings: settings, failure: failure){
             results in
             if let transcription = results.last?.alternatives.last?.transcript {
                 print(transcription)
                 alchemyLanguage.getRankedKeywords(requestType: .Text, html: nil, url: nil, text: transcription, completionHandler: { (error, returnValue) in
-                    // 3. hide loader
+                    
+                    //After highligting keywords, hide loader
                     let animationDuration = NSTimeInterval(2.0) * 0.15
                     let options = UIViewAnimationOptions.CurveEaseInOut
+                    
                     UIView.animateWithDuration(animationDuration, delay: 1.5,
                         options: options, animations: {
                             self.loader.alpha = 0
                         }, completion: { finished in
 
-                            // 4a. cleanup loader
-                            //self.loader.stopAnimating()
-                            //self.loader.hidden = true
-                            
                             // This will give me an attributedString with the base text-style
                             let attributedTextViewString = NSMutableAttributedString(string: transcription)
                             
                             var colorIndex = 1
                             for keyword in returnValue.keywords!{
+                                
                                 let regex = try? NSRegularExpression(pattern: keyword.text!, options: [])
                                 let matches = regex!.matchesInString(transcription, options: [], range: NSMakeRange(0, transcription.characters.count))
                                 
@@ -561,10 +536,8 @@ class AskWatsonViewController: ExampleNobelViewController, DropDownViewControlle
                             self.watsonTextView.attributedText = attributedTextViewString
                             self.watsonTextView.font = UIFont(name: "Lubalin Graph", size: 24)
                             self.watsonTextView.textAlignment = .Center
-                            self.watsonTextView.hidden = true
                             
-                            self.performSegueWithIdentifier("toKeywords", sender: self)
-
+                            self.showWatsonTextViewWithAnimation()
 
                     })
                 })
@@ -572,5 +545,47 @@ class AskWatsonViewController: ExampleNobelViewController, DropDownViewControlle
         }
     }
     
+    func hideWatsonTextViewWithAnimation() -> Void{
+        UIView.animateWithDuration(4.0, animations: {
+            self.watsonTextView.alpha = 0.0
+            self.watsonTextView.hidden = true
+        })
+    }
     
+    func hideWatsonTextViewWithAnimationAndPresentHeaderView() -> Void{
+        UIView.animateWithDuration(4.0, animations: {
+            self.watsonTextView.alpha = 0.0
+            self.watsonTextView.hidden = true
+            
+            self.prepareWatsonAnimation()
+            self.showWatsonAnimation()
+            
+            self.headerView.hidden = false
+            self.clearWatsonTextViewButton.hidden = true
+        })
+    }
+    
+    func showWatsonTextViewWithAnimation() -> Void{
+        UIView.animateWithDuration(4.0, animations: {
+            self.watsonTextView.alpha = 1.0
+            self.watsonTextView.hidden = false
+            
+            self.headerView.hidden = true
+            self.clearWatsonTextViewButton.hidden = false
+        })
+    }
+    
+    func showLoaderAndStartAnimation() -> Void{
+        self.loader.startAnimating()
+
+        //show indeterminate loader
+        UIView.animateWithDuration(0.5, animations: { () -> Void in
+            self.loader.alpha = 1
+            self.loader.hidden = false
+        }, completion: nil)
+    }
+    
+    @IBAction func clearWatsonTextViewButtonTapped(sender: AnyObject) {
+        hideWatsonTextViewWithAnimationAndPresentHeaderView()
+    }
 }
