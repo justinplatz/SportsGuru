@@ -46,9 +46,10 @@ class AskWatsonViewController: ExampleNobelViewController, DropDownViewControlle
     @IBOutlet weak var clearWatsonTextViewButton: UIButton!
     @IBOutlet weak var headerView: UIView!
     @IBOutlet weak var headerViewLabel: UILabel!
+    @IBOutlet weak var engineeringButton: UIButton!
     
     // MARK: - Constants, Properties
-
+    var isListeningForQuestion = true
     var isOpen = false
     var dropdownVC: DropdownViewController!
     let animationMultiplier : CGFloat = 1;
@@ -80,7 +81,7 @@ class AskWatsonViewController: ExampleNobelViewController, DropDownViewControlle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         prepareDropdownMenuButtonAnimation()
         
         prepareRecordingSession()
@@ -93,7 +94,8 @@ class AskWatsonViewController: ExampleNobelViewController, DropDownViewControlle
         
         setupWatsonImageViewAsButton()
         
-        listenForKeyCommand()
+        //listenForKeyCommand()
+        
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -302,6 +304,22 @@ class AskWatsonViewController: ExampleNobelViewController, DropDownViewControlle
         watsonImageView.hidden = true
     }
     
+    func prepareOpenWatson()-> Void{
+        watsonImageView.animationImages = [UIImage]()
+        
+        for i in 34.stride(to: 58, by: 1){
+            let frameName = String(format: "tmp-\(i)")
+            watsonImageView.animationImages?.append(UIImage(named:frameName)!)
+        }
+        watsonImageView.animationDuration = watsonCloseDuration
+        watsonImageView.animationRepeatCount = 1
+        watsonImageView.stopAnimating()
+        watsonImageView.hidden = true
+    }
+
+    
+    
+    
     func prepareRecordingWatson()-> Void{
         watsonImageView.animationImages = [UIImage]()
         
@@ -317,6 +335,46 @@ class AskWatsonViewController: ExampleNobelViewController, DropDownViewControlle
 
         
         watsonImageView.animationDuration = 3.0
+        watsonImageView.stopAnimating()
+        watsonImageView.hidden = true
+    }
+    
+    func prepareTalkingWatsonOpen() -> Void{
+        watsonImageView.animationImages = [UIImage]()
+        
+        for index in 0 ..< 26{
+            let frameName = String(format: "talking_\(index)")
+            watsonImageView.animationImages?.append(UIImage(named:frameName)!)
+        }
+        
+        watsonImageView.animationDuration = 0.5
+        watsonImageView.stopAnimating()
+        watsonImageView.hidden = true
+    }
+    
+    func prepareTalkingWatsonClose() -> Void{
+        watsonImageView.animationImages = [UIImage]()
+        
+        for index in 116 ..< 149{
+            let frameName = String(format: "talking_\(index)")
+            watsonImageView.animationImages?.append(UIImage(named:frameName)!)
+        }
+        
+        watsonImageView.animationDuration = 0.5
+        watsonImageView.stopAnimating()
+        watsonImageView.hidden = true
+    }
+
+    
+    func prepareTalkingWatson() -> Void{
+        watsonImageView.animationImages = [UIImage]()
+        
+        for index in 26 ..< 116{
+            let frameName = String(format: "talking_\(index)")
+            watsonImageView.animationImages?.append(UIImage(named:frameName)!)
+        }
+        
+        watsonImageView.animationDuration = 2.0
         watsonImageView.stopAnimating()
         watsonImageView.hidden = true
     }
@@ -366,10 +424,8 @@ class AskWatsonViewController: ExampleNobelViewController, DropDownViewControlle
         audioRecorder = nil
         
         if success {
-            //recordButton.setTitle("Tap to Re-record", forState: .Normal)
             proccessSpeechAndFindKeywords()
         } else {
-            //recordButton.setTitle("Tap to Record", forState: .Normal)
             // recording failed :(
         }
     }
@@ -392,10 +448,10 @@ class AskWatsonViewController: ExampleNobelViewController, DropDownViewControlle
             dispatch_after(dispatchTime, dispatch_get_main_queue(), {
                 
                 self.prepareAndShowRecordingWatson()
-                
+                self.startRecording()
             })
             
-            startRecording()
+            
         } else {
             prepareWatsonAnimation()
             finishRecording(success: true)
@@ -464,7 +520,7 @@ class AskWatsonViewController: ExampleNobelViewController, DropDownViewControlle
                     let attributedTextViewString = NSMutableAttributedString(string: self.watsonTextView.text)
                     
                     let attributedText = self.findKeywordsAndAddAttribues(returnValue.keywords,
-                                                attributedTextViewString: attributedTextViewString)
+                                                attributedTextViewString: attributedTextViewString, transcription: self.watsonTextView.text)
                     
                     self.addAttributesToWatsonTextView(attributedText)
                     
@@ -524,7 +580,7 @@ class AskWatsonViewController: ExampleNobelViewController, DropDownViewControlle
                             let attributedTextViewString = NSMutableAttributedString(string: transcription)
                             
                             let attributedText = self.findKeywordsAndAddAttribues(returnValue.keywords,
-                                attributedTextViewString: attributedTextViewString)
+                                attributedTextViewString: attributedTextViewString, transcription: transcription)
                             
                             self.addAttributesToWatsonTextView(attributedText)
                             
@@ -538,12 +594,12 @@ class AskWatsonViewController: ExampleNobelViewController, DropDownViewControlle
         }
     }
     
-    func findKeywordsAndAddAttribues(keywords: [AlchemyLanguageV1.Keyword]?, attributedTextViewString: NSMutableAttributedString) -> NSAttributedString{
+    func findKeywordsAndAddAttribues(keywords: [AlchemyLanguageV1.Keyword]?, attributedTextViewString: NSMutableAttributedString, transcription: String) -> NSAttributedString{
     
         var colorIndex = 1
         for keyword in keywords!{
             let regex = try? NSRegularExpression(pattern: keyword.text!, options: [])
-            let matches = regex!.matchesInString(self.watsonTextView.text, options: [], range: NSMakeRange(0, self.watsonTextView.text.characters.count))
+            let matches = regex!.matchesInString(transcription, options: [], range: NSMakeRange(0, transcription.characters.count))
             
             for match in matches {
                 let matchRange = match.rangeAtIndex(0)
@@ -553,6 +609,8 @@ class AskWatsonViewController: ExampleNobelViewController, DropDownViewControlle
             print(keyword.text)
             colorIndex += 1
         }
+        self.watsonTextView.attributedText = attributedTextViewString
+        
         return attributedTextViewString
     }
     
@@ -631,32 +689,116 @@ class AskWatsonViewController: ExampleNobelViewController, DropDownViewControlle
     @IBAction func clearWatsonTextViewButtonTapped(sender: AnyObject) {
         hideWatsonTextViewWithAnimationAndPresentHeaderView()
         self.watsonTextView.text = ""
+        self.isListeningForQuestion = true
     }
     
     func listenForKeyCommand()-> Void{
         var settings = TranscriptionSettings(contentType: .L16(rate: 44100, channels: 1))
         settings.continuous = true
         settings.interimResults = true
-        settings.keywords = ["watson"]
+        settings.keywords = ["akshay"]
         settings.keywordsThreshold = 0.75
         
         let failure = { (error: NSError) in print(error) }
         
         let stopStreaming = speechToText.transcribe(settings,
                                                     failure: failure) { results in
-                                                        if let transcription = results.last?.alternatives.last?.transcript {
-                                                            print(transcription)
-                                                            if transcription.lowercaseString.rangeOfString("watson") != nil{
-                                                                print("Found it")
+                                                        if let transcription = results.last {
+                                                            
+                                                            let transcriptionText = results.last?.alternatives.last?.transcript
+                                                            print(transcriptionText!)
+                                                            
+                                                            //This will look for the word Watson, while also listeningForQuesiton
+//                                                            if (transcriptionText!.lowercaseString.rangeOfString("watson") != nil) && self.isListeningForQuestion{
+//                                                                print("Found it")
+//                                                                self.recordTapped()
+//                                                                self.isListeningForQuestion = false
+//                                                            }
+                                                            //This is an end of sentence
+                                                            if(transcription.keywordResults != nil) && self.isListeningForQuestion == true{
+                                                                self.isListeningForQuestion = false
+                                                                
                                                             }
+
                                                         }
-        }
-        
-        //stopStreaming()
-        
-        
         // Streaming will continue until either an end-of-speech event is detected by
         // the Speech to Text service or the `stopStreaming` function is executed.
+        }
     }
 
+    @IBAction func engineeringButtonTapped(sender: AnyObject) {
+        self.engineeringButton.enabled = false
+        
+        prepareCloseWatson()
+        
+        showCloseWatson()
+        
+        let seconds = watsonCloseDuration
+        let delay = seconds * Double(NSEC_PER_SEC)  // nanoseconds per seconds
+        let dispatchTime = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
+        
+        dispatch_after(dispatchTime, dispatch_get_main_queue(), {
+            self.prepareRecordingWatson()
+            self.showWatsonAnimation()
+            
+            self.watsonSpeak("Hello I'm Watson. How can i help you? Use NLP to train the Pro/Con Engine to answer questions like, “How many points did Kevin Durant score in the last game")
+        })
+
+    }
+    
+    
+    func audioPlayerDidFinishPlaying(player: AVAudioPlayer, successfully flag: Bool) {
+        let firstDelay = 0.25 * Double(NSEC_PER_SEC)  // nanoseconds per seconds
+        let firstDispatchTime = dispatch_time(DISPATCH_TIME_NOW, Int64(firstDelay))
+        
+        self.prepareTalkingWatsonClose()
+        self.showWatsonAnimation()
+        dispatch_after(firstDispatchTime, dispatch_get_main_queue(), {
+            self.prepareOpenWatson()
+            self.showWatsonAnimation()
+        })
+        
+        let delay = 0.75 * Double(NSEC_PER_SEC)  // nanoseconds per seconds
+        let dispatchTime = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
+        
+        dispatch_after(dispatchTime, dispatch_get_main_queue(), {
+            self.prepareWatsonAnimation()
+            self.showWatsonAnimation()
+            self.engineeringButton.enabled = true
+        })
+
+    }
+    
+    func watsonSpeak(text: String){
+
+        textToSpeech.synthesize(text,
+                                audioFormat: AudioFormat.WAV,
+                                failure: { error in
+                                    print("error was generated \(error)")
+                                })
+            { data in
+
+                do {
+                    
+                    self.prepareTalkingWatsonOpen()
+                    self.showWatsonAnimation()
+                    
+                    let secondDelay = 0.2 * Double(NSEC_PER_SEC)  // nanoseconds per seconds
+                    let secondDispatchTime = dispatch_time(DISPATCH_TIME_NOW, Int64(secondDelay))
+                    dispatch_after(secondDispatchTime, dispatch_get_main_queue(), {
+                        self.prepareTalkingWatson()
+                        self.showWatsonAnimation()
+                    })
+                    
+                    self.audioPlayer = try AVAudioPlayer(data: data)
+                    self.audioPlayer?.delegate = self
+                    self.audioPlayer!.play()
+                   
+
+                } catch {
+                    print("Couldn't create player.")
+                }
+            }
+    }
 }
+
