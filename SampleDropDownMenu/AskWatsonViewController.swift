@@ -92,6 +92,8 @@ class AskWatsonViewController: ExampleNobelViewController, DropDownViewControlle
         showWatsonAnimation()
         
         setupWatsonImageViewAsButton()
+        
+        listenForKeyCommand()
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -630,4 +632,31 @@ class AskWatsonViewController: ExampleNobelViewController, DropDownViewControlle
         hideWatsonTextViewWithAnimationAndPresentHeaderView()
         self.watsonTextView.text = ""
     }
+    
+    func listenForKeyCommand()-> Void{
+        var settings = TranscriptionSettings(contentType: .L16(rate: 44100, channels: 1))
+        settings.continuous = true
+        settings.interimResults = true
+        settings.keywords = ["watson"]
+        settings.keywordsThreshold = 0.75
+        
+        let failure = { (error: NSError) in print(error) }
+        
+        let stopStreaming = speechToText.transcribe(settings,
+                                                    failure: failure) { results in
+                                                        if let transcription = results.last?.alternatives.last?.transcript {
+                                                            print(transcription)
+                                                            if transcription.lowercaseString.rangeOfString("watson") != nil{
+                                                                print("Found it")
+                                                            }
+                                                        }
+        }
+        
+        //stopStreaming()
+        
+        
+        // Streaming will continue until either an end-of-speech event is detected by
+        // the Speech to Text service or the `stopStreaming` function is executed.
+    }
+
 }
