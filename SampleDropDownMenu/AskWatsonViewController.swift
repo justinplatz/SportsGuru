@@ -727,22 +727,26 @@ class AskWatsonViewController: ExampleNobelViewController, DropDownViewControlle
     }
 
     @IBAction func engineeringButtonTapped(sender: AnyObject) {
-        self.engineeringButton.enabled = false
+        if self.watsonTextView.text != "" {
         
-        prepareCloseWatson()
+            self.engineeringButton.enabled = false
+            self.watsonTextView.hidden = true
+
+            prepareCloseWatson()
         
-        showCloseWatson()
+            showCloseWatson()
         
-        let seconds = watsonCloseDuration
-        let delay = seconds * Double(NSEC_PER_SEC)  // nanoseconds per seconds
-        let dispatchTime = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
+            let seconds = watsonCloseDuration
+            let delay = seconds * Double(NSEC_PER_SEC)  // nanoseconds per seconds
+            let dispatchTime = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
         
-        dispatch_after(dispatchTime, dispatch_get_main_queue(), {
-            self.prepareRecordingWatson()
-            self.showWatsonAnimation()
+            dispatch_after(dispatchTime, dispatch_get_main_queue(), {
+                self.prepareRecordingWatson()
+                self.showWatsonAnimation()
             
-            self.watsonSpeak("Hello I'm Watson. How can i help you? Use NLP to train the Pro/Con Engine to answer questions like, “How many points did Kevin Durant score in the last game")
-        })
+                self.watsonSpeak(self.watsonTextView.text)
+            })
+        }
 
     }
     
@@ -765,12 +769,14 @@ class AskWatsonViewController: ExampleNobelViewController, DropDownViewControlle
             self.prepareWatsonAnimation()
             self.showWatsonAnimation()
             self.engineeringButton.enabled = true
+            self.watsonTextView.hidden = false
+            self.hideWatson()
         })
 
     }
     
     func watsonSpeak(text: String){
-
+        
         textToSpeech.synthesize(text,
                                 audioFormat: AudioFormat.WAV,
                                 failure: { error in
@@ -793,8 +799,8 @@ class AskWatsonViewController: ExampleNobelViewController, DropDownViewControlle
                     self.audioPlayer = try AVAudioPlayer(data: data)
                     self.audioPlayer?.delegate = self
                     self.audioPlayer!.play()
-                   
-
+                    
+                    
                 } catch {
                     print("Couldn't create player.")
                 }
