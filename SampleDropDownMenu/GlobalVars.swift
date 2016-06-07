@@ -11,13 +11,15 @@ import Foundation
 import TextToSpeechV1
 import SpeechToTextV1
 import AlchemyLanguageV1
+import DialogV1
+import CoreData
 
-let textToSpeechUsername = "c4cb05f9-6a5a-44d7-9cd9-53812fb269c4"
-let textToSpeechpassword = "bDwoUiTY5Ntu"
+let textToSpeechUsername = "045af1d1-414a-42df-be6c-d7c27769de42"
+let textToSpeechpassword = "hL7E20iT07wg"
 let textToSpeech = TextToSpeech(username: textToSpeechUsername, password: textToSpeechpassword)
 
-let speechToTextUsername = "bf028ea6-3dc5-4e1e-890c-84fdbfbb9d7c"
-let speechToTextPassword = "tp4WNbINNSp1"
+let speechToTextUsername = "fa894029-1f25-49ba-979d-9f6919abb9e5"
+let speechToTextPassword = "1WpwawZAkbGI"
 let speechToText = SpeechToText(username: speechToTextUsername, password: speechToTextPassword)
 
 let alchemyAPIKey = "34d4598a1ea843ade648564432e8d865b8f198d2"
@@ -25,3 +27,79 @@ let alchemyLanguage = AlchemyLanguage(apiKey: alchemyAPIKey)
 
 var currentController = "Ask"
 let watsonCloseDuration  = 1.25
+
+let dialogUsername = "9cb7928c-d5c6-4288-b1ff-16197edd3915"
+let dialogPassword = "wn2qQDkX5SCz"
+let dialog = Dialog(username: dialogUsername, password: dialogPassword)
+
+var userName = checkCoreDataForUserName()
+
+func checkCoreDataForUserName() -> String{
+    let appDelegate =
+        UIApplication.sharedApplication().delegate as! AppDelegate
+    
+    let managedContext = appDelegate.managedObjectContext
+    
+    let userRequest = NSFetchRequest(entityName: "User")
+    var fetchError : NSError?
+    if let userResult = try! managedContext.executeFetchRequest(userRequest) as? [User] {
+        if userResult.count == 0 {
+            print("No person found")
+        }
+        if userResult.count == 1 {
+            for user in userResult{
+                return user.name!
+            }
+        }
+            
+        else {
+            print("Persons found: \(userResult.count)")
+        }
+    } else {
+        print("fetch failed: \(fetchError!.localizedDescription)")
+    }
+    return "Error No Name"
+}
+
+
+func saveName(name: String) {
+    let appDelegate =
+        UIApplication.sharedApplication().delegate as! AppDelegate
+    
+    let managedContext = appDelegate.managedObjectContext
+    
+    let userRequest = NSFetchRequest(entityName: "User")
+    
+    if let userResult = try! managedContext.executeFetchRequest(userRequest) as? [User] {
+        
+        if userResult.count == 0 {
+            let entity =  NSEntityDescription.entityForName("User",
+                                                            inManagedObjectContext:managedContext)
+            
+            let person = NSManagedObject(entity: entity!,
+                                         insertIntoManagedObjectContext: managedContext)
+            
+            person.setValue(name, forKey: "name")
+            
+            do {
+                try managedContext.save()
+            } catch let error as NSError  {
+                print("Could not save \(error), \(error.userInfo)")
+            }
+        }
+        
+        if userResult.count == 1 {
+            for user in userResult{
+                user.name = name
+                //4
+                do {
+                    try managedContext.save()
+                    //5
+                } catch let error as NSError  {
+                    print("Could not save \(error), \(error.userInfo)")
+                }
+            }
+        }
+        
+    }
+}
