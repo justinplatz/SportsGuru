@@ -24,6 +24,7 @@ import AVFoundation
 import TextToSpeechV1
 import SpeechToTextV1
 import AlchemyLanguageV1
+import DialogV1
 import CoreData
 
 func getDocumentsDirectory() -> String {
@@ -94,7 +95,9 @@ class AskWatsonViewController: ExampleNobelViewController, DropDownViewControlle
         
         setupWatsonImageViewAsButton()
         
-        //listenForKeyCommand()
+        saveName("Joe Smith")
+        
+        print(checkCoreDataForUserName())
         
     }
     
@@ -109,8 +112,7 @@ class AskWatsonViewController: ExampleNobelViewController, DropDownViewControlle
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
         if(segue.identifier == "toKeywords"){
-            let viewController:IdentifyKeywordsViewController = segue.destinationViewController as! IdentifyKeywordsViewController
-            viewController.keywordsText = watsonTextView.attributedText
+           
         } else{
             
             dropdownVC = segue.destinationViewController as! DropdownViewController
@@ -709,11 +711,7 @@ class AskWatsonViewController: ExampleNobelViewController, DropDownViewControlle
                                                             print(transcriptionText!)
                                                             
                                                             //This will look for the word Watson, while also listeningForQuesiton
-//                                                            if (transcriptionText!.lowercaseString.rangeOfString("watson") != nil) && self.isListeningForQuestion{
-//                                                                print("Found it")
-//                                                                self.recordTapped()
-//                                                                self.isListeningForQuestion = false
-//                                                            }
+
                                                             //This is an end of sentence
                                                             if(transcription.keywordResults != nil) && self.isListeningForQuestion == true{
                                                                 self.isListeningForQuestion = false
@@ -751,12 +749,15 @@ class AskWatsonViewController: ExampleNobelViewController, DropDownViewControlle
     }
     
     
+    
+    
     func audioPlayerDidFinishPlaying(player: AVAudioPlayer, successfully flag: Bool) {
         let firstDelay = 0.25 * Double(NSEC_PER_SEC)  // nanoseconds per seconds
         let firstDispatchTime = dispatch_time(DISPATCH_TIME_NOW, Int64(firstDelay))
         
         self.prepareTalkingWatsonClose()
         self.showWatsonAnimation()
+        
         dispatch_after(firstDispatchTime, dispatch_get_main_queue(), {
             self.prepareOpenWatson()
             self.showWatsonAnimation()
@@ -806,5 +807,7 @@ class AskWatsonViewController: ExampleNobelViewController, DropDownViewControlle
                 }
             }
     }
+    
+
 }
 
