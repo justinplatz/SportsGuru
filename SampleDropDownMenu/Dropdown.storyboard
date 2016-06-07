@@ -16,83 +16,6 @@
         </mutableArray>
     </customFonts>
     <scenes>
-        <!--Identify Keywords View Controller-->
-        <scene sceneID="oCv-wF-CdT">
-            <objects>
-                <viewController id="fp0-Rv-4db" customClass="IdentifyKeywordsViewController" customModule="SampleDropDownMenu" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="OL9-7S-siM"/>
-                        <viewControllerLayoutGuide type="bottom" id="P9K-8g-eqi"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="d01-NX-Kse">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Gk6-1I-hJ2">
-                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
-                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lrz-XR-0iY">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                                <items>
-                                    <navigationItem title="Title" id="HLc-JF-PpW">
-                                        <barButtonItem key="rightBarButtonItem" title="Item" id="thj-q6-PlE"/>
-                                    </navigationItem>
-                                </items>
-                            </navigationBar>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="lrz-XR-0iY" firstAttribute="width" secondItem="d01-NX-Kse" secondAttribute="width" id="AAC-94-15f"/>
-                            <constraint firstItem="lrz-XR-0iY" firstAttribute="top" secondItem="OL9-7S-siM" secondAttribute="bottom" constant="8" id="ABO-Zh-S7o"/>
-                            <constraint firstItem="lrz-XR-0iY" firstAttribute="centerX" secondItem="d01-NX-Kse" secondAttribute="centerX" id="Dfs-jR-iQF"/>
-                            <constraint firstItem="Gk6-1I-hJ2" firstAttribute="top" secondItem="OL9-7S-siM" secondAttribute="bottom" constant="250" id="YmB-54-bOK"/>
-                            <constraint firstItem="Gk6-1I-hJ2" firstAttribute="centerX" secondItem="d01-NX-Kse" secondAttribute="centerX" id="dG1-6e-AFZ"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="Gk6-1I-hJ2" secondAttribute="trailing" id="e0j-ib-Le8"/>
-                            <constraint firstItem="Gk6-1I-hJ2" firstAttribute="centerY" secondItem="d01-NX-Kse" secondAttribute="centerY" id="mc6-i9-nF4"/>
-                        </constraints>
-                        <variation key="default">
-                            <mask key="subviews">
-                                <exclude reference="Gk6-1I-hJ2"/>
-                                <exclude reference="lrz-XR-0iY"/>
-                            </mask>
-                            <mask key="constraints">
-                                <exclude reference="AAC-94-15f"/>
-                                <exclude reference="ABO-Zh-S7o"/>
-                                <exclude reference="Dfs-jR-iQF"/>
-                                <exclude reference="YmB-54-bOK"/>
-                                <exclude reference="dG1-6e-AFZ"/>
-                                <exclude reference="e0j-ib-Le8"/>
-                                <exclude reference="mc6-i9-nF4"/>
-                            </mask>
-                        </variation>
-                        <variation key="heightClass=regular">
-                            <mask key="subviews">
-                                <include reference="Gk6-1I-hJ2"/>
-                                <include reference="lrz-XR-0iY"/>
-                            </mask>
-                            <mask key="constraints">
-                                <include reference="AAC-94-15f"/>
-                                <include reference="ABO-Zh-S7o"/>
-                                <include reference="Dfs-jR-iQF"/>
-                                <include reference="YmB-54-bOK"/>
-                                <include reference="dG1-6e-AFZ"/>
-                                <include reference="e0j-ib-Le8"/>
-                                <include reference="mc6-i9-nF4"/>
-                            </mask>
-                        </variation>
-                    </view>
-                    <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
-                    <connections>
-                        <outlet property="keywordsTextView" destination="Gk6-1I-hJ2" id="IUk-AF-bMn"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="8Tb-6e-tmo" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="5120" y="3095.25"/>
-        </scene>
         <!--Ask Watson View Controller-->
         <scene sceneID="jx6-wZ-prh">
             <objects>
@@ -158,9 +81,6 @@
                                         <fontDescription key="fontDescription" name="LubalinMedium" family="Lubalin Graph" pointSize="22"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
-                                        <variation key="heightClass=regular" misplaced="YES">
-                                            <rect key="frame" x="166" y="36" width="37" height="26"/>
-                                        </variation>
                                     </label>
                                 </subviews>
                                 <color key="backgroundColor" red="0.29411764705882354" green="0.29411764705882354" blue="0.29411764705882354" alpha="1" colorSpace="calibratedRGB"/>
@@ -512,9 +432,6 @@
                                         <fontDescription key="fontDescription" name="LubalinMedium" family="Lubalin Graph" pointSize="22"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
-                                        <variation key="heightClass=regular" misplaced="YES">
-                                            <rect key="frame" x="151" y="35" width="74" height="26"/>
-                                        </variation>
                                     </label>
                                 </subviews>
                                 <color key="backgroundColor" red="0.28627450980392155" green="0.28627450980392155" blue="0.28627450980392155" alpha="1" colorSpace="calibratedRGB"/>
@@ -637,9 +554,6 @@
                                                             <fontDescription key="fontDescription" name="LubalinMedium" family="Lubalin Graph" pointSize="15"/>
                                                             <color key="textColor" white="0.2507375437062937" alpha="1" colorSpace="calibratedWhite"/>
                                                             <nil key="highlightedColor"/>
-                                                            <variation key="heightClass=regular" misplaced="YES">
-                                                                <rect key="frame" x="54" y="21" width="58" height="18"/>
-                                                            </variation>
                                                         </label>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5qP-VJ-bGV" userLabel="Separator View">
                                                             <rect key="frame" x="16" y="59" width="368" height="1"/>

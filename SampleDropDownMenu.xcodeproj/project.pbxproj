@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		60305A841D07076C0027B2BB /* myDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 60305A821D07076C0027B2BB /* myDataModel.xcdatamodeld */; };
+		60305A871D070AEB0027B2BB /* User+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60305A851D070AEB0027B2BB /* User+CoreDataProperties.swift */; };
+		60305A881D070AEB0027B2BB /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60305A861D070AEB0027B2BB /* User.swift */; };
 		6032932A1CFDDBE900F75508 /* DropdownViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 603293291CFDDBE900F75508 /* DropdownViewController.swift */; };
 		6032932C1CFDDC0B00F75508 /* AskWatsonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6032932B1CFDDC0B00F75508 /* AskWatsonViewController.swift */; };
 		603293301CFDDC3000F75508 /* UIColor+SpeachToText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6032932F1CFDDC3000F75508 /* UIColor+SpeachToText.swift */; };
@@ -27,7 +30,6 @@
 		6032934E1CFDDCCF00F75508 /* MotionStyleKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6032934D1CFDDCCF00F75508 /* MotionStyleKit.swift */; };
 		603293521CFDE42C00F75508 /* Lubalin Graph Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6032934F1CFDDD0500F75508 /* Lubalin Graph Regular.ttf */; };
 		60D4E8191CFF356C00147D4D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 60D4E8181CFF356C00147D4D /* Assets.xcassets */; };
-		60D4E81B1CFF3CD000147D4D /* IdentifyKeywordsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D4E81A1CFF3CD000147D4D /* IdentifyKeywordsViewController.swift */; };
 		60F6C9C01CF88EBB00FFBEA7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60F6C9BF1CF88EBB00FFBEA7 /* AppDelegate.swift */; };
 		60F6C9C21CF88EBB00FFBEA7 /* GlobalVars.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60F6C9C11CF88EBB00FFBEA7 /* GlobalVars.swift */; };
 		60F6C9CA1CF88EBB00FFBEA7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 60F6C9C81CF88EBB00FFBEA7 /* LaunchScreen.storyboard */; };
@@ -119,6 +121,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		60305A831D07076C0027B2BB /* myDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = myDataModel.xcdatamodel; sourceTree = "<group>"; };
+		60305A851D070AEB0027B2BB /* User+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "User+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		60305A861D070AEB0027B2BB /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		603293291CFDDBE900F75508 /* DropdownViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DropdownViewController.swift; sourceTree = "<group>"; };
 		6032932B1CFDDC0B00F75508 /* AskWatsonViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AskWatsonViewController.swift; sourceTree = "<group>"; };
 		6032932F1CFDDC3000F75508 /* UIColor+SpeachToText.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+SpeachToText.swift"; sourceTree = "<group>"; };
@@ -139,7 +144,6 @@
 		6032934D1CFDDCCF00F75508 /* MotionStyleKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MotionStyleKit.swift; sourceTree = "<group>"; };
 		6032934F1CFDDD0500F75508 /* Lubalin Graph Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lubalin Graph Regular.ttf"; sourceTree = "<group>"; };
 		60D4E8181CFF356C00147D4D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		60D4E81A1CFF3CD000147D4D /* IdentifyKeywordsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IdentifyKeywordsViewController.swift; sourceTree = "<group>"; };
 		60F6C9BC1CF88EBB00FFBEA7 /* SampleDropDownMenu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SampleDropDownMenu.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		60F6C9BF1CF88EBB00FFBEA7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		60F6C9C11CF88EBB00FFBEA7 /* GlobalVars.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalVars.swift; sourceTree = "<group>"; };
@@ -272,6 +276,9 @@
 				60F6CA121CF8EC7000FFBEA7 /* String.swift */,
 				60F6C9D11CF88ED500FFBEA7 /* Dropdown */,
 				60F6C9BF1CF88EBB00FFBEA7 /* AppDelegate.swift */,
+				60305A821D07076C0027B2BB /* myDataModel.xcdatamodeld */,
+				60305A851D070AEB0027B2BB /* User+CoreDataProperties.swift */,
+				60305A861D070AEB0027B2BB /* User.swift */,
 				6032934F1CFDDD0500F75508 /* Lubalin Graph Regular.ttf */,
 				60F6C9C81CF88EBB00FFBEA7 /* LaunchScreen.storyboard */,
 				60F6C9CB1CF88EBB00FFBEA7 /* Info.plist */,
@@ -286,7 +293,6 @@
 				603293501CFDDD0E00F75508 /* TableView */,
 				603293291CFDDBE900F75508 /* DropdownViewController.swift */,
 				6032932B1CFDDC0B00F75508 /* AskWatsonViewController.swift */,
-				60D4E81A1CFF3CD000147D4D /* IdentifyKeywordsViewController.swift */,
 				60F6CA081CF8B94E00FFBEA7 /* DropdownExampleViewController2.swift */,
 				60D4E8181CFF356C00147D4D /* Assets.xcassets */,
 				603293331CFDDC4400F75508 /* Dropdown.storyboard */,
@@ -401,18 +407,20 @@
 				603293401CFDDC8B00F75508 /* LayoutConstraintEasing.swift in Sources */,
 				603293301CFDDC3000F75508 /* UIColor+SpeachToText.swift in Sources */,
 				603293321CFDDC3A00F75508 /* ViewControllerExtension.swift in Sources */,
+				60305A841D07076C0027B2BB /* myDataModel.xcdatamodeld in Sources */,
 				60F6CA131CF8EC7000FFBEA7 /* String.swift in Sources */,
 				603293381CFDDC6500F75508 /* CubicBezier.swift in Sources */,
 				603293441CFDDC9C00F75508 /* TableView.swift in Sources */,
 				603293361CFDDC5400F75508 /* ExampleNobelViewController.swift in Sources */,
+				60305A881D070AEB0027B2BB /* User.swift in Sources */,
 				603293461CFDDCA600F75508 /* TableViewCell.swift in Sources */,
 				6032933C1CFDDC7800F75508 /* DropdownDismissTransitioning.swift in Sources */,
 				60F6C9C21CF88EBB00FFBEA7 /* GlobalVars.swift in Sources */,
 				60F6C9C01CF88EBB00FFBEA7 /* AppDelegate.swift in Sources */,
-				60D4E81B1CFF3CD000147D4D /* IdentifyKeywordsViewController.swift in Sources */,
 				6032934E1CFDDCCF00F75508 /* MotionStyleKit.swift in Sources */,
 				60F6CA091CF8B94E00FFBEA7 /* DropdownExampleViewController2.swift in Sources */,
 				6032933A1CFDDC6E00F75508 /* DropdownAppearTransitioning.swift in Sources */,
+				60305A871D070AEB0027B2BB /* User+CoreDataProperties.swift in Sources */,
 				6032934A1CFDDCBF00F75508 /* TableViewHeaderCell.swift in Sources */,
 				6032932A1CFDDBE900F75508 /* DropdownViewController.swift in Sources */,
 				603293421CFDDC9400F75508 /* DropdownTransitioningDelegate.swift in Sources */,
@@ -579,6 +587,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		60305A821D07076C0027B2BB /* myDataModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				60305A831D07076C0027B2BB /* myDataModel.xcdatamodel */,
+			);
+			currentVersion = 60305A831D07076C0027B2BB /* myDataModel.xcdatamodel */;
+			path = myDataModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 60F6C9B41CF88EBB00FFBEA7 /* Project object */;
 }
