@@ -26,6 +26,7 @@ import SpeechToTextV1
 import AlchemyLanguageV1
 import DialogV1
 import CoreData
+import AudioToolbox
 
 func getDocumentsDirectory() -> String {
     let paths = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)
@@ -74,15 +75,26 @@ class AskWatsonViewController: ExampleNobelViewController, DropDownViewControlle
     }
     
     let dropdownTransitioningDelegate = DropdownTransitioningDelegate()
+    
     var recordingSession: AVAudioSession!
     var audioRecorder: AVAudioRecorder!
     var audioPlayer: AVAudioPlayer?
+    
+    var dialogID: String?
+    var conversationID: Int?
+    var clientID: Int?
+    
+    var randomString: String?
     
     // MARK: - Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        randomString = createRandomStringWithLength(5) as String
+        
+        engineeringButton.enabled = false
+        
         prepareDropdownMenuButtonAnimation()
         
         prepareRecordingSession()
@@ -93,16 +105,64 @@ class AskWatsonViewController: ExampleNobelViewController, DropDownViewControlle
         
         showWatsonAnimation()
         
-        setupWatsonImageViewAsButton()
+        //setupWatsonImageViewAsButton()
         
-        saveName("Joe Smith")
+        createDialog()
+    }
+    
+    func createRandomStringWithLength (len : Int) -> NSString {
         
-        print(checkCoreDataForUserName())
+        let letters : NSString = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
         
+        let randomString : NSMutableString = NSMutableString(capacity: len)
+        
+        for i in 0 ..< len{
+            let length = UInt32 (letters.length)
+            let rand = arc4random_uniform(length)
+            randomString.appendFormat("%C", letters.characterAtIndex(Int(rand)))
+        }
+        
+        return randomString
+    }
+    
+    func createDialog() -> Void{
+        let failure = { (error: NSError) in print(error) }
+        
+        let urlpath = NSBundle.mainBundle().pathForResource("NewXML", ofType: "xml")
+        let path:NSURL = NSURL.fileURLWithPath(urlpath!)
+
+        dialog.createDialog(randomString! as String,
+                            fileURL: path as NSURL,
+                            failure: failure) { (dialogID) in
+                                // code here
+                                
+                                self.dialogID = dialogID
+                                
+                                self.startDialog()
+
+        }
+    }
+    
+    func startDialog() -> Void{
+
+        let failure = { (error: NSError) in print(error) }
+        dialog.converse(dialogID!,
+                        failure: failure) { conversationResponse in
+                            // save conversation parameters
+                            self.conversationID = conversationResponse.conversationID
+                            self.clientID = conversationResponse.clientID
+                            
+                            // print message from Watson
+                            print(conversationResponse.response)
+                            self.watsonSpeak(conversationResponse.response[0])
+        }
     }
     
     override func viewDidAppear(animated: Bool) {
         watsonTextView.delegate = self
+    }
+    
+    override func viewWillAppear(animated: Bool) {
     }
     
     override func viewWillDisappear(animated: Bool) {
@@ -225,10 +285,16 @@ class AskWatsonViewController: ExampleNobelViewController, DropDownViewControlle
      else, it does nothing.
      */
     func prepareRecordingSession() -> Void{
+        self.audioPlayer?.volume = 1
+        
+       
         recordingSession = AVAudioSession.sharedInstance()
+        
         do {
             try recordingSession.setCategory(AVAudioSessionCategoryPlayAndRecord)
             try recordingSession.setActive(true)
+            try AVAudioSession.sharedInstance().overrideOutputAudioPort(AVAudioSessionPortOverride.Speaker)
+
             recordingSession.requestRecordPermission() { [unowned self] (allowed: Bool) -> Void in
                 dispatch_async(dispatch_get_main_queue()) {
                     if allowed {
@@ -318,9 +384,6 @@ class AskWatsonViewController: ExampleNobelViewController, DropDownViewControlle
         watsonImageView.stopAnimating()
         watsonImageView.hidden = true
     }
-
-    
-    
     
     func prepareRecordingWatson()-> Void{
         watsonImageView.animationImages = [UIImage]()
@@ -399,6 +462,8 @@ class AskWatsonViewController: ExampleNobelViewController, DropDownViewControlle
      If recording and record button is pressed, finishRecording() is called
      */
     func startRecording() {
+        engineeringButton.enabled = true
+        
         let audioFilename = getDocumentsDirectory().stringByAppendingPathComponent("recording.wav")
         let audioURL = NSURL(fileURLWithPath: audioFilename)
         
@@ -437,6 +502,7 @@ class AskWatsonViewController: ExampleNobelViewController, DropDownViewControlle
      It determines whether to call the start or finish recording functions
      */
     func recordTapped() {
+        
         if audioRecorder == nil {
             
             prepareCloseWatson()
@@ -448,15 +514,18 @@ class AskWatsonViewController: ExampleNobelViewController, DropDownViewControlle
             let dispatchTime = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
             
             dispatch_after(dispatchTime, dispatch_get_main_queue(), {
-                
+                self.playStartRecordingBeep()
                 self.prepareAndShowRecordingWatson()
+                
+                self.engineeringButton.setImage(UIImage(named: "stop.png"), forState: UIControlState.Normal)
                 self.startRecording()
             })
             
             
         } else {
-            prepareWatsonAnimation()
             finishRecording(success: true)
+            self.engineeringButton.setImage(UIImage(named: "microphone.png"), forState: UIControlState.Normal)
+
         }
     }
     
@@ -568,30 +637,20 @@ class AskWatsonViewController: ExampleNobelViewController, DropDownViewControlle
                 
                 print(transcription)
                 
-                alchemyLanguage.getRankedKeywords(requestType: .Text, html: nil, url: nil, text: transcription, completionHandler: { (error, returnValue) in
-                    
-                    //After highligting keywords, hide loader
-                    let animationDuration = NSTimeInterval(2.0) * 0.15
-                    let options = UIViewAnimationOptions.CurveEaseInOut
-                    
-                    UIView.animateWithDuration(animationDuration, delay: 1.5,
-                        options: options, animations: {
-                            self.loader.alpha = 0
-                        }, completion: { finished in
-                            
-                            let attributedTextViewString = NSMutableAttributedString(string: transcription)
-                            
-                            let attributedText = self.findKeywordsAndAddAttribues(returnValue.keywords,
-                                attributedTextViewString: attributedTextViewString, transcription: transcription)
-                            
-                            self.addAttributesToWatsonTextView(attributedText)
-                            
-                            self.showWatsonTextViewWithAnimation()
-                            
-                            self.enableDropdownMenuFunctionality()
-                            
-                    })
-                })
+                self.enableDropdownMenuFunctionality()
+                
+                let failure = { (error: NSError) in print(error) }
+                dialog.converse(self.dialogID!,
+                                conversationID: self.conversationID!,
+                                clientID: self.clientID!,
+                                input: transcription,
+                                failure: failure) { conversationResponse in
+                                    self.loader.alpha = 0
+                                    
+                                    // print message from Watson
+                                    print(conversationResponse.response)
+                                    self.watsonSpeak(conversationResponse.response[0])
+                }
             }
         }
     }
@@ -700,7 +759,7 @@ class AskWatsonViewController: ExampleNobelViewController, DropDownViewControlle
         settings.interimResults = true
         settings.keywords = ["akshay"]
         settings.keywordsThreshold = 0.75
-        
+        settings.inactivityTimeout = -1
         let failure = { (error: NSError) in print(error) }
         
         let stopStreaming = speechToText.transcribe(settings,
@@ -723,32 +782,43 @@ class AskWatsonViewController: ExampleNobelViewController, DropDownViewControlle
         // the Speech to Text service or the `stopStreaming` function is executed.
         }
     }
+    
+    func playStartRecordingBeep() -> Void{
+        let badumSound = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("blip1", ofType: "wav")!)
+        do {
+            self.audioPlayer = try AVAudioPlayer(contentsOfURL: badumSound)
+        } catch {
+            print("No sound found by URL:\(badumSound)")
+        }
+        self.audioPlayer!.prepareToPlay()
+        self.audioPlayer!.play()
+    }
 
     @IBAction func engineeringButtonTapped(sender: AnyObject) {
-        if self.watsonTextView.text != "" {
+        recordTapped()
+        self.engineeringButton.enabled = false
+        //if self.watsonTextView.text != "" {
         
-            self.engineeringButton.enabled = false
-            self.watsonTextView.hidden = true
-
-            prepareCloseWatson()
-        
-            showCloseWatson()
-        
-            let seconds = watsonCloseDuration
-            let delay = seconds * Double(NSEC_PER_SEC)  // nanoseconds per seconds
-            let dispatchTime = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
-        
-            dispatch_after(dispatchTime, dispatch_get_main_queue(), {
-                self.prepareRecordingWatson()
-                self.showWatsonAnimation()
-            
-                self.watsonSpeak(self.watsonTextView.text)
-            })
-        }
+//            self.engineeringButton.enabled = false
+//            self.watsonTextView.hidden = true
+//
+//            prepareCloseWatson()
+//        
+//            showCloseWatson()
+//        
+//            let seconds = watsonCloseDuration
+//            let delay = seconds * Double(NSEC_PER_SEC)  // nanoseconds per seconds
+//            let dispatchTime = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
+//        
+//            dispatch_after(dispatchTime, dispatch_get_main_queue(), {
+//                self.prepareRecordingWatson()
+//                self.showWatsonAnimation()
+//            
+//                self.watsonSpeak("Hello, my name is Watson.")
+//            })
+        //}
 
     }
-    
-    
     
     
     func audioPlayerDidFinishPlaying(player: AVAudioPlayer, successfully flag: Bool) {
@@ -770,14 +840,15 @@ class AskWatsonViewController: ExampleNobelViewController, DropDownViewControlle
             self.prepareWatsonAnimation()
             self.showWatsonAnimation()
             self.engineeringButton.enabled = true
-            self.watsonTextView.hidden = false
-            self.hideWatson()
+            //self.watsonTextView.hidden = false
+            //self.hideWatson()
         })
 
     }
     
     func watsonSpeak(text: String){
-        
+        self.prepareRecordingWatson()
+        self.showWatsonAnimation()
         textToSpeech.synthesize(text,
                                 audioFormat: AudioFormat.WAV,
                                 failure: { error in
@@ -807,7 +878,6 @@ class AskWatsonViewController: ExampleNobelViewController, DropDownViewControlle
                 }
             }
     }
-    
 
 }
 
