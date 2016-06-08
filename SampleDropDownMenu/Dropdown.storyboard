@@ -168,9 +168,34 @@
                                     <action selector="clearWatsonTextViewButtonTapped:" destination="nVB-av-Xmz" eventType="touchUpInside" id="LYq-SX-HEW"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Woy-Fz-ajK">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Woy-Fz-ajK">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                                <state key="normal" title="Button"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="60" id="3y5-S8-7SB"/>
+                                    <constraint firstAttribute="height" constant="60" id="8Ua-4U-sgd"/>
+                                    <constraint firstAttribute="height" constant="50" id="H6J-I6-StA"/>
+                                    <constraint firstAttribute="width" constant="40" id="fpB-ev-iNf"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="60" id="rUG-LL-xEk"/>
+                                </constraints>
+                                <state key="normal" image="microphone"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="3y5-S8-7SB"/>
+                                        <exclude reference="8Ua-4U-sgd"/>
+                                        <exclude reference="H6J-I6-StA"/>
+                                        <exclude reference="fpB-ev-iNf"/>
+                                        <exclude reference="rUG-LL-xEk"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular">
+                                    <mask key="constraints">
+                                        <exclude reference="3y5-S8-7SB"/>
+                                        <include reference="8Ua-4U-sgd"/>
+                                        <exclude reference="H6J-I6-StA"/>
+                                        <include reference="fpB-ev-iNf"/>
+                                        <exclude reference="rUG-LL-xEk"/>
+                                    </mask>
+                                </variation>
                                 <connections>
                                     <action selector="engineeringButtonTapped:" destination="nVB-av-Xmz" eventType="touchUpInside" id="q7r-Ct-mhD"/>
                                 </connections>
@@ -432,6 +457,9 @@
                                         <fontDescription key="fontDescription" name="LubalinMedium" family="Lubalin Graph" pointSize="22"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
+                                        <variation key="heightClass=regular" misplaced="YES">
+                                            <rect key="frame" x="151" y="35" width="74" height="26"/>
+                                        </variation>
                                     </label>
                                 </subviews>
                                 <color key="backgroundColor" red="0.28627450980392155" green="0.28627450980392155" blue="0.28627450980392155" alpha="1" colorSpace="calibratedRGB"/>
@@ -554,6 +582,9 @@
                                                             <fontDescription key="fontDescription" name="LubalinMedium" family="Lubalin Graph" pointSize="15"/>
                                                             <color key="textColor" white="0.2507375437062937" alpha="1" colorSpace="calibratedWhite"/>
                                                             <nil key="highlightedColor"/>
+                                                            <variation key="heightClass=regular" misplaced="YES">
+                                                                <rect key="frame" x="54" y="21" width="58" height="18"/>
+                                                            </variation>
                                                         </label>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5qP-VJ-bGV" userLabel="Separator View">
                                                             <rect key="frame" x="16" y="59" width="368" height="1"/>
@@ -859,5 +890,6 @@
     <resources>
         <image name="circle_x_00" width="70" height="70"/>
         <image name="circle_x_07" width="70" height="70"/>
+        <image name="microphone" width="1331" height="2218"/>
     </resources>
 </document>
