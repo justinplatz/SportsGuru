@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- New XML document created with EditiX XML Editor (http://www.editix.com) at Mon Jun 06 14:39:36 EDT 2016 -->
+<dialog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="WatsonDialogDocument_1.0.xsd">
+    <flow>
+   
+	<folder label="Main" id="Main">
+	    
+	    <output>
+	        <prompt selectionType="RANDOM">
+	            <item>Hello, my name is Watson.</item>
+	        </prompt>
+	        <goto ref="getUserInput_folder"/>
+	    </output>
+	    
+	    <getUserInput id="getUserInput_folder">
+	        <search ref="folder_questions"/>
+	        <default>
+	            <output>
+	                <prompt selectionType="SEQUENTIAL">
+	                    <item>I am sorry, I did not understand you.</item>
+	                </prompt>
+	            </output>
+	        </default>
+	    </getUserInput>
+	    
+	</folder>
+	
+	<folder label="Library">
+	     <folder label="Live Content" id="folder_questions">
+	          
+	          <input>
+	               <grammar>
+	                    <item>What * you * do</item>
+	                    <item>What * your * purpose</item>
+	                    <item>What * your * function</item>
+	                    <item>What * your * job</item>
+	                    <item>$ help</item>
+	               </grammar>
+	               <output>
+	                   <prompt selectionType="RANDOM">
+	                        <item>I am a Sports Guru. You can ask me anything about basketball and I will do my best to answer you!</item>
+	                   </prompt>
+	               </output>
+	          </input>
+	          
+	          <input>
+	               <grammar>
+	                    <item>$ Hello Watson</item>
+	                    <item>$ * Watson</item>
+	               </grammar>
+	               <output>
+	                   	<prompt selectionType="RANDOM">
+	                        	<item> Hi there! What is your name? </item>
+	                   	</prompt>
+	                   	<getUserInput>
+            			<input>
+                 				<grammar>
+                            				<item>$ my name is (DYNAMIC_DATA)={Name}</item>
+                            				<item>$ I am (DYNAMIC_DATA)={Name}</item>
+                            				<item>$ I'm (DYNAMIC_DATA)={Name}</item>
+                           				 <item>$ called (DYNAMIC_DATA)={Name}</item>
+                            				<item>$ call me (DYNAMIC_DATA)={Name}</item>
+                            				<item>$ known as (DYNAMIC_DATA)={Name}</item>
+                            				<item>$ (DYNAMIC_DATA)={Name}</item>
+                 				</grammar>
+                 				 <action varName="Name" operator="SET_TO">{Name.source}</action>
+                				 <output>
+                     					<prompt selectionType="RANDOM">
+                           					     <item>Hi {Name}! Pleasured to meet you!</item>
+                           					     <item>Hi {Name}! Honored to meet you!</item>
+                           					     <item>Hi {Name}! It is nice to meet you!</item>
+                      					</prompt>                    					
+                 				</output>
+           				</input>
+           		   	</getUserInput>
+	               </output>
+	          </input>
+	          
+	          <input>
+	               <grammar>
+	                    <item>How * you * know *</item>
+	                    <item>How * you know *</item>
+	                    <item>$ very smart</item>
+	                    <item>$ so smart</item>
+	               </grammar>
+	               <output>
+	                   <prompt selectionType="RANDOM">
+	                        <item>Well, you should know that I read a lot. In fact, I have read over 4 million articles on the NBA and can access millions of historical statistics.</item>
+	                   </prompt>
+	               </output>
+	          </input>
+	          
+	    </folder>
+	</folder>   
+        
+         <folder label="Global"></folder>
+         <folder label="Concepts" id="Concepts"></folder>                              
+    </flow>
+    
+    <entities>
+        <entity name="DYNAMIC_DATA">
+            <value name="DataCapture" value="DataCapture">
+                <grammar>
+                    <item>*</item>
+                </grammar>
+            </value>
+        </entity>
+    </entities>
+    <variables>
+  	<var_folder name="UserInfo">
+       		<var name="Name" type="TEXT" description="The user's name"/>
+       		<var name="Nickname" type="TEXT" description="The user's nickname"/>
+  	</var_folder>
+   </variables>
+</dialog>
+
+
+
