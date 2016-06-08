@@ -10,6 +10,8 @@
 		60305A841D07076C0027B2BB /* myDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 60305A821D07076C0027B2BB /* myDataModel.xcdatamodeld */; };
 		60305A871D070AEB0027B2BB /* User+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60305A851D070AEB0027B2BB /* User+CoreDataProperties.swift */; };
 		60305A881D070AEB0027B2BB /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60305A861D070AEB0027B2BB /* User.swift */; };
+		60305A8A1D0851420027B2BB /* NewXML.xml in Resources */ = {isa = PBXBuildFile; fileRef = 60305A891D0851420027B2BB /* NewXML.xml */; };
+		60305A901D08892E0027B2BB /* blip1.wav in Resources */ = {isa = PBXBuildFile; fileRef = 60305A8E1D08892E0027B2BB /* blip1.wav */; };
 		6032932A1CFDDBE900F75508 /* DropdownViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 603293291CFDDBE900F75508 /* DropdownViewController.swift */; };
 		6032932C1CFDDC0B00F75508 /* AskWatsonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6032932B1CFDDC0B00F75508 /* AskWatsonViewController.swift */; };
 		603293301CFDDC3000F75508 /* UIColor+SpeachToText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6032932F1CFDDC3000F75508 /* UIColor+SpeachToText.swift */; };
@@ -124,6 +126,8 @@
 		60305A831D07076C0027B2BB /* myDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = myDataModel.xcdatamodel; sourceTree = "<group>"; };
 		60305A851D070AEB0027B2BB /* User+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "User+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		60305A861D070AEB0027B2BB /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		60305A891D0851420027B2BB /* NewXML.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = NewXML.xml; sourceTree = "<group>"; };
+		60305A8E1D08892E0027B2BB /* blip1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = blip1.wav; path = blip1.dataset/blip1.wav; sourceTree = "<group>"; };
 		603293291CFDDBE900F75508 /* DropdownViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DropdownViewController.swift; sourceTree = "<group>"; };
 		6032932B1CFDDC0B00F75508 /* AskWatsonViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AskWatsonViewController.swift; sourceTree = "<group>"; };
 		6032932F1CFDDC3000F75508 /* UIColor+SpeachToText.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+SpeachToText.swift"; sourceTree = "<group>"; };
@@ -282,6 +286,8 @@
 				6032934F1CFDDD0500F75508 /* Lubalin Graph Regular.ttf */,
 				60F6C9C81CF88EBB00FFBEA7 /* LaunchScreen.storyboard */,
 				60F6C9CB1CF88EBB00FFBEA7 /* Info.plist */,
+				60305A8E1D08892E0027B2BB /* blip1.wav */,
+				60305A891D0851420027B2BB /* NewXML.xml */,
 			);
 			path = SampleDropDownMenu;
 			sourceTree = "<group>";
@@ -387,6 +393,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				603293521CFDE42C00F75508 /* Lubalin Graph Regular.ttf in Resources */,
+				60305A8A1D0851420027B2BB /* NewXML.xml in Resources */,
+				60305A901D08892E0027B2BB /* blip1.wav in Resources */,
 				6032934C1CFDDCC700F75508 /* TableViewHeaderCell.xib in Resources */,
 				603293341CFDDC4400F75508 /* Dropdown.storyboard in Resources */,
 				603293481CFDDCB600F75508 /* TableViewCell.xib in Resources */,
