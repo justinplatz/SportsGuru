@@ -5,7 +5,7 @@ Licensed Materials - Property of IBM
 © Copyright IBM Corporation 2015. All Rights Reserved.
 This licensed material is licensed under the Apache 2.0 license. http://www.apache.org/licenses/LICENSE-2.0.
 */
-
+//https://sports-sms-test.mybluemix.net/rest/queryagents?test=true&text=
 /**
     The following class presents the modal example. Most of the work is actuallvar   done in the DropdownExampleViewController class, so check that out for all
     of the animation implementation.
@@ -93,11 +93,7 @@ class AskWatsonViewController: ExampleNobelViewController, DropDownViewControlle
         
         showWatsonAnimation()
         
-        setupWatsonImageViewAsButton()
-        
-        saveName("Joe Smith")
-        
-        print(checkCoreDataForUserName())
+        //setupWatsonImageViewAsButton()
         
     }
     
@@ -229,6 +225,8 @@ class AskWatsonViewController: ExampleNobelViewController, DropDownViewControlle
         do {
             try recordingSession.setCategory(AVAudioSessionCategoryPlayAndRecord)
             try recordingSession.setActive(true)
+            try AVAudioSession.sharedInstance().overrideOutputAudioPort(AVAudioSessionPortOverride.Speaker)
+
             recordingSession.requestRecordPermission() { [unowned self] (allowed: Bool) -> Void in
                 dispatch_async(dispatch_get_main_queue()) {
                     if allowed {
@@ -448,15 +446,19 @@ class AskWatsonViewController: ExampleNobelViewController, DropDownViewControlle
             let dispatchTime = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
             
             dispatch_after(dispatchTime, dispatch_get_main_queue(), {
-                
+                self.playStartRecordingBeep()
+                self.engineeringButton.setImage(UIImage(named: "stop.png"), forState: UIControlState.Normal)
+
                 self.prepareAndShowRecordingWatson()
                 self.startRecording()
             })
             
             
         } else {
+            playEndRecordingBeep()
             prepareWatsonAnimation()
             finishRecording(success: true)
+            self.engineeringButton.setImage(UIImage(named: "recording.png"), forState: UIControlState.Normal)
         }
     }
     
@@ -536,12 +538,59 @@ class AskWatsonViewController: ExampleNobelViewController, DropDownViewControlle
     
     }
     
-    func proccessSpeechAndFindKeywords() -> Void{
+    
+    func processSpeachAndGetAnswer() -> Void{
         
         hideWatson()
-        
+    
         showLoaderAndStartAnimation()
-        
+    
+        disableDropdownMenuFunctionality()
+    
+        let paths = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] as String
+    
+        let fileURL = paths.stringByAppendingPathComponent("recording.wav")
+    
+        let data = NSData(contentsOfURL: NSURL(fileURLWithPath: fileURL))
+    
+        let settings = TranscriptionSettings(contentType: .WAV)
+    
+        let failure = { (error: NSError) in
+            print(error)
+            // cleanup loader
+            self.loader.stopAnimating()
+            self.loader.hidden = true
+    
+            self.prepareWatsonAnimation()
+            self.showWatsonAnimation()
+        }
+    
+        speechToText.transcribe(data!, settings: settings, failure: failure){
+            results in
+            if let transcription = results.last?.alternatives.last?.transcript {
+                print(transcription)
+    
+                let animationDuration = NSTimeInterval(2.0) * 0.15
+                let options = UIViewAnimationOptions.CurveEaseInOut
+    
+                UIView.animateWithDuration(animationDuration, delay: 1.5,
+                options: options, animations: {
+                    self.loader.alpha = 0
+                }, completion: { finished in
+    
+                    self.enableDropdownMenuFunctionality()
+    
+                })
+            }
+        }
+    }
+    
+    func proccessSpeechAndFindKeywords() -> Void{
+    
+        hideWatson()
+    
+        showLoaderAndStartAnimation()
+    
         disableDropdownMenuFunctionality()
         
         let paths = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] as String
@@ -590,6 +639,7 @@ class AskWatsonViewController: ExampleNobelViewController, DropDownViewControlle
                             
                             self.enableDropdownMenuFunctionality()
                             
+
                     })
                 })
             }
@@ -723,29 +773,53 @@ class AskWatsonViewController: ExampleNobelViewController, DropDownViewControlle
         // the Speech to Text service or the `stopStreaming` function is executed.
         }
     }
+    
+    func playStartRecordingBeep() -> Void{
+        let badumSound = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("blip1", ofType: "wav")!)
+        do {
+            self.audioPlayer = try AVAudioPlayer(contentsOfURL: badumSound)
+        } catch {
+            print("No sound found by URL:\(badumSound)")
+        }
+        self.audioPlayer!.prepareToPlay()
+        self.audioPlayer!.play()
+    }
+    
+    func playEndRecordingBeep() -> Void{
+        let badumSound = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("blip2", ofType: "wav")!)
+        do {
+            self.audioPlayer = try AVAudioPlayer(contentsOfURL: badumSound)
+        } catch {
+            print("No sound found by URL:\(badumSound)")
+        }
+        self.audioPlayer!.prepareToPlay()
+        self.audioPlayer!.play()
+    }
+
 
     @IBAction func engineeringButtonTapped(sender: AnyObject) {
-        if self.watsonTextView.text != "" {
+//        if self.watsonTextView.text != "" {
+//        
+//            self.engineeringButton.enabled = false
+//            self.watsonTextView.hidden = true
+//
+//            prepareCloseWatson()
+//        
+//            showCloseWatson()
+//        
+//            let seconds = watsonCloseDuration
+//            let delay = seconds * Double(NSEC_PER_SEC)  // nanoseconds per seconds
+//            let dispatchTime = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
+//        
+//            dispatch_after(dispatchTime, dispatch_get_main_queue(), {
+//                self.prepareRecordingWatson()
+//                self.showWatsonAnimation()
+//            
+//                self.AskQuestionAndReturnAnswerAsString(self.watsonTextView.text)
+//            })
+//        }
         
-            self.engineeringButton.enabled = false
-            self.watsonTextView.hidden = true
-
-            prepareCloseWatson()
-        
-            showCloseWatson()
-        
-            let seconds = watsonCloseDuration
-            let delay = seconds * Double(NSEC_PER_SEC)  // nanoseconds per seconds
-            let dispatchTime = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
-        
-            dispatch_after(dispatchTime, dispatch_get_main_queue(), {
-                self.prepareRecordingWatson()
-                self.showWatsonAnimation()
-            
-                self.watsonSpeak(self.watsonTextView.text)
-            })
-        }
-
+        recordTapped()
     }
     
     
@@ -807,6 +881,43 @@ class AskWatsonViewController: ExampleNobelViewController, DropDownViewControlle
                 }
             }
     }
+    
+    //AskQuestionAndReturnAnswerAsString(question: "justin")
+    func AskQuestionAndReturnAnswerAsString(question: String) -> Void{
+        let fullURL = "http://debater.mybluemix.net/sports_sms_answer/" + question
+        
+        // Create NSURL Ibject
+        let getURL = NSURL(string: fullURL.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)!)
+        
+        // Creaste URL Request
+        let request = NSMutableURLRequest(URL: getURL!)
+        
+        // Set request HTTP method to GET. It could be POST as well
+        request.HTTPMethod = "GET"
+        
+        // Excute HTTP Request
+        let task = NSURLSession.sharedSession().dataTaskWithRequest(request) {
+            data, response, error in
+            
+            // Check for error
+            if error != nil
+            {
+                print("error=\(error)")
+                return
+            }
+            
+            // Print out response string
+            let responseString = NSString(data: data!, encoding: NSUTF8StringEncoding)
+            print("responseString = \(responseString)")
+            
+            self.watsonSpeak(responseString as! String)
+
+        }
+        
+        task.resume()
+        
+    }
+
     
 
 }
