@@ -30,6 +30,8 @@
 		6032934E1CFDDCCF00F75508 /* MotionStyleKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6032934D1CFDDCCF00F75508 /* MotionStyleKit.swift */; };
 		603293521CFDE42C00F75508 /* Lubalin Graph Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6032934F1CFDDD0500F75508 /* Lubalin Graph Regular.ttf */; };
 		60D4E8191CFF356C00147D4D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 60D4E8181CFF356C00147D4D /* Assets.xcassets */; };
+		60EC31FC1D0B0F5000C6DACD /* blip1.wav in Resources */ = {isa = PBXBuildFile; fileRef = 60EC31FB1D0B0F5000C6DACD /* blip1.wav */; };
+		60EC31FE1D0B0FC800C6DACD /* blip2.wav in Resources */ = {isa = PBXBuildFile; fileRef = 60EC31FD1D0B0FC800C6DACD /* blip2.wav */; };
 		60F6C9C01CF88EBB00FFBEA7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60F6C9BF1CF88EBB00FFBEA7 /* AppDelegate.swift */; };
 		60F6C9C21CF88EBB00FFBEA7 /* GlobalVars.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60F6C9C11CF88EBB00FFBEA7 /* GlobalVars.swift */; };
 		60F6C9CA1CF88EBB00FFBEA7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 60F6C9C81CF88EBB00FFBEA7 /* LaunchScreen.storyboard */; };
@@ -144,7 +146,9 @@
 		6032934D1CFDDCCF00F75508 /* MotionStyleKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MotionStyleKit.swift; sourceTree = "<group>"; };
 		6032934F1CFDDD0500F75508 /* Lubalin Graph Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lubalin Graph Regular.ttf"; sourceTree = "<group>"; };
 		60D4E8181CFF356C00147D4D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		60F6C9BC1CF88EBB00FFBEA7 /* SampleDropDownMenu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SampleDropDownMenu.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		60EC31FB1D0B0F5000C6DACD /* blip1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = blip1.wav; path = Assets.xcassets/blip1.dataset/blip1.wav; sourceTree = "<group>"; };
+		60EC31FD1D0B0FC800C6DACD /* blip2.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = blip2.wav; path = Assets.xcassets/blip2.dataset/blip2.wav; sourceTree = "<group>"; };
+		60F6C9BC1CF88EBB00FFBEA7 /* SportsGuru.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SportsGuru.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		60F6C9BF1CF88EBB00FFBEA7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		60F6C9C11CF88EBB00FFBEA7 /* GlobalVars.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalVars.swift; sourceTree = "<group>"; };
 		60F6C9C91CF88EBB00FFBEA7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -264,7 +268,7 @@
 		60F6C9BD1CF88EBB00FFBEA7 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				60F6C9BC1CF88EBB00FFBEA7 /* SampleDropDownMenu.app */,
+				60F6C9BC1CF88EBB00FFBEA7 /* SportsGuru.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -281,6 +285,8 @@
 				60305A861D070AEB0027B2BB /* User.swift */,
 				6032934F1CFDDD0500F75508 /* Lubalin Graph Regular.ttf */,
 				60F6C9C81CF88EBB00FFBEA7 /* LaunchScreen.storyboard */,
+				60EC31FD1D0B0FC800C6DACD /* blip2.wav */,
+				60EC31FB1D0B0F5000C6DACD /* blip1.wav */,
 				60F6C9CB1CF88EBB00FFBEA7 /* Info.plist */,
 			);
 			path = SampleDropDownMenu;
@@ -328,9 +334,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		60F6C9BB1CF88EBB00FFBEA7 /* SampleDropDownMenu */ = {
+		60F6C9BB1CF88EBB00FFBEA7 /* SportsGuru */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 60F6C9CE1CF88EBB00FFBEA7 /* Build configuration list for PBXNativeTarget "SampleDropDownMenu" */;
+			buildConfigurationList = 60F6C9CE1CF88EBB00FFBEA7 /* Build configuration list for PBXNativeTarget "SportsGuru" */;
 			buildPhases = (
 				60F6C9B81CF88EBB00FFBEA7 /* Sources */,
 				60F6C9B91CF88EBB00FFBEA7 /* Frameworks */,
@@ -342,9 +348,9 @@
 			);
 			dependencies = (
 			);
-			name = SampleDropDownMenu;
+			name = SportsGuru;
 			productName = SampleDropDownMenu;
-			productReference = 60F6C9BC1CF88EBB00FFBEA7 /* SampleDropDownMenu.app */;
+			productReference = 60F6C9BC1CF88EBB00FFBEA7 /* SportsGuru.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -363,7 +369,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 60F6C9B71CF88EBB00FFBEA7 /* Build configuration list for PBXProject "SampleDropDownMenu" */;
+			buildConfigurationList = 60F6C9B71CF88EBB00FFBEA7 /* Build configuration list for PBXProject "SportsGuru" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -376,7 +382,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				60F6C9BB1CF88EBB00FFBEA7 /* SampleDropDownMenu */,
+				60F6C9BB1CF88EBB00FFBEA7 /* SportsGuru */,
 			);
 		};
 /* End PBXProject section */
@@ -388,9 +394,11 @@
 			files = (
 				603293521CFDE42C00F75508 /* Lubalin Graph Regular.ttf in Resources */,
 				6032934C1CFDDCC700F75508 /* TableViewHeaderCell.xib in Resources */,
+				60EC31FC1D0B0F5000C6DACD /* blip1.wav in Resources */,
 				603293341CFDDC4400F75508 /* Dropdown.storyboard in Resources */,
 				603293481CFDDCB600F75508 /* TableViewCell.xib in Resources */,
 				60D4E8191CFF356C00147D4D /* Assets.xcassets in Resources */,
+				60EC31FE1D0B0FC800C6DACD /* blip2.wav in Resources */,
 				60F6C9CA1CF88EBB00FFBEA7 /* LaunchScreen.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -540,7 +548,7 @@
 				INFOPLIST_FILE = SampleDropDownMenu/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = WatsonApps.SampleDropDownMenu;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = SportsGuru;
 				PROVISIONING_PROFILE = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -560,7 +568,7 @@
 				INFOPLIST_FILE = SampleDropDownMenu/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = WatsonApps.SampleDropDownMenu;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = SportsGuru;
 				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
@@ -568,7 +576,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		60F6C9B71CF88EBB00FFBEA7 /* Build configuration list for PBXProject "SampleDropDownMenu" */ = {
+		60F6C9B71CF88EBB00FFBEA7 /* Build configuration list for PBXProject "SportsGuru" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				60F6C9CC1CF88EBB00FFBEA7 /* Debug */,
@@ -577,7 +585,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		60F6C9CE1CF88EBB00FFBEA7 /* Build configuration list for PBXNativeTarget "SampleDropDownMenu" */ = {
+		60F6C9CE1CF88EBB00FFBEA7 /* Build configuration list for PBXNativeTarget "SportsGuru" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				60F6C9CF1CF88EBB00FFBEA7 /* Debug */,

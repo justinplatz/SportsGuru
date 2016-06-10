@@ -19,7 +19,7 @@
         <!--Ask Watson View Controller-->
         <scene sceneID="jx6-wZ-prh">
             <objects>
-                <viewController storyboardIdentifier="DropdownViewControllerID" id="nVB-av-Xmz" customClass="AskWatsonViewController" customModule="SampleDropDownMenu" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DropdownViewControllerID" id="nVB-av-Xmz" customClass="AskWatsonViewController" customModule="SportsGuru" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="UAW-mq-aN6"/>
                         <viewControllerLayoutGuide type="bottom" id="tMP-DT-xQ2"/>
@@ -28,7 +28,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="JFq-tN-ntY" customClass="TableView" customModule="SampleDropDownMenu" customModuleProvider="target">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="JFq-tN-ntY" customClass="TableView" customModule="SportsGuru" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="80" width="375" height="264"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
@@ -46,7 +46,7 @@
                                     <segue destination="NQR-mF-iTn" kind="embed" id="FCA-Y9-n8H"/>
                                 </connections>
                             </containerView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LE4-KV-nlU" userLabel="Header View" customClass="View" customModule="SampleDropDownMenu" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LE4-KV-nlU" userLabel="Header View" customClass="View" customModule="SportsGuru" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="80"/>
                                 <subviews>
                                     <imageView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="circle_x_00" translatesAutoresizingMaskIntoConstraints="NO" id="eN3-RS-yZj" userLabel="Dropdown button image">
@@ -168,9 +168,9 @@
                                     <action selector="clearWatsonTextViewButtonTapped:" destination="nVB-av-Xmz" eventType="touchUpInside" id="LYq-SX-HEW"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Woy-Fz-ajK">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Woy-Fz-ajK">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                                <state key="normal" title="Button"/>
+                                <state key="normal" image="recording"/>
                                 <connections>
                                     <action selector="engineeringButtonTapped:" destination="nVB-av-Xmz" eventType="touchUpInside" id="q7r-Ct-mhD"/>
                                 </connections>
@@ -369,7 +369,7 @@
         <!--Dropdown Example View Controller2-->
         <scene sceneID="XdT-jn-cJj">
             <objects>
-                <viewController storyboardIdentifier="DropdownViewControllerID2" id="1Hh-dU-QtK" customClass="DropdownExampleViewController2" customModule="SampleDropDownMenu" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DropdownViewControllerID2" id="1Hh-dU-QtK" customClass="DropdownExampleViewController2" customModule="SportsGuru" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="15P-Cy-QON"/>
                         <viewControllerLayoutGuide type="bottom" id="Q8Z-jD-lG9"/>
@@ -378,7 +378,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="F6n-HB-kl7" customClass="TableView" customModule="SampleDropDownMenu" customModuleProvider="target">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="F6n-HB-kl7" customClass="TableView" customModule="SportsGuru" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="80" width="375" height="264"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
@@ -397,7 +397,7 @@
                                     <segue destination="GPR-Bk-sSp" kind="embed" id="Uoq-4Q-z6O"/>
                                 </connections>
                             </containerView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="efe-2H-YhM" userLabel="Header View" customClass="View" customModule="SampleDropDownMenu" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="efe-2H-YhM" userLabel="Header View" customClass="View" customModule="SportsGuru" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="80"/>
                                 <subviews>
                                     <imageView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="circle_x_00" translatesAutoresizingMaskIntoConstraints="NO" id="8Hc-fG-Vlg" userLabel="Dropdown button image">
@@ -432,6 +432,9 @@
                                         <fontDescription key="fontDescription" name="LubalinMedium" family="Lubalin Graph" pointSize="22"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
+                                        <variation key="heightClass=regular" misplaced="YES">
+                                            <rect key="frame" x="151" y="35" width="74" height="26"/>
+                                        </variation>
                                     </label>
                                 </subviews>
                                 <color key="backgroundColor" red="0.28627450980392155" green="0.28627450980392155" blue="0.28627450980392155" alpha="1" colorSpace="calibratedRGB"/>
@@ -517,7 +520,7 @@
         <!--Dropdown View Controller-->
         <scene sceneID="ACr-7Z-Wek">
             <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="NQR-mF-iTn" customClass="DropdownViewController" customModule="SampleDropDownMenu" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="NQR-mF-iTn" customClass="DropdownViewController" customModule="SportsGuru" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="cM5-ub-PyH"/>
                         <viewControllerLayoutGuide type="bottom" id="Bcc-Cu-Sta"/>
@@ -535,7 +538,7 @@
                                         <inset key="separatorInset" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
                                         <color key="sectionIndexBackgroundColor" red="1" green="0.0" blue="0.0" alpha="0.0" colorSpace="calibratedRGB"/>
                                         <prototypes>
-                                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="DropdownOptionCell" id="gog-jc-IIW" customClass="DropdownOptionCell" customModule="SampleDropDownMenu" customModuleProvider="target">
+                                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="DropdownOptionCell" id="gog-jc-IIW" customClass="DropdownOptionCell" customModule="SportsGuru" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="22" width="400" height="60"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="gog-jc-IIW" id="tgT-ac-zvN">
@@ -554,6 +557,9 @@
                                                             <fontDescription key="fontDescription" name="LubalinMedium" family="Lubalin Graph" pointSize="15"/>
                                                             <color key="textColor" white="0.2507375437062937" alpha="1" colorSpace="calibratedWhite"/>
                                                             <nil key="highlightedColor"/>
+                                                            <variation key="heightClass=regular" misplaced="YES">
+                                                                <rect key="frame" x="54" y="21" width="58" height="18"/>
+                                                            </variation>
                                                         </label>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5qP-VJ-bGV" userLabel="Separator View">
                                                             <rect key="frame" x="16" y="59" width="368" height="1"/>
@@ -619,7 +625,7 @@
                                             <outlet property="delegate" destination="NQR-mF-iTn" id="Ewe-q5-ch1"/>
                                         </connections>
                                     </tableView>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4ZJ-j9-eJS" userLabel="Separator View" customClass="View" customModule="SampleDropDownMenu" customModuleProvider="target">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4ZJ-j9-eJS" userLabel="Separator View" customClass="View" customModule="SportsGuru" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="400" height="80"/>
                                         <constraints>
                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="2" id="OB3-WO-Euo"/>
@@ -706,7 +712,7 @@
         <!--Dropdown View Controller-->
         <scene sceneID="NAJ-Fx-73h">
             <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="GPR-Bk-sSp" customClass="DropdownViewController" customModule="SampleDropDownMenu" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="GPR-Bk-sSp" customClass="DropdownViewController" customModule="SportsGuru" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="dLg-cJ-QfM"/>
                         <viewControllerLayoutGuide type="bottom" id="a9p-kw-yD7"/>
@@ -724,7 +730,7 @@
                                         <inset key="separatorInset" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
                                         <color key="sectionIndexBackgroundColor" red="1" green="0.0" blue="0.0" alpha="0.0" colorSpace="calibratedRGB"/>
                                         <prototypes>
-                                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="DropdownOptionCell" id="eh7-M8-Bs0" customClass="DropdownOptionCell" customModule="SampleDropDownMenu" customModuleProvider="target">
+                                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="DropdownOptionCell" id="eh7-M8-Bs0" customClass="DropdownOptionCell" customModule="SportsGuru" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="22" width="400" height="60"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="eh7-M8-Bs0" id="GYT-YF-pt2">
@@ -785,7 +791,7 @@
                                             <outlet property="delegate" destination="GPR-Bk-sSp" id="J2r-C7-c1c"/>
                                         </connections>
                                     </tableView>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5u7-PP-aq3" userLabel="Separator View" customClass="View" customModule="SampleDropDownMenu" customModuleProvider="target">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5u7-PP-aq3" userLabel="Separator View" customClass="View" customModule="SportsGuru" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="400" height="80"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="80" id="HuI-95-96c"/>
@@ -859,5 +865,6 @@
     <resources>
         <image name="circle_x_00" width="70" height="70"/>
         <image name="circle_x_07" width="70" height="70"/>
+        <image name="recording" width="32" height="32"/>
     </resources>
 </document>
