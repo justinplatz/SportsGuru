@@ -536,6 +536,8 @@ class AskWatsonViewController: ExampleNobelViewController, DropDownViewControlle
     }
     
     func prepareAndShowRecordingWatson() -> Void{
+        playStartRecordingBeep()
+
         prepareRecordingWatson()
         showWatsonAnimation()
     }
@@ -634,12 +636,13 @@ class AskWatsonViewController: ExampleNobelViewController, DropDownViewControlle
         
         let strBase64:String = dataForJPEGFile.base64EncodedStringWithOptions(.Encoding64CharacterLineLength)
         
+        print("Done Encoding ...")
+        
         sendHTTPPostImage(strBase64)
         
-        var imageData = UIImageJPEGRepresentation(image, 0.5)
-        var compressedJPGImage = UIImage(data: imageData!)
-        UIImageWriteToSavedPhotosAlbum(compressedJPGImage!, nil, nil, nil)
     }
+    
+    
     
     
     func proccessSpeechAndFindKeywords() -> Void{
@@ -808,11 +811,11 @@ class AskWatsonViewController: ExampleNobelViewController, DropDownViewControlle
         let badumSound = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("blip1", ofType: "wav")!)
         do {
             self.audioPlayer = try AVAudioPlayer(contentsOfURL: badumSound)
+            audioPlayer!.prepareToPlay()
+            audioPlayer!.play()
         } catch {
             print("No sound found by URL:\(badumSound)")
         }
-        self.audioPlayer!.prepareToPlay()
-        self.audioPlayer!.play()
     }
     
     func playEndRecordingBeep() -> Void{
@@ -857,8 +860,7 @@ class AskWatsonViewController: ExampleNobelViewController, DropDownViewControlle
         dispatch_after(dispatchTime, dispatch_get_main_queue(), {
             self.prepareWatsonAnimation()
             self.showWatsonAnimation()
-//            self.engineeringButton.enabled = true
-//            self.engineeringButton.hidden = false
+
             self.recordingButton.hidden = false
             self.recordingButton.enabled = true
         })
@@ -968,12 +970,12 @@ class AskWatsonViewController: ExampleNobelViewController, DropDownViewControlle
         
         let configuration = NSURLSessionConfiguration.defaultSessionConfiguration()
         let session = NSURLSession(configuration: configuration, delegate: self, delegateQueue:NSOperationQueue.mainQueue())
+        print("Sent ...")
         let task = session.dataTaskWithRequest(request, completionHandler: { data, response, error in
             guard error == nil && data != nil else{                                                          // check for fundamental networking error
                 print("error=\(error)")
                 return
             }
-            
             
             if let httpStatus = response as? NSHTTPURLResponse where httpStatus.statusCode != 200 {           // check for http errors
                 print("\r\nERROR: statusCode should be 200, but is \(httpStatus.statusCode)")
@@ -1049,14 +1051,12 @@ class AskWatsonViewController: ExampleNobelViewController, DropDownViewControlle
         let dispatchTime = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
         
         dispatch_after(dispatchTime, dispatch_get_main_queue(), {
-            self.playStartRecordingBeep()
            
             // set streaming
             self.isStreamingDefault = true
             
             // change button title
             self.recordingButton.setImage(UIImage(named: "stop.png"), forState: UIControlState.Normal)
-            
             
             // configure settings for streaming
             var settings = TranscriptionSettings(contentType: .L16(rate: 44100, channels: 1))

@@ -32,7 +32,7 @@ let dialogUsername = "9cb7928c-d5c6-4288-b1ff-16197edd3915"
 let dialogPassword = "wn2qQDkX5SCz"
 let dialog = Dialog(username: dialogUsername, password: dialogPassword)
 
-let faceRecognitionEndpoint = "https://9.2.49.64:5000/search_face_2"
+let faceRecognitionEndpoint = "https://9.2.48.252:5000/search_face_2"
 
 var userName = checkCoreDataForUserName()
 
