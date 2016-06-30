@@ -1,26 +1,8 @@
 import UIKit
+import AVFoundation
+import SpeechToTextV1
 
-/*
- Licensed Materials - Property of IBM
- © Copyright IBM Corporation 2015. All Rights Reserved.
- This licensed material is licensed under the Apache 2.0 license. http://www.apache.org/licenses/LICENSE-2.0.
- */
-
-/**
- The following class presents the modal example. Most of the work is actually
- done in the DropdownExampleViewController class, so check that out for all
- of the animation implementation.
- 
- This class just hands off some dependencies to the
- DropdownExampleViewController once the button is clicked. See the
- prepareForSegue:sender: method to see what is being handed off.
- 
- This class subclasses ExampleNobelViewController in order to get a dummy
- set of data to display in a UITableView. It is not necessary to understand
- how that class functions in order to follow the animation example code.
- */
-
-class DropdownExampleViewController2: ExampleNobelViewController, DropDownViewControllerDelegate {
+class DropdownExampleViewController2: ExampleNobelViewController, DropDownViewControllerDelegate, NSURLSessionDelegate, AVAudioRecorderDelegate {
     
     // MARK: - Outlets
     
@@ -28,6 +10,8 @@ class DropdownExampleViewController2: ExampleNobelViewController, DropDownViewCo
     @IBOutlet weak var dropdownButtonImage: UIImageView!
     @IBOutlet weak var dropdownButton: UIButton!
     @IBOutlet weak var dropdownView: UIView!
+    
+    @IBOutlet weak var recordingButton: UIButton!
     
     // MARK: - Constants, Properties
     
@@ -54,6 +38,11 @@ class DropdownExampleViewController2: ExampleNobelViewController, DropDownViewCo
     
     let dropdownTransitioningDelegate = DropdownTransitioningDelegate()
     
+    var player: AVAudioPlayer? = nil
+    var recorder: AVAudioRecorder!
+    var isStreamingDefault = false
+    var stopStreamingDefault: (Void -> Void)? = nil
+
     // MARK: - Lifecycle
     
     override func viewDidLoad() {
@@ -64,6 +53,14 @@ class DropdownExampleViewController2: ExampleNobelViewController, DropDownViewCo
         dropdownButtonImage.animationImages = self.animationImages;
         dropdownButtonImage.animationDuration = Double(self.animationImages.count) / 50.0;
         dropdownButtonImage.animationRepeatCount = 1;
+        
+    }
+    
+    func failure(title: String, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .Alert)
+        let ok = UIAlertAction(title: "OK", style: .Default) { action in }
+        alert.addAction(ok)
+        presentViewController(alert, animated: true) { }
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -166,5 +163,145 @@ class DropdownExampleViewController2: ExampleNobelViewController, DropDownViewCo
         return UIStatusBarStyle.LightContent
     }
     
+    @IBAction func sendButtonTapped(sender: AnyObject) {
+        //Use image name from bundle to create NSData
+        let image : UIImage = UIImage(named: "curcur.jpg")!
+        
+        //Now use image to create into NSData format
+        let imageData:NSData = UIImagePNGRepresentation(image)!
+        
+        let strBase64:String = imageData.base64EncodedStringWithOptions(.Encoding64CharacterLineLength)
+        
+        //print(strBase64)
+        print("Request Sent ...")
+        sendHTTPPostImage(strBase64)
+        
+    }
     
+    func URLSession(session: NSURLSession, task: NSURLSessionTask, didReceiveChallenge challenge: NSURLAuthenticationChallenge, completionHandler: (NSURLSessionAuthChallengeDisposition, NSURLCredential?) -> Void) {
+        completionHandler(NSURLSessionAuthChallengeDisposition.UseCredential, NSURLCredential(forTrust: challenge.protectionSpace.serverTrust!))
+    }
+    
+    func sendHTTPPostImage(image: String) -> Void{
+        let request = NSMutableURLRequest(URL: NSURL(string: faceRecognitionEndpoint)!)
+        request.HTTPMethod = "POST"
+        
+        let dict = ["image": image]
+        request.HTTPBody = try! NSJSONSerialization.dataWithJSONObject(dict as NSDictionary, options: [])
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.addValue("application/json", forHTTPHeaderField: "Accept")
+       
+        let configuration = NSURLSessionConfiguration.defaultSessionConfiguration()
+        let session = NSURLSession(configuration: configuration, delegate: self, delegateQueue:NSOperationQueue.mainQueue())
+        let task = session.dataTaskWithRequest(request, completionHandler: { data, response, error in
+            guard error == nil && data != nil else{                                                          // check for fundamental networking error
+                print("error=\(error)")
+                return
+            }
+            
+            if let httpStatus = response as? NSHTTPURLResponse where httpStatus.statusCode != 200 {           // check for http errors
+                print("\r\nERROR: statusCode should be 200, but is \(httpStatus.statusCode)")
+                print("response = \(response)")
+                print(NSString(data: data!, encoding: NSUTF8StringEncoding))
+            }
+                
+            else if let responseString = NSString(data: data!, encoding: NSUTF8StringEncoding){
+                print("responseString = \(responseString)")
+                
+                let jsonDict = self.convertStringToDictionary(responseString as String)
+                let player_name = jsonDict!["response"]?["player_name"]
+                let player_summary = jsonDict!["response"]?["player_summary"]
+                let match_confidence = jsonDict!["response"]?["match_confidence"]
+                
+                print(player_name as! String)
+                print(player_summary as! String)
+                print(match_confidence as! Double)
+                
+            }
+        })
+        task.resume()
+    }
+    
+    func convertStringToDictionary(text: String) -> [String:AnyObject]? {
+        if let data = text.dataUsingEncoding(NSUTF8StringEncoding) {
+            do {
+                return try NSJSONSerialization.JSONObjectWithData(data, options: []) as? [String:AnyObject]
+            } catch let error as NSError {
+                print(error)
+            }
+        }
+        return nil
+    }
+
+    @IBAction func recordingButtonTapped(sender: AnyObject) {
+        // stop if already streaming
+        if (isStreamingDefault) {
+            stopStreamingDefault?()
+            recordingButton.setImage(UIImage(named: "recording.png"), forState: UIControlState.Normal)
+            isStreamingDefault = false
+            return
+        }
+        
+        // set streaming
+        isStreamingDefault = true
+        
+        // change button title
+        recordingButton.setImage(UIImage(named: "stop.png"), forState: UIControlState.Normal)
+
+
+        
+        // configure settings for streaming
+        var settings = TranscriptionSettings(contentType: .L16(rate: 44100, channels: 1))
+        settings.continuous = false
+        settings.interimResults = true
+        
+        // start streaming from microphone
+        stopStreamingDefault = speechToText.transcribe(settings, failure: failureDefault) { results in
+            self.showResults(results)
+        }
+    }
+    
+    func failureDefault(error: NSError) {
+        let title = "Speech to Text Error:\nStreaming (Default)"
+        let message = error.localizedDescription
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .Alert)
+        let ok = UIAlertAction(title: "OK", style: .Default) { action in
+            self.stopStreamingDefault?()
+            self.recordingButton.enabled = true
+            self.recordingButton.setImage(UIImage(named: "recording.png"), forState: UIControlState.Normal)
+            self.isStreamingDefault = false
+        }
+        alert.addAction(ok)
+        presentViewController(alert, animated: true) { }
+        
+        stopStreamingDefault?()
+        recordingButton.setImage(UIImage(named: "recording.png"), forState: UIControlState.Normal)
+        isStreamingDefault = false
+    }
+    
+    func showResults(results: [TranscriptionResult]) {
+        var text = ""
+        
+        for result in results {
+            if let transcript = result.alternatives.last?.transcript where result.final == true {
+                let title = titleCase(transcript)
+                text += String(title.characters.dropLast()) + "." + " "
+                recordingButton.setImage(UIImage(named: "recording.png"), forState: UIControlState.Normal)
+            }
+        }
+        
+        if results.last?.final == false {
+            if let transcript = results.last?.alternatives.last?.transcript {
+                text += titleCase(transcript)
+            }
+        }
+        
+        //self.transcriptionField.text = text
+        print(text)
+    }
+    
+    func titleCase(s: String) -> String {
+        let first = String(s.characters.prefix(1)).uppercaseString
+        return first + String(s.characters.dropFirst())
+    }
 }

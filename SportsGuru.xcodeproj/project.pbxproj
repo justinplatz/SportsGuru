@@ -29,6 +29,8 @@
 		6032934C1CFDDCC700F75508 /* TableViewHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6032934B1CFDDCC700F75508 /* TableViewHeaderCell.xib */; };
 		6032934E1CFDDCCF00F75508 /* MotionStyleKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6032934D1CFDDCCF00F75508 /* MotionStyleKit.swift */; };
 		603293521CFDE42C00F75508 /* Lubalin Graph Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6032934F1CFDDD0500F75508 /* Lubalin Graph Regular.ttf */; };
+		606B1A9A1D12FB920046DE10 /* cryingJordan.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 606B1A991D12FB920046DE10 /* cryingJordan.jpg */; };
+		606B1A9C1D1341F80046DE10 /* curcur.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 606B1A9B1D1341F80046DE10 /* curcur.jpg */; };
 		60D4E8191CFF356C00147D4D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 60D4E8181CFF356C00147D4D /* Assets.xcassets */; };
 		60EC31FC1D0B0F5000C6DACD /* blip1.wav in Resources */ = {isa = PBXBuildFile; fileRef = 60EC31FB1D0B0F5000C6DACD /* blip1.wav */; };
 		60EC31FE1D0B0FC800C6DACD /* blip2.wav in Resources */ = {isa = PBXBuildFile; fileRef = 60EC31FD1D0B0FC800C6DACD /* blip2.wav */; };
@@ -145,6 +147,8 @@
 		6032934B1CFDDCC700F75508 /* TableViewHeaderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TableViewHeaderCell.xib; sourceTree = "<group>"; };
 		6032934D1CFDDCCF00F75508 /* MotionStyleKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MotionStyleKit.swift; sourceTree = "<group>"; };
 		6032934F1CFDDD0500F75508 /* Lubalin Graph Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lubalin Graph Regular.ttf"; sourceTree = "<group>"; };
+		606B1A991D12FB920046DE10 /* cryingJordan.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = cryingJordan.jpg; sourceTree = "<group>"; };
+		606B1A9B1D1341F80046DE10 /* curcur.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = curcur.jpg; sourceTree = "<group>"; };
 		60D4E8181CFF356C00147D4D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		60EC31FB1D0B0F5000C6DACD /* blip1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = blip1.wav; path = Assets.xcassets/blip1.dataset/blip1.wav; sourceTree = "<group>"; };
 		60EC31FD1D0B0FC800C6DACD /* blip2.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = blip2.wav; path = Assets.xcassets/blip2.dataset/blip2.wav; sourceTree = "<group>"; };
@@ -288,6 +292,8 @@
 				60EC31FD1D0B0FC800C6DACD /* blip2.wav */,
 				60EC31FB1D0B0F5000C6DACD /* blip1.wav */,
 				60F6C9CB1CF88EBB00FFBEA7 /* Info.plist */,
+				606B1A9B1D1341F80046DE10 /* curcur.jpg */,
+				606B1A991D12FB920046DE10 /* cryingJordan.jpg */,
 			);
 			path = SampleDropDownMenu;
 			sourceTree = "<group>";
@@ -393,11 +399,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				603293521CFDE42C00F75508 /* Lubalin Graph Regular.ttf in Resources */,
+				606B1A9C1D1341F80046DE10 /* curcur.jpg in Resources */,
 				6032934C1CFDDCC700F75508 /* TableViewHeaderCell.xib in Resources */,
 				60EC31FC1D0B0F5000C6DACD /* blip1.wav in Resources */,
 				603293341CFDDC4400F75508 /* Dropdown.storyboard in Resources */,
 				603293481CFDDCB600F75508 /* TableViewCell.xib in Resources */,
 				60D4E8191CFF356C00147D4D /* Assets.xcassets in Resources */,
+				606B1A9A1D12FB920046DE10 /* cryingJordan.jpg in Resources */,
 				60EC31FE1D0B0FC800C6DACD /* blip2.wav in Resources */,
 				60F6C9CA1CF88EBB00FFBEA7 /* LaunchScreen.storyboard in Resources */,
 			);
