@@ -26,6 +26,7 @@ import SpeechToTextV1
 import AlchemyLanguageV1
 import DialogV1
 import CoreData
+import AudioToolbox
 
 func getDocumentsDirectory() -> String {
     let paths = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)
@@ -861,7 +862,7 @@ class AskWatsonViewController: ExampleNobelViewController, DropDownViewControlle
             self.prepareWatsonAnimation()
             self.showWatsonAnimation()
 
-            self.recordingButton.hidden = false
+            //self.recordingButton.hidden = false
             self.recordingButton.enabled = true
         })
 
@@ -900,6 +901,9 @@ class AskWatsonViewController: ExampleNobelViewController, DropDownViewControlle
     }
     
     func AskQuestionAndReturnAnswerAsString(question: String) -> Void{
+        backButton.enabled = false
+        refreshButton.enabled = false
+        
         let fullURL = "http://debater.mybluemix.net/sports_sms_answer/" + question
         
         // Create NSURL Ibject
@@ -927,11 +931,16 @@ class AskWatsonViewController: ExampleNobelViewController, DropDownViewControlle
             print("responseString = \(responseString)")
             self.watsonSpeak(responseString as! String)
             
-            self.clearWatsonTextViewButton.hidden = true
-            self.clearWatsonTextViewButton.enabled = false
+            let answerString: String! = responseString as! String
+            dispatch_async(dispatch_get_main_queue(), {
+                self.watsonTextView.text = answerString
+            })
             
+            self.clearWatsonTextViewButton.hidden = true
         }
         
+        backButton.enabled = true
+        refreshButton.enabled = true
         backButton.hidden = false
         refreshButton.hidden = false
         
@@ -941,18 +950,19 @@ class AskWatsonViewController: ExampleNobelViewController, DropDownViewControlle
 
     
     @IBAction func backButtonTapped(sender: AnyObject) {
-        //watsonTextView.hidden = false
-        tapToContinueView.hidden = false
-        clearWatsonTextViewButton.hidden = false
+        //tapToContinueView.hidden = false
+        //clearWatsonTextViewButton.hidden = false
+        watsonTextView.text = ""
         clearWatsonTextViewButton.enabled = true
+        
+        recordingButton.hidden = false
+        dropdownButton.hidden = false
         
         backButton.hidden = true
         refreshButton.hidden = true
-        
-        hideWatson()
     }
     @IBAction func refreshButtonTapped(sender: AnyObject) {
-        tapToContinueTapped()
+        watsonSpeak(watsonTextView.text)
     }
     
     func URLSession(session: NSURLSession, task: NSURLSessionTask, didReceiveChallenge challenge: NSURLAuthenticationChallenge, completionHandler: (NSURLSessionAuthChallengeDisposition, NSURLCredential?) -> Void) {
