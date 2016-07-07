@@ -10,8 +10,6 @@ import UIKit
 import Foundation
 import TextToSpeechV1
 import SpeechToTextV1
-import AlchemyLanguageV1
-import DialogV1
 import CoreData
 
 let textToSpeechUsername = "045af1d1-414a-42df-be6c-d7c27769de42"
@@ -22,17 +20,10 @@ let speechToTextUsername = "fa894029-1f25-49ba-979d-9f6919abb9e5"
 let speechToTextPassword = "1WpwawZAkbGI"
 let speechToText = SpeechToText(username: speechToTextUsername, password: speechToTextPassword)
 
-let alchemyAPIKey = "34d4598a1ea843ade648564432e8d865b8f198d2"
-let alchemyLanguage = AlchemyLanguage(apiKey: alchemyAPIKey)
-
 var currentController = "Ask"
 let watsonCloseDuration  = 1.25
 
-let dialogUsername = "9cb7928c-d5c6-4288-b1ff-16197edd3915"
-let dialogPassword = "wn2qQDkX5SCz"
-let dialog = Dialog(username: dialogUsername, password: dialogPassword)
-
-let faceRecognitionEndpoint = "https://9.2.48.252:5000/search_face_2"
+let faceRecognitionEndpoint = "https://nbainfo.watson.ibm.com:5000/search_face_iOS"
 
 var userName = checkCoreDataForUserName()
 
