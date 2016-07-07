@@ -24,6 +24,7 @@ var currentController = "Ask"
 let watsonCloseDuration  = 1.25
 
 let faceRecognitionEndpoint = "https://nbainfo.watson.ibm.com:5000/search_face_iOS"
+//let faceRecognitionEndpoint = "https://9.2.49.115:5000/search_face_iOS"
 
 var userName = checkCoreDataForUserName()
 

@@ -48,7 +48,6 @@ class AskWatsonViewController: ExampleNobelViewController, DropDownViewControlle
     @IBOutlet weak var headerViewLabel: UILabel!
     @IBOutlet weak var engineeringButton: UIButton!
     @IBOutlet weak var recordingButton: UIButton!
-
     
     @IBOutlet weak var tapToContinueView: UIView!
     @IBOutlet weak var tapToContinueLabel: UILabel!
@@ -58,6 +57,16 @@ class AskWatsonViewController: ExampleNobelViewController, DropDownViewControlle
     @IBOutlet weak var backButton: UIButton!
     
     @IBOutlet weak var imagePicked: UIImageView!
+    
+    @IBOutlet weak var playerCardView: UIView!
+    @IBOutlet weak var playerNameLabel: UILabel!
+    @IBOutlet weak var playerPosistionLabel: UILabel!
+    @IBOutlet weak var playerBirthdayLabel: UILabel!
+    @IBOutlet weak var playerBirthplaceLabel: UILabel!
+    @IBOutlet weak var playerHeightWeightLabel: UILabel!
+    @IBOutlet weak var playerCurrentTeamLabel: UILabel!
+    @IBOutlet weak var playerHeadshotImageView: UIImageView!
+    @IBOutlet weak var playerSummaryTextView: UITextView!
     
     // MARK: - Constants, Properties
     var isListeningForQuestion = true
@@ -98,7 +107,7 @@ class AskWatsonViewController: ExampleNobelViewController, DropDownViewControlle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         prepareDropdownMenuButtonAnimation()
         
         prepareRecordingSession()
@@ -108,8 +117,6 @@ class AskWatsonViewController: ExampleNobelViewController, DropDownViewControlle
         prepareWatsonAnimation()
         
         showWatsonAnimation()
-        
-        //setupWatsonImageViewAsButton()
         
         setupTapToContinueViewAsButton()
         
@@ -967,6 +974,8 @@ class AskWatsonViewController: ExampleNobelViewController, DropDownViewControlle
 
     
     @IBAction func backButtonTapped(sender: AnyObject) {
+        playerCardView.hidden = true
+        
         watsonTextView.text = ""
         clearWatsonTextViewButton.enabled = true
         
@@ -1014,7 +1023,7 @@ class AskWatsonViewController: ExampleNobelViewController, DropDownViewControlle
                 print("response = \(response)")
                 print(NSString(data: data!, encoding: NSUTF8StringEncoding))
                 
-                self.watsonSpeak("Sorry I'm not quite sure.")
+                self.watsonSpeak("Sorry I'm not quite sure who that is.")
             }
                 
             else if let responseString = NSString(data: data!, encoding: NSUTF8StringEncoding){
@@ -1025,6 +1034,14 @@ class AskWatsonViewController: ExampleNobelViewController, DropDownViewControlle
                 let match_confidence = jsonDict!["response"]?["match_confidence"]
                 let image = jsonDict!["response"]?["image"]
                 let err = jsonDict!["response"]?["err"]
+                let position = jsonDict!["response"]?["position"]
+                let birth_date = jsonDict!["response"]?["birth_date"]
+                let birth_place = jsonDict!["response"]?["birth_place"]
+                let height = jsonDict!["response"]?["height"]
+                let weight = jsonDict!["response"]?["weight"]
+                let current_team = jsonDict!["response"]?["current_team"]
+
+
                 
                 if((err as! String) != ""){
                     self.watsonSpeak((err as! String))
@@ -1037,17 +1054,25 @@ class AskWatsonViewController: ExampleNobelViewController, DropDownViewControlle
                     print(player_summary as! String)
                     print(match_confidence as! Double)
                 
-                    self.watsonSpeakNoAnimation("That is a photo of \(player_name as! String)")
+                    self.watsonTextView.text = "It looks to me like that is \(player_name as! String)"
+                    self.watsonSpeakNoAnimation(self.watsonTextView.text)
                     
                     let answerString: String! = player_name as! String
                     dispatch_async(dispatch_get_main_queue(), {
-                        self.watsonTextView.text = answerString
                         
                         let decodedData = NSData(base64EncodedString: image as! String, options: NSDataBase64DecodingOptions(rawValue: 0))
                         let decodedimage = UIImage(data: decodedData!)
-                        print(decodedimage)
-                        self.watsonImageView.image = decodedimage! as UIImage
-                        self.watsonImageView.hidden = false
+                        
+                        self.playerCardView.hidden = false
+                        self.playerNameLabel.text = player_name as? String
+                        self.playerPosistionLabel.text = position as? String
+                        self.playerCurrentTeamLabel.text = current_team as? String
+                        self.playerHeadshotImageView.image = decodedimage! as UIImage
+                        self.playerBirthdayLabel.text = birth_date as? String
+                        self.playerBirthplaceLabel.text = birth_place as? String
+                        let heightWeight = (height as! String) + " " + (weight as! String)
+                        self.playerHeightWeightLabel.text = heightWeight
+                        self.playerSummaryTextView.text = player_summary as? String
                         
                         self.backButton.hidden = false
                         self.refreshButton.hidden = false
