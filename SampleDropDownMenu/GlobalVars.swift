@@ -48,7 +48,6 @@ func checkCoreDataForUserName() -> String{
                 return user.name!
             }
         }
-            
         else {
             print("Persons found: \(userResult.count)")
         }
@@ -88,10 +87,8 @@ func saveName(name: String) {
         if userResult.count == 1 {
             for user in userResult{
                 user.name = name
-                //4
                 do {
                     try managedContext.save()
-                    //5
                 } catch let error as NSError  {
                     print("Could not save \(error), \(error.userInfo)")
                 }
