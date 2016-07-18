@@ -120,6 +120,28 @@ class AskWatsonViewController: ExampleNobelViewController, DropDownViewControlle
         
         setupTapToContinueViewAsButton()
         
+        addEffectToButton()
+        
+        watsonTextView.text = "\"Ask me anything\""
+        
+    }
+    
+    func addEffectToButton() -> Void{
+        let pulse1 = CASpringAnimation(keyPath: "transform.scale")
+        pulse1.duration = 0.6
+        pulse1.fromValue = 1.0
+        pulse1.toValue = 1.12
+        pulse1.autoreverses = true
+        pulse1.repeatCount = 1
+        pulse1.initialVelocity = 0.5
+        pulse1.damping = 0.8
+        
+        let animationGroup = CAAnimationGroup()
+        animationGroup.duration = 3.0
+        animationGroup.repeatCount = 1000
+        animationGroup.animations = [pulse1]
+        
+        recordingButton.layer.addAnimation(animationGroup, forKey: "pulse")
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -846,15 +868,18 @@ class AskWatsonViewController: ExampleNobelViewController, DropDownViewControlle
             }
             // Print out response string
             let responseString = NSString(data: data!, encoding: NSUTF8StringEncoding)
-            print("responseString = \(responseString)")
-            self.watsonSpeak(responseString as! String, fromDialog: true)
+            
+            let dialogOutput = responseString as! String
+            
+            print("dialogOutput = \(dialogOutput)")
+            
+            self.watsonSpeak(dialogOutput, fromDialog: true)
             
             let answerString: String! = responseString as! String
             dispatch_async(dispatch_get_main_queue(), {
-                self.watsonTextView.text = answerString
                 
-                self.clearWatsonTextViewButton.hidden = true
-
+                self.watsonTextView.text = answerString
+    
             })
             
             self.loader.alpha = 0
@@ -1020,6 +1045,8 @@ class AskWatsonViewController: ExampleNobelViewController, DropDownViewControlle
         isStreamingDefault = false
         playEndRecordingBeep()
         proccessSpeechAndFindKeywords()
+        addEffectToButton()
+
     }
     
     func handleRecordingButtonTapped() -> Void{
@@ -1030,13 +1057,14 @@ class AskWatsonViewController: ExampleNobelViewController, DropDownViewControlle
             return
         }
         
-       
+        watsonTextView.text = ""
+        recordingButton.layer.removeAllAnimations()
 
         // set streaming
-        self.isStreamingDefault = true
+        isStreamingDefault = true
         
         // change button title
-        self.recordingButton.setImage(UIImage(named: "stop.png"), forState: UIControlState.Normal)
+        recordingButton.setImage(UIImage(named: "stop.png"), forState: UIControlState.Normal)
         
         // configure settings for streaming
         var settings = TranscriptionSettings(contentType: .L16(rate: 44100, channels: 1))

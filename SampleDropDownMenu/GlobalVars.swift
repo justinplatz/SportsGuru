@@ -21,7 +21,7 @@ let speechToTextPassword = "1WpwawZAkbGI"
 let speechToText = SpeechToText(username: speechToTextUsername, password: speechToTextPassword)
 
 var currentController = "Ask"
-let watsonCloseDuration  = 0.8
+let watsonCloseDuration  = 1.0
 
 let faceRecognitionEndpoint = "https://nbainfo.watson.ibm.com:5000/search_face_iOS"
 //let faceRecognitionEndpoint = "https://9.2.48.171:5000/search_face_iOS"
