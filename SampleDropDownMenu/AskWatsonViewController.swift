@@ -107,11 +107,10 @@ class AskWatsonViewController: ExampleNobelViewController, DropDownViewControlle
     // MARK: - Lifecycle
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         
         prepareDropdownMenuButtonAnimation()
-        
-        prepareRecordingSession()
         
         prepareLoaderAnimation()
         
@@ -226,7 +225,6 @@ class AskWatsonViewController: ExampleNobelViewController, DropDownViewControlle
         return UIStatusBarStyle.LightContent
     }
     
-    
     /*
      This function tells UITextView to end editing if the return key is pressed.
      */
@@ -237,34 +235,6 @@ class AskWatsonViewController: ExampleNobelViewController, DropDownViewControlle
             return false
         }
         return true
-    }
-    
-    
-    /*
-     This function will be called in the viewDidLoad
-     This function looks for permission to use the microphone
-     If permission is granted, it calls loadRecordingUI(),
-     else, it does nothing.
-     */
-    func prepareRecordingSession() -> Void{
-        recordingSession = AVAudioSession.sharedInstance()
-        do {
-            try recordingSession.setCategory(AVAudioSessionCategoryPlayAndRecord)
-            try recordingSession.setActive(true)
-            try AVAudioSession.sharedInstance().overrideOutputAudioPort(AVAudioSessionPortOverride.Speaker)
-
-            recordingSession.requestRecordPermission() { [unowned self] (allowed: Bool) -> Void in
-                dispatch_async(dispatch_get_main_queue()) {
-                    if allowed {
-                        //Do something if permission to record is granted
-                    } else {
-                        // failed to record!
-                    }
-                }
-            }
-        } catch {
-            // failed to record!
-        }
     }
     
     /*
@@ -979,10 +949,12 @@ class AskWatsonViewController: ExampleNobelViewController, DropDownViewControlle
         
         watsonTextView.text = ""
         clearWatsonTextViewButton.enabled = true
-        
-        recordingButton.hidden = false
-        dropdownButton.hidden = false
-        
+        dispatch_async(dispatch_get_main_queue(), {
+            self.recordingButton.hidden = false
+            self.dropdownButton.hidden = false
+            self.dropdownButtonImage.hidden = false
+        })
+    
         backButton.hidden = true
         refreshButton.hidden = true
         
@@ -1067,14 +1039,16 @@ class AskWatsonViewController: ExampleNobelViewController, DropDownViewControlle
                         let decodedimage = UIImage(data: decodedData!)
                         self.playerHeadshotImageView.image = decodedimage! as UIImage
                         
-                        let decodedLogoData = NSData(base64EncodedString: current_team_logo as! String, options: NSDataBase64DecodingOptions(rawValue: 0))
-                        let decodedLogoImage = UIImage(data: decodedLogoData!)
-                        self.playerCurrentTeamLogo.image = decodedLogoImage! as UIImage
+                        if current_team_logo as! String != ""{
+                            let decodedLogoData = NSData(base64EncodedString: current_team_logo as! String, options: NSDataBase64DecodingOptions(rawValue: 0))
+                            let decodedLogoImage = UIImage(data: decodedLogoData!)
+                            self.playerCurrentTeamLogo.image = decodedLogoImage! as UIImage
+                            self.playerCurrentTeamLabel.text = current_team as? String
+                        }
 
                         self.playerCardView.hidden = false
                         self.playerNameLabel.text = player_name as? String
                         self.playerPosistionLabel.text = position as? String
-                        self.playerCurrentTeamLabel.text = current_team as? String
                         self.playerBirthdayLabel.text = birth_date as? String
                         self.playerBirthplaceLabel.text = birth_place as? String
                         let heightWeight = (height as! String) + " " + (weight as! String)
