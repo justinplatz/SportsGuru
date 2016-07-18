@@ -103,58 +103,7 @@ func saveName(name: String) {
 
 
 
-//http://debater.mybluemix.net/sports_sms_answer/question text goes here
-//http://debater.mybluemix.net/db_name_add/first,last
-//sendHTTPGETRequestToNameAdd("http://debater.mybluemix.net/db_name_add/", first: "justin", last: "pmanjones")
-func sendHTTPGETRequestToNameAdd(scriptURL: String, first: String, last: String) -> Void{
-    
-    let fullURL = scriptURL + first + "," + last
-    
-    // Create NSURL Ibject
-    let getURL = NSURL(string: fullURL)
-    
-    // Creaste URL Request
-    let request = NSMutableURLRequest(URL: getURL!)
-    
-    // Set request HTTP method to GET. It could be POST as well
-    request.HTTPMethod = "GET"
-    
-    // Excute HTTP Request
-    let task = NSURLSession.sharedSession().dataTaskWithRequest(request) {
-        data, response, error in
-        
-        // Check for error
-        if error != nil
-        {
-            print("error=\(error)")
-            return
-        }
-        
-        // Print out response string
-        let responseString = NSString(data: data!, encoding: NSUTF8StringEncoding)
-        print("responseString = \(responseString)")
-        
-        
-        // Convert server json response to NSDictionary
-        do {
-            if let convertedJsonIntoDict = try NSJSONSerialization.JSONObjectWithData(data!, options: []) as? NSDictionary {
-                
-                // Print out dictionary
-                print(convertedJsonIntoDict)
-                
-                // Get value by key
-                let firstNameValue = convertedJsonIntoDict["userName"] as? String
-                print(firstNameValue!)
-                
-            }
-        } catch let error as NSError {
-            print(error.localizedDescription)
-        }
-        
-    }
-    
-    task.resume()
-}
+
 
 
 
