@@ -55,8 +55,6 @@ class AskWatsonViewController: ExampleNobelViewController, DropDownViewControlle
     @IBOutlet weak var refreshButton: UIButton!
     @IBOutlet weak var backButton: UIButton!
     
-    @IBOutlet weak var imagePicked: UIImageView!
-    
     @IBOutlet weak var playerCardView: UIView!
     @IBOutlet weak var playerNameLabel: UILabel!
     @IBOutlet weak var playerPosistionLabel: UILabel!
@@ -159,12 +157,10 @@ class AskWatsonViewController: ExampleNobelViewController, DropDownViewControlle
     }
     
     // MARK: - Transition Animations
-    
     func show(completion: () -> Void) {
         dropdownButtonImage.animationImages = self.animationImages;
         dropdownButtonImage.image = (dropdownButtonImage.animationImages?.last)! as UIImage
         dropdownButtonImage.startAnimating()
-        
         
         let delay = dropdownButtonImage.animationDuration * Double(NSEC_PER_SEC)
         let time = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
@@ -188,7 +184,6 @@ class AskWatsonViewController: ExampleNobelViewController, DropDownViewControlle
     }
     
     // MARK: - Actions
-    
     @IBAction func buttonAction(sender: AnyObject) {
         dropdownVC.toggle()
         toggle()
@@ -277,14 +272,12 @@ class AskWatsonViewController: ExampleNobelViewController, DropDownViewControlle
             watsonImageView.animationImages?.append(UIImage(named:frameName)!)
 
         }
-        
         for i in 10.stride(to: 0, by: -1){
             let frameName = String(format: "frame_\(i)")
             watsonImageView.animationImages?.append(UIImage(named:frameName)!)
             watsonImageView.animationImages?.append(UIImage(named:frameName)!)
 
         }
-        
         watsonImageView.animationDuration = 1.25
         watsonImageView.stopAnimating()
         watsonImageView.hidden = true
@@ -576,7 +569,6 @@ class AskWatsonViewController: ExampleNobelViewController, DropDownViewControlle
         else{
             tapToContinueTapped()
         }
-
     }
     
 
@@ -613,10 +605,8 @@ class AskWatsonViewController: ExampleNobelViewController, DropDownViewControlle
     
     func showWatsonTextViewWithAnimation() -> Void{
         UIView.animateWithDuration(4.0, animations: {
-
             self.dropdownButton.hidden = true
             self.dropdownButtonImage.hidden = true
-            
             self.clearWatsonTextViewButton.hidden = false
         })
     }
@@ -721,7 +711,6 @@ class AskWatsonViewController: ExampleNobelViewController, DropDownViewControlle
         dispatch_after(dispatchTime, dispatch_get_main_queue(), {
             self.prepareWatsonAnimation()
             self.showWatsonAnimation()
-            
             self.recordingButton.enabled = true
         })
         
@@ -732,11 +721,10 @@ class AskWatsonViewController: ExampleNobelViewController, DropDownViewControlle
                                audioFormat: AudioFormat.WAV,
                                failure: { error in
                                 print("error was generated \(error)")
-            })
+        })
         { data in
             
             do {
-                
                 self.audioPlayer = try AVAudioPlayer(data: data)
                 self.audioPlayer?.delegate = self
                 self.audioPlayer!.play()
@@ -746,7 +734,6 @@ class AskWatsonViewController: ExampleNobelViewController, DropDownViewControlle
                 print("Couldn't create player.")
             }
         }
-
     }
     
     func watsonSpeak(text: String, fromDialog: Bool){
