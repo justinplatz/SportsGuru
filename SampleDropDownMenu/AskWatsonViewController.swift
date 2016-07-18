@@ -537,6 +537,20 @@ class AskWatsonViewController: ExampleNobelViewController, DropDownViewControlle
             tapToContinueView.hidden = true
             stopAndResetAudioPlayer()
             
+            self.enableDropdownMenuFunctionality()
+            
+            self.prepareOpenWatson()
+            self.showWatsonAnimation()
+            
+            let delay = 0.5 * Double(NSEC_PER_SEC)  // nanoseconds per seconds
+            let dispatchTime = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
+            
+            dispatch_after(dispatchTime, dispatch_get_main_queue(), {
+                self.prepareWatsonAnimation()
+                self.showWatsonAnimation()
+            })
+
+            
             return
         }
         
@@ -557,19 +571,6 @@ class AskWatsonViewController: ExampleNobelViewController, DropDownViewControlle
 
         }
         
-        self.enableDropdownMenuFunctionality()
-        
-        self.prepareOpenWatson()
-        self.showWatsonAnimation()
-        
-        let delay = 0.5 * Double(NSEC_PER_SEC)  // nanoseconds per seconds
-        let dispatchTime = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
-        
-        dispatch_after(dispatchTime, dispatch_get_main_queue(), {
-            self.prepareWatsonAnimation()
-            self.showWatsonAnimation()
-        })
-
 
     }
     
