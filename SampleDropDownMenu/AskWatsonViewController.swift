@@ -1083,6 +1083,12 @@ class AskWatsonViewController: ExampleNobelViewController, DropDownViewControlle
                         
                         self.backButton.hidden = false
                         self.refreshButton.hidden = false
+                        
+                        self.playerCardView.layer.shadowColor = UIColor(white: 0.0, alpha: 0.5).CGColor
+                        self.playerCardView.layer.shadowOffset = CGSizeMake(0.0, 0.0)
+                        self.playerCardView.layer.shadowOpacity = 1.0
+                        self.playerCardView.layer.shadowRadius = 6.0
+                        self.playerCardView.layer.cornerRadius = 6.0
 
                     })
                 }
