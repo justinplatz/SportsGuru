@@ -26,12 +26,6 @@ import SpeechToTextV1
 import CoreData
 import AudioToolbox
 
-func getDocumentsDirectory() -> String {
-    let paths = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)
-    let documentsDirectory = paths[0]
-    return documentsDirectory
-}
-
 class AskWatsonViewController: ExampleNobelViewController, DropDownViewControllerDelegate, UITextViewDelegate, AVAudioRecorderDelegate, AVAudioPlayerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, NSURLSessionDelegate {
 
     // MARK: - Outlets
