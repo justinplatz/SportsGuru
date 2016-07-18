@@ -187,7 +187,6 @@ class DropdownViewController: UIViewController, UITableViewDataSource, UITableVi
 // MARK: - Table View Cells
 
 internal class DropdownOptionCell: UITableViewCell {
-    
     @IBOutlet weak var icon: UIImageView!
     @IBOutlet weak var label: UILabel!
     

@@ -125,24 +125,6 @@ class AskWatsonViewController: ExampleNobelViewController, DropDownViewControlle
         
     }
     
-    func addEffectToButton() -> Void{
-        let pulse1 = CASpringAnimation(keyPath: "transform.scale")
-        pulse1.duration = 0.6
-        pulse1.fromValue = 1.0
-        pulse1.toValue = 1.12
-        pulse1.autoreverses = true
-        pulse1.repeatCount = 1
-        pulse1.initialVelocity = 0.5
-        pulse1.damping = 0.8
-        
-        let animationGroup = CAAnimationGroup()
-        animationGroup.duration = 3.0
-        animationGroup.repeatCount = 1000
-        animationGroup.animations = [pulse1]
-        
-        recordingButton.layer.addAnimation(animationGroup, forKey: "pulse")
-    }
-    
     override func viewDidAppear(animated: Bool) {
         watsonTextView.delegate = self
     }
@@ -420,6 +402,25 @@ class AskWatsonViewController: ExampleNobelViewController, DropDownViewControlle
         }
     }
     
+    func addEffectToButton() -> Void{
+        let pulse1 = CASpringAnimation(keyPath: "transform.scale")
+        pulse1.duration = 0.6
+        pulse1.fromValue = 1.0
+        pulse1.toValue = 1.18
+        pulse1.autoreverses = true
+        pulse1.repeatCount = 1
+        pulse1.initialVelocity = 0.5
+        pulse1.damping = 0.8
+        
+        let animationGroup = CAAnimationGroup()
+        animationGroup.duration = 10.0
+        animationGroup.repeatCount = 1000
+        animationGroup.animations = [pulse1]
+        
+        recordingButton.layer.addAnimation(animationGroup, forKey: "pulse")
+    }
+
+    
     /*
      While editing UITextField, if a single tap is recognized this function tells the view to end editing
      */
@@ -575,7 +576,6 @@ class AskWatsonViewController: ExampleNobelViewController, DropDownViewControlle
         else{
             tapToContinueTapped()
         }
-        
 
     }
     
@@ -675,33 +675,6 @@ class AskWatsonViewController: ExampleNobelViewController, DropDownViewControlle
         audioPlayer?.pause()
         audioPlayer?.currentTime = 0
     }
-    
-//    func audioPlayerDidFinishPlaying(player: AVAudioPlayer, successfully flag: Bool) {
-//        self.loader.alpha = 0
-//        
-//        let firstDelay = 0.25 * Double(NSEC_PER_SEC)  // nanoseconds per seconds
-//        let firstDispatchTime = dispatch_time(DISPATCH_TIME_NOW, Int64(firstDelay))
-//        
-//        self.prepareTalkingWatsonClose()
-//        self.showWatsonAnimation()
-//        
-//        dispatch_after(firstDispatchTime, dispatch_get_main_queue(), {
-//            self.prepareOpenWatson()
-//            self.showWatsonAnimation()
-//        })
-//        
-//        let delay = 0.75 * Double(NSEC_PER_SEC)  // nanoseconds per seconds
-//        let dispatchTime = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
-//        
-//        dispatch_after(dispatchTime, dispatch_get_main_queue(), {
-//            self.prepareWatsonAnimation()
-//            self.showWatsonAnimation()
-//
-//            //self.recordingButton.hidden = false
-//            self.recordingButton.enabled = true
-//        })
-//
-//    }
     
     func watsonSpeakCompletion(){
         loader.alpha = 0
@@ -1022,16 +995,6 @@ class AskWatsonViewController: ExampleNobelViewController, DropDownViewControlle
         return nil
     }
 
-    @IBAction func uploadButtonTapped(sender: AnyObject) {
-        openPhotoLibrary()
-        dropdownButton.hidden = true
-
-    }
-    @IBAction func camButtonTapped(sender: AnyObject) {
-        openCamera()
-        dropdownButton.hidden = true
-
-    }
     
     func endStream() -> Void{
         stopStreamingDefault?()
