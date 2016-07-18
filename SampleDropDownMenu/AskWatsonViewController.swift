@@ -688,8 +688,9 @@ class AskWatsonViewController: ExampleNobelViewController, DropDownViewControlle
 //    }
     
     func watsonSpeakCompletion(){
-        self.loader.alpha = 0
-        
+        loader.alpha = 0
+       
+
         let firstDelay = 0.25 * Double(NSEC_PER_SEC)  // nanoseconds per seconds
         let firstDispatchTime = dispatch_time(DISPATCH_TIME_NOW, Int64(firstDelay))
         
@@ -708,7 +709,7 @@ class AskWatsonViewController: ExampleNobelViewController, DropDownViewControlle
             self.prepareWatsonAnimation()
             self.showWatsonAnimation()
         })
-
+        
     }
     
     func watsonSpeakDialogCompletion(){
@@ -787,12 +788,13 @@ class AskWatsonViewController: ExampleNobelViewController, DropDownViewControlle
                     let Delay = (self.audioPlayer?.duration)! * Double(NSEC_PER_SEC)  // nanoseconds per seconds
                     let DispatchTime = dispatch_time(DISPATCH_TIME_NOW, Int64(Delay))
                     dispatch_after(DispatchTime, dispatch_get_main_queue(), {
-                        self.watsonSpeakCompletion()
                         if(fromDialog){
                             self.recordingButton.hidden = false
                             self.watsonTextView.text = ""
+                            self.dropdownButton.hidden = false
                             self.dropdownButton.enabled = true
                         }
+                        self.watsonSpeakCompletion()
                     })
                     
                 } catch {
