@@ -265,7 +265,6 @@ class AskWatsonViewController: ExampleNobelViewController, DropDownViewControlle
         dropdownButtonImage.animationRepeatCount = 1;
     }
     
-    
     func prepareWatsonAnimation()-> Void{
         watsonImageView.animationImages = [UIImage]()
         for i in 0 ..< 11{
@@ -313,9 +312,6 @@ class AskWatsonViewController: ExampleNobelViewController, DropDownViewControlle
         watsonImageView.stopAnimating()
         watsonImageView.hidden = true
     }
-
-    
-    
     
     func prepareRecordingWatson()-> Void{
         watsonImageView.animationImages = [UIImage]()
@@ -376,14 +372,6 @@ class AskWatsonViewController: ExampleNobelViewController, DropDownViewControlle
         watsonImageView.hidden = true
     }
 
-    
-    
-    func setupWatsonImageViewAsButton() -> Void{
-        watsonImageView.userInteractionEnabled = true
-        let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(AskWatsonViewController.watsonImageTapped(_:)))
-        watsonImageView.addGestureRecognizer(tapRecognizer)
-    }
-    
     func setupTapToContinueViewAsButton() -> Void{
         tapToContinueView.userInteractionEnabled = true
         let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(AskWatsonViewController.tapToContinueTapped(_:)))
