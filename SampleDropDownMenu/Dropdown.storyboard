@@ -269,7 +269,8 @@
                                         <exclude reference="5q6-Dp-uy0"/>
                                     </mask>
                                 </variation>
-                                <variation key="heightClass=regular">
+                                <variation key="heightClass=regular" misplaced="YES">
+                                    <rect key="frame" x="283" y="590" width="32" height="32"/>
                                     <mask key="constraints">
                                         <include reference="5q6-Dp-uy0"/>
                                     </mask>
@@ -414,7 +415,7 @@
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Long Summary goes here" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="UPr-ql-u4q">
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" text="Long Summary goes here" translatesAutoresizingMaskIntoConstraints="NO" id="UPr-ql-u4q">
                                         <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                         <inset key="scrollIndicatorInsets" minX="100" minY="0.0" maxX="100" maxY="0.0"/>
                                         <fontDescription key="fontDescription" name="LubalinMedium" family="Lubalin Graph" pointSize="12"/>
