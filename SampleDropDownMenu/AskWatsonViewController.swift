@@ -927,7 +927,7 @@ class AskWatsonViewController: ExampleNobelViewController, DropDownViewControlle
                         let decodedimage = UIImage(data: decodedData!)
                         self.playerHeadshotImageView.image = decodedimage! as UIImage
                         
-                        if current_team_logo as! String != ""{
+                        if current_team_logo as! String != "NULL"{
                             let decodedLogoData = NSData(base64EncodedString: current_team_logo as! String, options: NSDataBase64DecodingOptions(rawValue: 0))
                             let decodedLogoImage = UIImage(data: decodedLogoData!)
                             self.playerCurrentTeamLogo.image = decodedLogoImage! as UIImage
