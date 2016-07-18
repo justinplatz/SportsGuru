@@ -325,7 +325,6 @@ class AskWatsonViewController: ExampleNobelViewController, DropDownViewControlle
             let frameName = String(format: "tmp-\(i)")
             watsonImageView.animationImages?.append(UIImage(named:frameName)!)
         }
-
         
         watsonImageView.animationDuration = 3.0
         watsonImageView.stopAnimating()
@@ -477,7 +476,6 @@ class AskWatsonViewController: ExampleNobelViewController, DropDownViewControlle
     
     func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage!, editingInfo: [NSObject : AnyObject]!) {
         
-        //self.engineeringButton.hidden = true
         self.recordingButton.hidden = true
         
         self.hideWatson()
@@ -486,8 +484,6 @@ class AskWatsonViewController: ExampleNobelViewController, DropDownViewControlle
         self.dismissViewControllerAnimated(true, completion: nil);
         
         //Now use image to create into NSData format
-        //let dataForPNGFile:NSData = UIImagePNGRepresentation(image)!
-        
         let dataForJPEGFile: NSData = UIImageJPEGRepresentation(image, 0.5)!
         
         let strBase64:String = dataForJPEGFile.base64EncodedStringWithOptions(.Encoding64CharacterLineLength)
@@ -561,7 +557,6 @@ class AskWatsonViewController: ExampleNobelViewController, DropDownViewControlle
 
         }
         
-
         self.enableDropdownMenuFunctionality()
         
         self.prepareOpenWatson()
@@ -594,20 +589,10 @@ class AskWatsonViewController: ExampleNobelViewController, DropDownViewControlle
     func enableClearTextButtonFunctionality() -> Void{
         self.clearWatsonTextViewButton.enabled = true
     }
-    
-    
-    func hideWatsonTextViewWithAnimation() -> Void{
-        UIView.animateWithDuration(4.0, animations: {
-            //self.watsonTextView.alpha = 0.0
-            //self.watsonTextView.hidden = true
-        })
-    }
-    
+
     func hideWatsonTextViewWithAnimationAndPresentHeaderView() -> Void{
         UIView.animateWithDuration(4.0, animations: {
-            //self.watsonTextView.alpha = 0.0
-            //self.watsonTextView.hidden = true
-            
+
             self.prepareWatsonAnimation()
             self.showWatsonAnimation()
             
@@ -622,9 +607,7 @@ class AskWatsonViewController: ExampleNobelViewController, DropDownViewControlle
     
     func showWatsonTextViewWithAnimation() -> Void{
         UIView.animateWithDuration(4.0, animations: {
-            //self.watsonTextView.alpha = 1.0
-            //self.watsonTextView.hidden = false
-            
+
             self.dropdownButton.hidden = true
             self.dropdownButtonImage.hidden = true
             
@@ -847,8 +830,6 @@ class AskWatsonViewController: ExampleNobelViewController, DropDownViewControlle
             
         }
         
-        
-        
         task.resume()
         
     }
@@ -925,9 +906,6 @@ class AskWatsonViewController: ExampleNobelViewController, DropDownViewControlle
                 let current_team = jsonDict!["response"]?["current_team"]
                 let current_team_logo = jsonDict!["response"]?["team_logo"]
 
-
-
-                
                 if((err as! String) != ""){
                     self.watsonSpeak((err as! String))
                     print(err as! String)
