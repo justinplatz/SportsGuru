@@ -1038,6 +1038,9 @@ class AskWatsonViewController: ExampleNobelViewController, DropDownViewControlle
     }
     
     @IBAction func recordingButtonTapped(sender: AnyObject) {
+        dispatch_after(0, dispatch_get_main_queue(), {
+            AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
+        })
         handleRecordingButtonTapped()
     }
     
