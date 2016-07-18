@@ -163,20 +163,20 @@ class DropdownExampleViewController2: ExampleNobelViewController, DropDownViewCo
         return UIStatusBarStyle.LightContent
     }
     
-    @IBAction func sendButtonTapped(sender: AnyObject) {
-        //Use image name from bundle to create NSData
-        let image : UIImage = UIImage(named: "curcur.jpg")!
-        
-        //Now use image to create into NSData format
-        let imageData:NSData = UIImagePNGRepresentation(image)!
-        
-        let strBase64:String = imageData.base64EncodedStringWithOptions(.Encoding64CharacterLineLength)
-        
-        //print(strBase64)
-        print("Request Sent ...")
-        sendHTTPPostImage(strBase64)
-        
-    }
+//    @IBAction func sendButtonTapped(sender: AnyObject) {
+//        //Use image name from bundle to create NSData
+//        let image : UIImage = UIImage(named: "curcur.jpg")!
+//        
+//        //Now use image to create into NSData format
+//        let imageData:NSData = UIImagePNGRepresentation(image)!
+//        
+//        let strBase64:String = imageData.base64EncodedStringWithOptions(.Encoding64CharacterLineLength)
+//        
+//        //print(strBase64)
+//        print("Request Sent ...")
+//        sendHTTPPostImage(strBase64)
+//        
+//    }
     
     func URLSession(session: NSURLSession, task: NSURLSessionTask, didReceiveChallenge challenge: NSURLAuthenticationChallenge, completionHandler: (NSURLSessionAuthChallengeDisposition, NSURLCredential?) -> Void) {
         completionHandler(NSURLSessionAuthChallengeDisposition.UseCredential, NSURLCredential(forTrust: challenge.protectionSpace.serverTrust!))

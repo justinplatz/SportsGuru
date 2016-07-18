@@ -69,7 +69,8 @@
                                                 <exclude reference="F7B-Br-cxw"/>
                                             </mask>
                                         </variation>
-                                        <variation key="heightClass=regular">
+                                        <variation key="heightClass=regular" misplaced="YES">
+                                            <rect key="frame" x="330" y="36" width="30" height="70"/>
                                             <mask key="constraints">
                                                 <exclude reference="2bP-fO-QDR"/>
                                                 <include reference="F7B-Br-cxw"/>
@@ -93,7 +94,8 @@
                                                 <exclude reference="64q-OT-vNx"/>
                                             </mask>
                                         </variation>
-                                        <variation key="heightClass=regular">
+                                        <variation key="heightClass=regular" misplaced="YES">
+                                            <rect key="frame" x="315" y="10" width="60" height="100"/>
                                             <mask key="constraints">
                                                 <exclude reference="kZx-uP-1hl"/>
                                                 <exclude reference="tdO-8h-w7O"/>
@@ -120,7 +122,8 @@
                                                 <exclude reference="2AZ-5U-cIl"/>
                                             </mask>
                                         </variation>
-                                        <variation key="heightClass=regular">
+                                        <variation key="heightClass=regular" misplaced="YES">
+                                            <rect key="frame" x="8" y="36" width="20" height="70"/>
                                             <mask key="constraints">
                                                 <include reference="2AZ-5U-cIl"/>
                                             </mask>
@@ -176,7 +179,8 @@
                                         <exclude reference="kBE-q0-UdR"/>
                                     </mask>
                                 </variation>
-                                <variation key="heightClass=regular">
+                                <variation key="heightClass=regular" misplaced="YES">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="120"/>
                                     <mask key="subviews">
                                         <include reference="PUW-QQ-c9o"/>
                                     </mask>
@@ -234,7 +238,8 @@
                                         <exclude reference="ka9-8c-v9m"/>
                                     </mask>
                                 </variation>
-                                <variation key="heightClass=regular">
+                                <variation key="heightClass=regular" misplaced="YES">
+                                    <rect key="frame" x="155" y="301" width="63" height="63"/>
                                     <mask key="constraints">
                                         <include reference="Ymv-44-2NM"/>
                                         <include reference="ka9-8c-v9m"/>
@@ -254,7 +259,8 @@
                                         <exclude reference="lDO-Du-vJe"/>
                                     </mask>
                                 </variation>
-                                <variation key="heightClass=regular">
+                                <variation key="heightClass=regular" misplaced="YES">
+                                    <rect key="frame" x="334" y="36" width="30" height="70"/>
                                     <mask key="constraints">
                                         <include reference="fof-lo-YUC"/>
                                         <include reference="lDO-Du-vJe"/>
@@ -351,6 +357,9 @@
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9BR-uL-YXK">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                 <state key="normal" image="refresh"/>
+                                <variation key="heightClass=regular" misplaced="YES">
+                                    <rect key="frame" x="334" y="36" width="30" height="70"/>
+                                </variation>
                                 <connections>
                                     <action selector="refreshButtonTapped:" destination="nVB-av-Xmz" eventType="touchUpInside" id="tnx-2F-S8L"/>
                                 </connections>
@@ -371,7 +380,8 @@
                                         <exclude reference="KFL-zo-aO5"/>
                                     </mask>
                                 </variation>
-                                <variation key="heightClass=regular">
+                                <variation key="heightClass=regular" misplaced="YES">
+                                    <rect key="frame" x="21" y="128" width="333" height="30"/>
                                     <mask key="constraints">
                                         <include reference="FzF-wa-Y4h"/>
                                         <exclude reference="KFL-zo-aO5"/>
@@ -401,6 +411,9 @@
                                     </label>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fiA-2H-hRQ">
                                         <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                        <variation key="heightClass=regular" misplaced="YES">
+                                            <rect key="frame" x="92" y="76" width="150" height="207"/>
+                                        </variation>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3/14/88" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ifr-18-ASb">
                                         <rect key="frame" x="-42" y="-21" width="42" height="21"/>
@@ -425,9 +438,15 @@
                                         <inset key="scrollIndicatorInsets" minX="100" minY="0.0" maxX="100" maxY="0.0"/>
                                         <fontDescription key="fontDescription" name="LubalinMedium" family="Lubalin Graph" pointSize="12"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                        <variation key="heightClass=regular" misplaced="YES">
+                                            <rect key="frame" x="8" y="245" width="319" height="267"/>
+                                        </variation>
                                     </textView>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="gkx-XT-4ib">
                                         <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                        <variation key="heightClass=regular" misplaced="YES">
+                                            <rect key="frame" x="259" y="103" width="60" height="153"/>
+                                        </variation>
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" red="0.84313725490196079" green="0.89411764705882357" blue="0.89411764705882357" alpha="1" colorSpace="calibratedRGB"/>
@@ -532,7 +551,8 @@
                                         <exclude reference="ZAh-N1-4Yx"/>
                                     </mask>
                                 </variation>
-                                <variation key="heightClass=regular">
+                                <variation key="heightClass=regular" misplaced="YES">
+                                    <rect key="frame" x="21" y="191" width="335" height="520"/>
                                     <mask key="subviews">
                                         <include reference="vaS-jl-iF5"/>
                                         <include reference="RF7-kg-Z2J"/>

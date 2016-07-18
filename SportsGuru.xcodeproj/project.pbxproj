@@ -11,7 +11,6 @@
 		6032932A1CFDDBE900F75508 /* DropdownViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 603293291CFDDBE900F75508 /* DropdownViewController.swift */; };
 		6032932C1CFDDC0B00F75508 /* AskWatsonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6032932B1CFDDC0B00F75508 /* AskWatsonViewController.swift */; };
 		603293301CFDDC3000F75508 /* UIColor+SpeachToText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6032932F1CFDDC3000F75508 /* UIColor+SpeachToText.swift */; };
-		603293321CFDDC3A00F75508 /* ViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 603293311CFDDC3A00F75508 /* ViewControllerExtension.swift */; };
 		603293341CFDDC4400F75508 /* Dropdown.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 603293331CFDDC4400F75508 /* Dropdown.storyboard */; };
 		603293361CFDDC5400F75508 /* ExampleNobelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 603293351CFDDC5400F75508 /* ExampleNobelViewController.swift */; };
 		603293381CFDDC6500F75508 /* CubicBezier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 603293371CFDDC6500F75508 /* CubicBezier.swift */; };
@@ -131,7 +130,6 @@
 		603293291CFDDBE900F75508 /* DropdownViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DropdownViewController.swift; sourceTree = "<group>"; };
 		6032932B1CFDDC0B00F75508 /* AskWatsonViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AskWatsonViewController.swift; sourceTree = "<group>"; };
 		6032932F1CFDDC3000F75508 /* UIColor+SpeachToText.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+SpeachToText.swift"; sourceTree = "<group>"; };
-		603293311CFDDC3A00F75508 /* ViewControllerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerExtension.swift; sourceTree = "<group>"; };
 		603293331CFDDC4400F75508 /* Dropdown.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Dropdown.storyboard; sourceTree = "<group>"; };
 		603293351CFDDC5400F75508 /* ExampleNobelViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExampleNobelViewController.swift; sourceTree = "<group>"; };
 		603293371CFDDC6500F75508 /* CubicBezier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CubicBezier.swift; sourceTree = "<group>"; };
@@ -323,7 +321,6 @@
 				60D4E8181CFF356C00147D4D /* Assets.xcassets */,
 				603293331CFDDC4400F75508 /* Dropdown.storyboard */,
 				6032932F1CFDDC3000F75508 /* UIColor+SpeachToText.swift */,
-				603293311CFDDC3A00F75508 /* ViewControllerExtension.swift */,
 				60F6C9C11CF88EBB00FFBEA7 /* GlobalVars.swift */,
 			);
 			name = Dropdown;
@@ -440,7 +437,6 @@
 				6032933E1CFDDC8100F75508 /* LayoutConstraintAnimator.swift in Sources */,
 				603293401CFDDC8B00F75508 /* LayoutConstraintEasing.swift in Sources */,
 				603293301CFDDC3000F75508 /* UIColor+SpeachToText.swift in Sources */,
-				603293321CFDDC3A00F75508 /* ViewControllerExtension.swift in Sources */,
 				60305A841D07076C0027B2BB /* myDataModel.xcdatamodeld in Sources */,
 				60F6CA131CF8EC7000FFBEA7 /* String.swift in Sources */,
 				603293381CFDDC6500F75508 /* CubicBezier.swift in Sources */,

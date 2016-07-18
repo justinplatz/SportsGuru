@@ -294,11 +294,11 @@ class AskWatsonViewController: ExampleNobelViewController, DropDownViewControlle
         watsonImageView.image = nil
         watsonImageView.animationImages = [UIImage]()
         
-        for i in 58.stride(to: 34, by: -1){
+        for i in 44.stride(to: 34, by: -1){
             let frameName = String(format: "tmp-\(i)")
             watsonImageView.animationImages?.append(UIImage(named:frameName)!)
         }
-        watsonImageView.animationDuration = watsonCloseDuration
+        watsonImageView.animationDuration = 0.5
         watsonImageView.animationRepeatCount = 1
         watsonImageView.stopAnimating()
         watsonImageView.hidden = true
@@ -1043,7 +1043,7 @@ class AskWatsonViewController: ExampleNobelViewController, DropDownViewControlle
             self.showCloseWatson()
         })
         
-        let seconds = watsonCloseDuration
+        let seconds = 0.5
         let delay = seconds * Double(NSEC_PER_SEC)  // nanoseconds per seconds
         let dispatchTime = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
         
