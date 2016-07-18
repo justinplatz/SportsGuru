@@ -133,7 +133,7 @@
                                 <color key="backgroundColor" red="0.29411764705882354" green="0.29411764705882354" blue="0.29411764705882354" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstItem="MHP-Uc-XWL" firstAttribute="centerY" secondItem="LE4-KV-nlU" secondAttribute="centerY" id="0Sr-bE-REO"/>
-                                    <constraint firstItem="dyP-qx-TIx" firstAttribute="leading" secondItem="LE4-KV-nlU" secondAttribute="leading" constant="160" id="62M-mT-h8I"/>
+                                    <constraint firstItem="dyP-qx-TIx" firstAttribute="centerX" secondItem="LE4-KV-nlU" secondAttribute="centerX" id="5Wg-qh-gOS"/>
                                     <constraint firstAttribute="bottom" secondItem="dyP-qx-TIx" secondAttribute="bottom" constant="18" id="7lG-Jr-M7T"/>
                                     <constraint firstItem="eN3-RS-yZj" firstAttribute="centerY" secondItem="MHP-Uc-XWL" secondAttribute="centerY" id="CnM-l7-HjL"/>
                                     <constraint firstItem="PUW-QQ-c9o" firstAttribute="top" secondItem="eN3-RS-yZj" secondAttribute="top" id="GU5-7w-dIc"/>
@@ -166,7 +166,7 @@
                                         <exclude reference="cpR-c5-l5Z"/>
                                         <exclude reference="gN3-74-K8c"/>
                                         <exclude reference="kDn-bN-bwE"/>
-                                        <exclude reference="62M-mT-h8I"/>
+                                        <exclude reference="5Wg-qh-gOS"/>
                                         <exclude reference="vzn-cs-BGz"/>
                                         <exclude reference="0Sr-bE-REO"/>
                                         <exclude reference="LBA-U7-ncb"/>
@@ -187,7 +187,7 @@
                                         <include reference="cpR-c5-l5Z"/>
                                         <include reference="gN3-74-K8c"/>
                                         <include reference="kDn-bN-bwE"/>
-                                        <include reference="62M-mT-h8I"/>
+                                        <include reference="5Wg-qh-gOS"/>
                                         <exclude reference="7lG-Jr-M7T"/>
                                         <include reference="vzn-cs-BGz"/>
                                         <exclude reference="z0G-kn-Kn2"/>
@@ -208,10 +208,17 @@
                                 <rect key="frame" x="55" y="201" width="265" height="265"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="ZUG-LV-KqG" secondAttribute="height" multiplier="1:1" id="9eI-TG-6KL"/>
+                                    <constraint firstAttribute="width" secondItem="ZUG-LV-KqG" secondAttribute="height" multiplier="1:1" id="ygE-Vg-W79"/>
                                 </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="ygE-Vg-W79"/>
+                                    </mask>
+                                </variation>
                                 <variation key="heightClass=regular">
                                     <mask key="constraints">
                                         <exclude reference="9eI-TG-6KL"/>
+                                        <include reference="ygE-Vg-W79"/>
                                     </mask>
                                 </variation>
                             </imageView>
@@ -227,8 +234,7 @@
                                         <exclude reference="ka9-8c-v9m"/>
                                     </mask>
                                 </variation>
-                                <variation key="heightClass=regular" misplaced="YES">
-                                    <rect key="frame" x="155" y="301" width="63" height="63"/>
+                                <variation key="heightClass=regular">
                                     <mask key="constraints">
                                         <include reference="Ymv-44-2NM"/>
                                         <include reference="ka9-8c-v9m"/>
@@ -269,8 +275,7 @@
                                         <exclude reference="5q6-Dp-uy0"/>
                                     </mask>
                                 </variation>
-                                <variation key="heightClass=regular" misplaced="YES">
-                                    <rect key="frame" x="283" y="590" width="32" height="32"/>
+                                <variation key="heightClass=regular">
                                     <mask key="constraints">
                                         <include reference="5q6-Dp-uy0"/>
                                     </mask>

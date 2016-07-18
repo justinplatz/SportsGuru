@@ -210,7 +210,8 @@ class AskWatsonViewController: ExampleNobelViewController, DropDownViewControlle
     
     @IBAction func buttonAction(sender: AnyObject) {
         dropdownVC.toggle()
-        self.toggle()
+        toggle()
+        watsonTextView.text = ""
     }
     
     func toggle() {
@@ -540,22 +541,19 @@ class AskWatsonViewController: ExampleNobelViewController, DropDownViewControlle
         dropdownButton.hidden = true
         
         showLoaderAndStartAnimation()
-    
-        disableDropdownMenuFunctionality()
-        
+            
         if watsonTextView.text == "" {
             loader.alpha = 0
             
             recordingButton.hidden = false
             recordingButton.enabled = true
-            
-            tapToContinueView.hidden = true
+            dropdownButton.enabled = true
+            dropdownButton.hidden = false
+
             stopAndResetAudioPlayer()
             
-            self.enableDropdownMenuFunctionality()
-            
-            self.prepareOpenWatson()
-            self.showWatsonAnimation()
+            prepareOpenWatson()
+            showWatsonAnimation()
             
             let delay = 0.5 * Double(NSEC_PER_SEC)  // nanoseconds per seconds
             let dispatchTime = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
@@ -565,7 +563,6 @@ class AskWatsonViewController: ExampleNobelViewController, DropDownViewControlle
                 self.showWatsonAnimation()
             })
 
-            
             return
         }
         
@@ -591,7 +588,7 @@ class AskWatsonViewController: ExampleNobelViewController, DropDownViewControlle
     }
     
     func enableDropdownMenuFunctionality() -> Void{
-        self.dropdownButton.enabled = true
+        dropdownButton.enabled = true
     }
     
     func disableClearTextButtonFunctionality() -> Void{
@@ -1046,7 +1043,6 @@ class AskWatsonViewController: ExampleNobelViewController, DropDownViewControlle
         playEndRecordingBeep()
         proccessSpeechAndFindKeywords()
         addEffectToButton()
-
     }
     
     func handleRecordingButtonTapped() -> Void{
@@ -1057,6 +1053,7 @@ class AskWatsonViewController: ExampleNobelViewController, DropDownViewControlle
             return
         }
         
+        dropdownButton.enabled = false
         watsonTextView.text = ""
         recordingButton.layer.removeAllAnimations()
 
