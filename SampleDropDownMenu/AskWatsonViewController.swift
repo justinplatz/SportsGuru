@@ -67,6 +67,7 @@ class AskWatsonViewController: ExampleNobelViewController, DropDownViewControlle
     @IBOutlet weak var playerCurrentTeamLabel: UILabel!
     @IBOutlet weak var playerHeadshotImageView: UIImageView!
     @IBOutlet weak var playerSummaryTextView: UITextView!
+    @IBOutlet weak var playerCurrentTeamLogo: UIImageView!
     
     // MARK: - Constants, Properties
     var isListeningForQuestion = true
@@ -1040,6 +1041,8 @@ class AskWatsonViewController: ExampleNobelViewController, DropDownViewControlle
                 let height = jsonDict!["response"]?["height"]
                 let weight = jsonDict!["response"]?["weight"]
                 let current_team = jsonDict!["response"]?["current_team"]
+                let current_team_logo = jsonDict!["response"]?["team_logo"]
+
 
 
                 
@@ -1062,12 +1065,16 @@ class AskWatsonViewController: ExampleNobelViewController, DropDownViewControlle
                         
                         let decodedData = NSData(base64EncodedString: image as! String, options: NSDataBase64DecodingOptions(rawValue: 0))
                         let decodedimage = UIImage(data: decodedData!)
+                        self.playerHeadshotImageView.image = decodedimage! as UIImage
                         
+                        let decodedLogoData = NSData(base64EncodedString: current_team_logo as! String, options: NSDataBase64DecodingOptions(rawValue: 0))
+                        let decodedLogoImage = UIImage(data: decodedLogoData!)
+                        self.playerCurrentTeamLogo.image = decodedLogoImage! as UIImage
+
                         self.playerCardView.hidden = false
                         self.playerNameLabel.text = player_name as? String
                         self.playerPosistionLabel.text = position as? String
                         self.playerCurrentTeamLabel.text = current_team as? String
-                        self.playerHeadshotImageView.image = decodedimage! as UIImage
                         self.playerBirthdayLabel.text = birth_date as? String
                         self.playerBirthplaceLabel.text = birth_place as? String
                         let heightWeight = (height as! String) + " " + (weight as! String)
