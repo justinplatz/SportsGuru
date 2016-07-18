@@ -46,7 +46,6 @@ class AskWatsonViewController: ExampleNobelViewController, DropDownViewControlle
     @IBOutlet weak var clearWatsonTextViewButton: UIButton!
     @IBOutlet weak var headerView: UIView!
     @IBOutlet weak var headerViewLabel: UILabel!
-    @IBOutlet weak var engineeringButton: UIButton!
     @IBOutlet weak var recordingButton: UIButton!
     
     @IBOutlet weak var tapToContinueView: UIView!
@@ -541,7 +540,7 @@ class AskWatsonViewController: ExampleNobelViewController, DropDownViewControlle
         dropdownButton.hidden = true
         
         showLoaderAndStartAnimation()
-            
+        
         if watsonTextView.text == "" {
             loader.alpha = 0
             
@@ -574,9 +573,7 @@ class AskWatsonViewController: ExampleNobelViewController, DropDownViewControlle
         //    self.openPhotoLibrary()
         //}
         else{
-            
             tapToContinueTapped()
-
         }
         
 
