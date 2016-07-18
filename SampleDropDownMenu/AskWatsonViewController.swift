@@ -381,13 +381,9 @@ class AskWatsonViewController: ExampleNobelViewController, DropDownViewControlle
     func tapToContinueTapped(gestureRecognizer: UITapGestureRecognizer? = nil) {
         if self.watsonTextView.text != "" {
         
-            //self.engineeringButton.hidden = true
             self.recordingButton.hidden = true
-            
-            //self.watsonTextView.hidden = true
             self.clearWatsonTextViewButton.hidden = true
             self.clearWatsonTextViewButton.enabled = false
-            
         
             prepareCloseWatson()
         
@@ -403,74 +399,6 @@ class AskWatsonViewController: ExampleNobelViewController, DropDownViewControlle
                 self.showWatsonAnimation()
                 self.AskQuestionAndReturnAnswerAsString(self.watsonTextView.text)
             })
-        }
-    }
-    
-    func watsonImageTapped(gestureRecognizer: UITapGestureRecognizer) {
-        recordTapped()
-    }
-    
-    
-    /*
-     This function is called each time the record button is pressed while not recording.
-     If recording and record button is pressed, finishRecording() is called
-     */
-    func startRecording() {
-        let audioFilename = getDocumentsDirectory().stringByAppendingPathComponent("recording.wav")
-        let audioURL = NSURL(fileURLWithPath: audioFilename)
-        
-        
-        
-        let settings:[String:AnyObject] = [ AVFormatIDKey:Int(kAudioFormatLinearPCM), AVLinearPCMIsFloatKey:false, AVLinearPCMIsBigEndianKey:0, AVLinearPCMIsNonInterleaved:false, AVSampleRateKey:44100.0, AVNumberOfChannelsKey:2, AVEncoderBitRateKey:12800, AVLinearPCMBitDepthKey:16, AVEncoderAudioQualityKey:AVAudioQuality.Max.rawValue]
-        
-        do {
-            audioRecorder = try AVAudioRecorder(URL: audioURL, settings: settings)
-            audioRecorder.delegate = self
-            audioRecorder.record()
-            
-        } catch {
-            finishRecording(success: false)
-        }
-    }
-    
-    /*
-     This function is called each time the record button is pressed while  recording.
-     If not recording and record button is pressed, startRecording() is called
-     After a successful recording, proccessSpeechAndFindKeywords() is called
-     */
-    func finishRecording(success success: Bool) {
-        proccessSpeechAndFindKeywords()
-    }
-    
-    /*
-     This function is called as a result of tapping the record button.
-     It determines whether to call the start or finish recording functions
-     */
-    func recordTapped() {
-        if audioRecorder == nil {
-            
-            prepareCloseWatson()
-            
-            showCloseWatson()
-            
-            let seconds = watsonCloseDuration
-            let delay = seconds * Double(NSEC_PER_SEC)  // nanoseconds per seconds
-            let dispatchTime = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
-            
-            dispatch_after(dispatchTime, dispatch_get_main_queue(), {
-                self.playStartRecordingBeep()
-                self.engineeringButton.setImage(UIImage(named: "stop.png"), forState: UIControlState.Normal)
-
-                self.prepareAndShowRecordingWatson()
-                self.startRecording()
-            })
-            
-            
-        } else {
-            playEndRecordingBeep()
-            prepareWatsonAnimation()
-            proccessSpeechAndFindKeywords()
-            self.engineeringButton.setImage(UIImage(named: "recording.png"), forState: UIControlState.Normal)
         }
     }
     
@@ -753,12 +681,6 @@ class AskWatsonViewController: ExampleNobelViewController, DropDownViewControlle
         })
        
     }
-
-
-    @IBAction func engineeringButtonTapped(sender: AnyObject) {
-        recordTapped()
-    }
-    
     
     func stopAndResetAudioPlayer(){
         audioPlayer?.pause()
